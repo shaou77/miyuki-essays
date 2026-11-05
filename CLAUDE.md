@@ -25,7 +25,7 @@ songs/<slug>/index.html        每首歌一个解读页
 - 歌词数据写在页面底部的 `var D=[...]`（合法 JSON），每行 8 项；重复的句子用第 8 项引用第一次出现的 id。
 - 前几首讲过的语法标“（回顾）”，查 `D:/miyuki-song-skill/已讲语法索引.md`。
 - 完成后：`python D:/miyuki-song-skill/scripts/check_song.py songs/<slug>/index.html`
-  和 `python D:/miyuki-song-skill/scripts/grammar_index.py`，再提交推送（Cloudflare 自动部署）。
+  和 `python D:/miyuki-song-skill/scripts/grammar_index.py`，再提交推送（Cloudflare Pages 自动部署到 miyuki-essays.pages.dev）。
 
 ## 已有歌曲
 
@@ -37,3 +37,8 @@ songs/<slug>/index.html        每首歌一个解读页
 | 4 | 世情 | sejou |
 | 5 | 歌姫 | utahime |
 | 6 | ヘッドライト・テールライト | headlight-taillight |
+
+## 部署
+
+Cloudflare Pages 连接本仓库，推送 main 自动发布到 https://miyuki-essays.pages.dev 。
+不要加回 `wrangler.jsonc` 或改用 Workers：`*.workers.dev` 在中国大陆被封锁。
