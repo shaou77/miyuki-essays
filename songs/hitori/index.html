@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ひとり · 解读</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f1e6;--paper-2:#efe6d5;--ink:#2b2622;--ink-soft:#5d544c;--sea:#1f3a4d;--sea-2:#2f5670;--ember:#a4472d;--gold:#b48a4a;--line:#dccfb8;--card:#fffaf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Shippori Mincho",serif;line-height:1.9;font-size:17px;
+background-image:radial-gradient(circle at 20% 0%,#fbf6ec 0,transparent 55%),radial-gradient(circle at 100% 100%,#eadfca 0,transparent 50%)}
+a{color:var(--sea-2)}
+rt{font-size:.5em;color:var(--ember);font-family:"Shippori Mincho",serif}
+header.hero{position:relative;color:#f3ead9;text-align:center;padding:80px 20px 116px;overflow:hidden;background:linear-gradient(180deg,#0f2130 0%,#1f3a4d 55%,#2f5670 100%)}
+.hero.small{padding:46px 20px 84px}
+.hero .moon{position:absolute;top:42px;right:14%;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6e0,#e8d3a6 60%,#c9ae7a);box-shadow:0 0 60px 12px rgba(243,224,180,.25)}
+.hero .kicker{letter-spacing:.5em;font-size:13px;opacity:.75}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(44px,9vw,84px);margin:16px 0 6px;letter-spacing:.12em}
+.hero.small h1{font-size:clamp(30px,6vw,48px)}
+.hero h1 rt{color:#e8c98f;font-size:.28em}
+.hero .sub{font-size:18px;opacity:.9;letter-spacing:.2em}
+.hero .meta{margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
+.boats{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:260px;height:40px;opacity:.9}
+nav.toc{max-width:860px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
+nav.toc a,.btn{background:var(--card);border:1px solid var(--line);color:var(--sea);text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;box-shadow:0 4px 14px rgba(60,40,20,.08);cursor:pointer;font-family:inherit}
+nav.toc a.primary,.btn.primary{background:var(--ember);color:#fff;border-color:var(--ember)}
+main{max-width:860px;margin:0 auto;padding:36px 20px 80px}
+section{margin-top:60px}
+h2{font-weight:700;font-size:28px;color:var(--sea);margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
+h2 .num{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:40px;font-weight:400}
+.h2sub{color:var(--ink-soft);font-size:14px;letter-spacing:.2em;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px}
+h3{color:var(--ember);font-size:20px;margin:34px 0 10px}
+p{margin:0 0 1em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:10px 0 26px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.facts b{display:block;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);font-weight:400}
+.facts span{font-size:17px;color:var(--sea);font-weight:600}
+blockquote{margin:22px 0;padding:16px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,#f3e8d3,transparent);color:var(--ink-soft)}
+.jq{font-family:"Shippori Mincho",serif;color:var(--sea)}
+.note{font-size:14px;color:var(--ink-soft);background:var(--paper-2);border-radius:10px;padding:12px 16px;border:1px dashed var(--line)}
+.stanza{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 26px 6px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05)}
+.stanza .tag{font-size:12px;color:var(--gold);letter-spacing:.3em;padding:12px 0 2px}
+.lyric{display:grid;grid-template-columns:1.1fr 1fr;gap:4px 28px;padding:14px 0;border-bottom:1px dashed var(--line);align-items:center;text-decoration:none;color:inherit;position:relative}
+.lyric:last-child{border-bottom:none}
+.lyric:hover{background:linear-gradient(90deg,transparent,#f6ecdb,transparent)}
+.lyric:hover::after{content:"拆解 →";position:absolute;right:0;top:4px;font-size:11px;color:var(--ember)}
+.lyric .ja{font-family:"Shippori Mincho",serif;font-size:20px;line-height:2.3}
+.lyric .zh{font-size:17px;color:var(--sea-2);border-left:2px solid var(--line);padding-left:20px}
+@media (max-width:640px){.lyric{grid-template-columns:1fr}.lyric .zh{border-left:none;padding-left:0}.stanza{padding:8px 16px}}
+.cta{text-align:center;margin:44px 0 10px;padding:30px 20px;border-radius:16px;background:linear-gradient(135deg,#1f3a4d,#2f5670);color:#f3ead9}
+.cta p{opacity:.85;font-size:15px}
+.study{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 14px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05);scroll-margin-top:20px}
+.study.mini{padding:14px 24px 4px}
+.study .line{font-family:"Shippori Mincho",serif;font-size:23px;line-height:2.4;color:var(--sea)}
+.study .roma{font-family:Georgia,serif;font-style:italic;color:var(--ink-soft);font-size:15px;margin-top:-4px}
+.study .tr{margin:8px 0 14px;color:var(--ember)}
+.study .tr small{color:var(--ink-soft)}
+.refnote{font-size:14px;color:var(--ink-soft)}
+.st{border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:46px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 14px}
+th{background:var(--sea);color:#f3ead9;font-weight:600;text-align:left;padding:8px 10px;font-size:13px}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.w{font-family:"Shippori Mincho",serif;font-size:18px;white-space:nowrap;color:var(--sea)}
+td.k{color:var(--ember);white-space:nowrap;font-size:14px}
+.pos{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap}
+.pos.p{background:#f4dfd5;color:var(--ember)}.pos.v{background:#dbe6ee;color:var(--sea)}
+@media (max-width:640px){td.w,td.k{white-space:normal}table{font-size:14px}}
+.gram{background:var(--paper-2);border-radius:12px;padding:12px 18px;margin:10px 0}
+.gram h4{margin:0 0 4px;color:var(--sea);font-size:16px}
+.gram h4::before{content:"◆ ";color:var(--gold)}
+.gram p{margin:0;font-size:15.5px}
+.ex{font-family:"Shippori Mincho",serif;color:var(--ink)}
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cheat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.cheat b{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--ember);display:block}
+.back{position:fixed;right:18px;bottom:18px;z-index:9}
+footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 60px;border-top:1px solid var(--line);max-width:860px;margin:0 auto}
+.view{display:none}.view.on{display:block}
+.hero .stars{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero .tw{animation:tw 3.2s ease-in-out infinite;transform-origin:754px 104px}
+@keyframes tw{0%,100%{opacity:.35}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero .tw{animation:none}}
+.hero>*{position:relative}
+.hero .stars,.hero .waves{position:absolute}
+/* ---- 通用补充（长标题 / 拉丁字母标题 / 学习页内联日文） ---- */
+.nb{display:inline-block;white-space:nowrap}
+.hero h1.long{font-size:clamp(26px,6.2vw,62px);letter-spacing:.06em}
+.hero.small h1.long{font-size:clamp(22px,5vw,42px)}
+.hero h1.latin{font-family:"Shippori Mincho",serif;letter-spacing:.18em}
+.gram i,.cheat i{font-style:normal;font-family:"Shippori Mincho",serif;color:var(--ink)}
+/* ---- 本曲专属 hero 装饰（可选）：在这里加 .ship / .road / .hills 等样式 ---- */
+.hero .hitori{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);width:300px;height:112px}
+header.hero:not(.small){padding-bottom:170px}
+.hero .hitori .hand-m{animation:rewind 24s linear infinite}
+.hero .hitori .hand-h{animation:rewind 288s linear infinite}
+.hero .hitori .petal{animation:fall 7s ease-in infinite}
+@keyframes rewind{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.85}80%{opacity:.6}100%{transform:translate(14px,36px) rotate(120deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.hero .hitori .hand-m,.hero .hitori .hand-h,.hero .hitori .petal{animation:none}}
+.hero .hitori{position:absolute}
+.hero .hitori .petal{transform-box:fill-box;transform-origin:center}
+</style>
+</head>
+<body>
+<!-- ===================== MAIN VIEW ===================== -->
+<div class="view on" id="v-main">
+<header class="hero">
+<svg class="stars" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<g fill="#f3e3bd"><circle cx="80" cy="60" r="1.4"/><circle cx="190" cy="130" r="1"/><circle cx="300" cy="50" r="1.3"/><circle cx="410" cy="170" r="1"/><circle cx="520" cy="40" r="1.6"/><circle cx="620" cy="140" r="1.1"/><circle cx="900" cy="190" r="1.3"/><circle cx="40" cy="200" r="1"/><circle cx="470" cy="240" r="0.9"/></g>
+<g class="tw"><path d="M745 92 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" fill="#fff4d6"/></g>
+</svg>
+<div class="moon"></div>
+<div class="kicker">中島みゆき · 1984</div>
+<h1>ひとり</h1>
+<div class="sub">独 自 一 人</div>
+<div class="meta">作词 · 作曲：中岛美雪 ｜ 编曲：仓田信雄（专辑版）｜ 专辑《はじめまして》</div>
+<svg class="hitori" viewBox="0 0 320 120" aria-hidden="true">
+<!-- 倒着走的时钟：時計の針なら戻る -->
+<g transform="translate(118 62)">
+<circle r="38" fill="#0f2130" fill-opacity=".35" stroke="#e8d3a6" stroke-width="1.4" stroke-opacity=".75"/>
+<g stroke="#e8d3a6" stroke-opacity=".7" stroke-width="1.3" stroke-linecap="round">
+<path d="M0 -33 V-28"/><path d="M0 28 V33"/><path d="M-33 0 H-28"/><path d="M28 0 H33"/>
+<path d="M16.5 -28.6 l-2 3.5"/><path d="M28.6 -16.5 l-3.5 2"/><path d="M28.6 16.5 l-3.5 -2"/><path d="M16.5 28.6 l-2 -3.5"/>
+<path d="M-16.5 28.6 l2 -3.5"/><path d="M-28.6 16.5 l3.5 -2"/><path d="M-28.6 -16.5 l3.5 2"/><path d="M-16.5 -28.6 l2 3.5"/>
+</g>
+<path d="M-9 -44 A 46 46 0 0 0 -38 -26" fill="none" stroke="#e8c98f" stroke-width="1.2" stroke-opacity=".6" stroke-dasharray="2 4"/>
+<path d="M-38 -26 l1 -6 M-38 -26 l6 1" stroke="#e8c98f" stroke-width="1.2" stroke-opacity=".6" fill="none" stroke-linecap="round"/>
+<g class="hand-h"><path d="M0 0 V-17" stroke="#fff4d6" stroke-width="2.6" stroke-linecap="round"/></g>
+<g class="hand-m"><path d="M0 0 V-27" stroke="#fff4d6" stroke-width="1.6" stroke-linecap="round"/></g>
+<circle r="2.4" fill="#e8d3a6"/>
+</g>
+<!-- 一枝枯花：枯れた花でさえも -->
+<g fill="none" stroke="#e8d3a6" stroke-linecap="round" stroke-opacity=".85">
+<path d="M222 112 C 220 86 226 62 238 50 C 246 42 254 44 256 52" stroke-width="1.6"/>
+<path d="M223 92 C 212 88 206 80 207 72 C 216 74 222 82 223 92" stroke-width="1.1"/>
+<path d="M226 74 C 236 72 242 66 243 60" stroke-width="1"/>
+</g>
+<g fill="#e8d3a6" fill-opacity=".8">
+<path d="M256 52 C 250 58 250 68 256 72 C 262 68 262 58 256 52z"/>
+<path d="M256 56 C 249 60 247 68 251 72 C 254 68 255 61 256 56z" fill-opacity=".55"/>
+<path d="M256 56 C 263 60 265 68 261 72 C 258 68 257 61 256 56z" fill-opacity=".55"/>
+</g>
+<path class="petal" d="M268 70 c 4 -2 7 1 5 5 c -4 2 -7 -1 -5 -5z" fill="#e8c98f" fill-opacity=".85"/>
+</svg>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a>
+<a href="#bg" onclick="jump('bg');return false;">一 · 创作背景与解读</a>
+<a href="#lyrics" onclick="jump('lyrics');return false;">二 · 歌词对照</a>
+<a class="primary" href="#study" onclick="go('study');return false;">三 · 跟着歌词学日语 →</a>
+</nav>
+<main>
+<section id="bg">
+<h2><span class="num">壹</span>创作背景与歌曲含义</h2>
+<div class="h2sub">BACKGROUND &amp; MEANING</div>
+<div class="facts">
+<div><b>发行</b><span>1984 年 3 月 21 日</span></div>
+<div><b>形式</b><span>第 15 张单曲</span></div>
+<div><b>收录专辑</b><span>《はじめまして》</span></div>
+<div><b>成绩</b><span>Oricon 周榜第 5 名</span></div>
+</div>
+<h3>1984 年：一张单曲，两种编曲</h3>
+<p>《ひとり》是中岛美雪在 <b>1984 年 3 月 21 日</b>发行的第 15 张单曲，B 面是《海と宝石》。单曲版由<b>船山基紀</b>编曲，据日文维基百科记载，在 Oricon 周榜最高排到第 5 名。</p>
+<p>同年 10 月 24 日，她发行了专辑<b>《はじめまして》</b>（初次见面），《ひとり》作为第 3 首收录其中，但换成了<b>仓田信雄</b>编曲的另一个版本：一首摇滚风格的抒情曲（rock ballad）。这张专辑登上了 Oricon 专辑周榜第 1 名。本页使用的歌词与编曲信息来自专辑版。单曲版后来收进了精选集《中島みゆき THE BEST》和《Singles》。</p>
+<p>专辑叫“初次见面”，里面却放着这样一首告别的歌，这个对照本身就很有意思：一边是重新开始，一边是“明天起一个人”。</p>
+<h3>标题：为什么写成假名「ひとり」</h3>
+<p>日语里“一个人”有两种汉字写法：<b>一人</b>偏重数量，“一个人、一位”；<b>独り</b>偏重处境，“独自、孤单”。歌名不写汉字，只写假名<span class="jq">ひとり</span>，两层意思就都留着了：既是“从此只剩我一个”，也是“我一个人也能过”。</p>
+<p>中文译名定为<b>“独自一人”</b>，想把这两层一起装进去：“独自”是处境，“一人”是数量。</p>
+<blockquote>时钟的指针能拨回，枯萎的花，季节一轮转也会再开。<b>只有我们的爱，回不来了。</b></blockquote>
+<h3>全曲解读 · 五个层次</h3>
+<p><b>一、先把怨言收起来。</b>歌一开口就是“别再说那些怨恨的话了吧”。不是不怨，而是怕：再说下去，连<span class="jq">あの日出会った思い出</span>（那天相遇的回忆）都会被染成“一场错误”。她要保护的不是这段关系，而是关系开始时的那一点好。</p>
+<p><b>二、一生只有一次的赞美。</b><span class="jq">だれかにほめてもらったこと　あれきりのことだもの</span>：被人夸奖，就只有那么一回。她说的是“だれか”（某个人），其实谁都知道是谁。用“某个人”来指眼前的你，是一种不肯直说的温柔，也是一点赌气。所以她才拜托对方：<span class="jq">出会いのことばを忘れないでいてね</span>，请记住初见时说过的话。</p>
+<p><b>三、什么都能回来，只有爱不能。</b>间段把“能回来的东西”一样样摆出来：时钟的指针、枯萎的花、轮转的季节。然后一句<span class="jq">でも私たちの愛は</span>，话只说一半就停住了。后半句不用唱，听的人自己会补上。这是整首歌最安静、也最重的一刻。</p>
+<p><b>四、逞强的告别。</b>副歌里的“Good bye”说得很干脆，句子却一句比一句软：<span class="jq">頼れないのね</span>（不能再依靠你了吧）是对自己确认；<span class="jq">慣れてるわひとり</span>（一个人，我早就习惯了）是嘴硬；最后一句却转过身去替对方着想：<span class="jq">心配なんかしないで　幸せになって</span>，别担心我，你要幸福。逞强到最后，剩下的是成全。</p>
+<p><b>五、把和解寄给将来。</b>第二段把时间轴拉长：<span class="jq">歳をとったらもう一度会ってよね</span>，等老了再见一面。现在“心还太孩子气”，连对不起都说不出口；于是她想象自己从远方寄来一封长信，请对方<b>别拆</b>，藏起来，等到老了再看。道歉不是取消了，而是被封进信封，寄往一个两个人都更成熟的未来。（这是一种读法，并非作者说明。）</p>
+<p>如果说《二隻の舟》写的是“分隔两地，也是一体”，这首则更像它的反面：真的分开了，只留下一封不拆的信，和一句“你要幸福”。</p>
+</section>
+<section id="lyrics">
+<h2><span class="num">贰</span>歌词中日对照</h2>
+<div class="h2sub">LYRICS · 日文原文 × 中文译文</div>
+<p class="note"><b>翻译原则：</b>信（不违原意）、达（中文自然）、雅（保留诗意）。不逐字硬译，必要处略作演绎。<br>💡 <b>点击任意一句</b>，可直接跳到该句的逐词讲解。</p>
+<div id="LY"></div>
+<h3>译法小记</h3>
+<p><b>“あれきりのことだもの” → “此生也就那么一回”</b>：<span class="jq">あれきり</span>字面是“就那一次，之后再没有”。直译成“仅此而已”太冷，译成“此生”稍微放大了一点，但歌里的语气正是“这辈子大概只有你这样夸过我”，所以略作演绎。</p>
+<p><b>“でも私たちの愛は” → “可是我们的爱呢……”</b>：原文是个没说完的句子，只有主题“我们的爱”，后面什么都没有。中文加一个“呢”和省略号，保留“话到嘴边咽回去”的停顿，而不替她把“回不来了”说出口。</p>
+<p><b>“頼れないのね” → “都不能再依靠你了吧”</b>：<span class="jq">頼れない</span>只是“不能依靠”，没有“你”，也没有“再”。但前一句是“明天起一个人”，这里的失落正是“从此不能再靠你”，所以补上了“再”和“你”。句末的<span class="jq">のね</span>是自言自语的确认，用“吧”来接。</p>
+<p><b>“慣れてるわひとり” → “一个人，我早已习惯”</b>：原文把<span class="jq">ひとり</span>放在句末，是倒装。中文把“一个人”提到最前面，同样起到“单独亮出来”的效果，又比“我习惯了一个人”多了一点嘴硬的味道。</p>
+<p><b>“幸せになって” → “你要幸福啊”</b>：字面是“请变得幸福”。中文里祝福分别的人，“你要幸福”最自然，也最有分量；加个“啊”，留一点哽咽。</p>
+<p><b>“封は切らず” → “请别拆封”</b>：<span class="jq">封を切る</span>是“拆信”的固定说法，中文正好有“拆封”对应，不必译成“剪开封口”。</p>
+<div class="cta">
+<div style="font-size:22px;font-family:'Shippori Mincho',serif">跟着歌词学日语</div>
+<p>全曲逐句拆解：单词、读音、词性、语法点，专为日语初学者准备。</p>
+<button class="btn primary" onclick="go('study')">打开学习页 →</button>
+</div>
+</section>
+</main>
+</div>
+<!-- ===================== STUDY VIEW ===================== -->
+<div class="view" id="v-study">
+<header class="hero small">
+<div class="kicker">跟着歌词学日语</div>
+<h1>ひとり</h1>
+<div class="sub">逐 词 逐 句</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a><a href="#" onclick="go('main');return false;">← 返回解读与歌词</a><a href="#cheat" onclick="jump('cheat');return false;">语法速查卡</a></nav>
+<main>
+<p class="note">📖 <b>阅读方法：</b>先看整句和罗马音，跟着读一遍；再看单词表；最后看语法点。重复出现的句子只讲第一次。标“回顾”的语法点，前几首歌里已经讲过，可以对照复习。<br>
+标签：<span class="pos">名</span> 名词　<span class="pos v">动</span> 动词　<span class="pos p">助</span> 助词（标明词在句中角色的“小零件”）　<span class="pos">形</span> 形容词　<span class="pos">副</span> 副词</p>
+<div id="SD"></div>
+<h3 class="st" id="cheat">本曲语法速查卡</h3>
+<div class="cheat">
+<div><b>〜ましょう</b>礼貌的“……吧”：<i>やめましょう</i> 别再……了吧</div>
+<div><b>动词＋のは</b>把动作变成名词当主题：<i>言うのは</i> 说这件事</div>
+<div><b>思える</b>自发：不由得觉得、看起来像：<i>間違えに思える</i></div>
+<div><b>〜てしまう</b>（回顾）遗憾、收不回：<i>思えてしまう</i></div>
+<div><b>〜ないでいて</b>请一直保持不……：<i>忘れないでいてね</i></div>
+<div><b>〜てもらう</b>得到别人为我做：<i>ほめてもらった</i> 被夸奖</div>
+<div><b>〜もの</b>句末辩解、撒娇：<i>あれきりのことだもの</i></div>
+<div><b>〜でさえ（も）</b>（回顾 さえ）就连……也：<i>枯れた花でさえも</i></div>
+<div><b>〜ば</b>（回顾）只要……就：<i>巡れば戻る</i></div>
+<div><b>どんな〜でも</b>（回顾）无论怎样的……：<i>どんな寂しい時でも</i></div>
+<div><b>可能形否定</b>五段 う段→え段＋ない：<i>頼る→頼れない</i></div>
+<div><b>〜なんか＋否定</b>（回顾）……什么的，别：<i>心配なんかしないで</i></div>
+<div><b>〜になる</b>な形容词／名词＋に＋なる 变得：<i>幸せになって</i></div>
+<div><b>〜たら</b>（回顾）等……之后：<i>歳をとったら</i></div>
+<div><b>名词＋すぎる</b>（回顾）太……：<i>子供すぎて</i></div>
+<div><b>〜ておく</b>事先做好、保持：<i>隠しておいて</i></div>
+</div>
+</main>
+<button class="btn back" onclick="go('main')">← 返回</button>
+</div>
+<footer>
+《ひとり》词曲 © 中岛美雪。歌词由正版专辑持有者提供，仅供个人学习使用。<br>
+背景资料参考：<a href="https://ja.wikipedia.org/wiki/%E3%81%B2%E3%81%A8%E3%82%8A_(%E4%B8%AD%E5%B3%B6%E3%81%BF%E3%82%86%E3%81%8D%E3%81%AE%E6%9B%B2)" target="_blank" rel="noopener">日文维基百科「ひとり (中島みゆきの曲)」</a> · <a href="https://ja.wikipedia.org/wiki/%E3%81%AF%E3%81%98%E3%82%81%E3%81%BE%E3%81%97%E3%81%A6_(%E4%B8%AD%E5%B3%B6%E3%81%BF%E3%82%86%E3%81%8D%E3%81%AE%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0)" target="_blank" rel="noopener">日文维基百科「はじめまして (中島みゆきのアルバム)」</a>；歌词解读为基于歌词与背景的读法，非作者官方说明。<br>
+<a href="../../">中岛美雪解读</a> · 第 7 首
+</footer>
+<script>
+/* 数据格式见 SKILL.md「数据格式」。一行歌词＝
+   [id, 日文(含{漢字|かな}与<br>), 罗马音, 意译, 直译, [[词,读音,词性,释义],...], [[语法标题,说明HTML],...], 引用id或""] */
+var D=[
+["第一段 · 把怨言收起来", [["l1", "もううらみごとなら{言|い}うのはやめましょう", "mō uramigoto nara iu no wa yamemashō", "那些怨怼的话，就别再说了吧", "如果是怨言的话，说（这件事）就停止吧", [["もう", "もう", "副", "已经；（这里）不再、别再"], ["うらみごと", "うらみごと", "名", "怨言、抱怨的话（汉字写作 恨み言）"], ["なら", "nara", "助", "如果是……的话；说到……"], ["言う", "いう", "动", "说"], ["の", "no", "助", "把前面的动作变成名词"], ["は", "wa", "助", "提示主题"], ["やめる", "やめる", "动", "停止、作罢"], ["やめましょう", "やめましょう", "动", "やめる 的“ましょう”形：别……了吧"]], [["〜ましょう：……吧（礼貌的劝诱）", "动词 ます 形把 ます 换成 ましょう：<span class=\"ex\">やめます→やめましょう</span>。意思和《EAST ASIA》里讲过的意志形 <span class=\"ex\">揺らそう</span> 一样是“……吧”，只是更礼貌、更柔和。日常例句：<span class=\"ex\">行きましょう</span>（走吧）。"], ["动词原形＋の＋は：把动作当主题", "<span class=\"ex\">言う</span> 是动词，不能直接接 <span class=\"ex\">は</span>，先加 <span class=\"ex\">の</span> 变成名词“说这件事”：<span class=\"ex\">言うのは｜やめましょう</span> ＝“说（怨言）这件事，就停了吧”。《瞬きもせず》里讲过用 <span class=\"ex\">こと</span> 名词化，<span class=\"ex\">の</span> 是更口语的说法。"], ["〜なら（回顾）", "《二隻の舟》里讲过 <span class=\"ex\">なら</span>＝“如果是那样的话”。这里是“说到怨言的话”，把话题先拎出来。"]], ""], ["l2", "あの{日|ひ}{出会|であ}った{思|おも}い{出|で}も{間違|まちが}えに{思|おも}えてしまうわ", "ano hi deatta omoide mo machigae ni omoete shimau wa", "不然连那天相遇的回忆，都要像是一场错了", "连那天相遇的回忆，也会不由得觉得是错误", [["あの日", "あのひ", "名", "那一天（あの：说话双方都知道的“那”）"], ["出会う", "であう", "动", "相遇、邂逅"], ["出会った", "であった", "动", "出会う 的た形：相遇了的"], ["思い出", "おもいで", "名", "回忆"], ["も", "mo", "助", "连……也"], ["間違え", "まちがえ", "名", "错误（口语里也说 間違い）"], ["に", "ni", "助", "（觉得）是……"], ["思える", "おもえる", "动", "不由得觉得、看起来像"], ["しまう", "しまう", "补助动", "接在て形后：遗憾、收不回"], ["わ", "wa", "终助", "女性口吻的句末语气"]], [["た形修饰名词（回顾）", "<span class=\"ex\">あの日出会った｜思い出</span>：“那天相遇的”整个修饰“回忆”。《EAST ASIA》里讲过 <span class=\"ex\">編んだゆりかご</span>，同一个结构。"], ["思う ／ 思える", "<span class=\"ex\">思う</span> 是我主动去想；<span class=\"ex\">思える</span> 是“自己不想这么觉得，却忍不住觉得”。<span class=\"ex\">間違えに思える</span>＝忍不住觉得那是个错误。她不愿意，所以才要“别再抱怨”。"], ["〜てしまう（回顾）＋ 句末 わ", "<span class=\"ex\">思えてしまう</span>：一旦这么觉得就收不回了（《瞬きもせず》讲过）。句末 <span class=\"ex\">わ</span> 是女性柔和的语气，没有实际意思，像中文的“呀”。"]], ""], ["l3", "ねえ{出会|であ}いのことばを{忘|わす}れないでいてね", "nē deai no kotoba o wasurenaide ite ne", "只是啊，请别忘记我们初遇时的那些话", "喂，请一直不要忘记相遇时的话哦", [["ねえ", "ねえ", "叹", "喂、哎（引起对方注意，带撒娇）"], ["出会い", "であい", "名", "相遇（出会う 的名词形）"], ["ことば", "ことば", "名", "话语、言语（汉字 言葉）"], ["を", "o", "助", "宾语标记"], ["忘れる", "わすれる", "动", "忘记"], ["忘れないで", "わすれないで", "动", "忘れる 的ない形＋で：别忘记"], ["いる", "いる", "补助动", "接在て形后：保持某种状态"], ["ね", "ne", "终助", "哦、呀（向对方求同）"]], [["〜ないで：请别……", "动词ない形＋<span class=\"ex\">で</span>，是“请不要……”的口语说法：<span class=\"ex\">忘れないで</span>（别忘了）。日常例句：<span class=\"ex\">泣かないで</span>（别哭）。"], ["〜ないでいて：一直别……", "再加 <span class=\"ex\">いて</span>（<span class=\"ex\">いる</span> 的て形），就从“别忘”变成“<b>一直</b>保持不忘的状态”。不是叮嘱一次，是希望对方一辈子都记得。"], ["动词ます形词干 → 名词（回顾）", "<span class=\"ex\">出会う → 出会い</span>，和《瞬きもせず》的 <span class=\"ex\">瞬き</span> 一样，去掉 ます 就成了名词。"]], ""], ["l4", "だれかにほめてもらったこと　あれきりのことだもの", "dareka ni homete moratta koto　arekiri no koto da mono", "被人那样夸奖，此生也就那么一回", "被某人夸奖过的事，就只是那一次的事嘛", [["だれか", "だれか", "代", "某人（汉字 誰か）"], ["に", "ni", "助", "（从）……那里"], ["ほめる", "ほめる", "动", "夸奖、称赞（汉字 褒める／誉める）"], ["もらう", "もらう", "补助动", "接在て形后：得到别人为我做……"], ["こと", "こと", "名", "事情"], ["あれきり", "あれきり", "副", "就那一次，之后再没有"], ["だ", "da", "助动", "断定：是"], ["もの", "mono", "终助", "句末：……嘛（辩解、撒娇）"]], [["〜てもらう：得到别人为我做", "A に 〜てもらう＝从 A 那里得到“做……”这个恩惠：<span class=\"ex\">だれかにほめてもらった</span>＝被某人夸奖了（而且我很感激）。比较《二隻の舟》的 <span class=\"ex\">〜てくれる</span>：<span class=\"ex\">くれる</span> 以对方为主语，<span class=\"ex\">もらう</span> 以我为主语。例：<span class=\"ex\">友達に教えてもらった</span>（朋友教了我）。"], ["疑问词＋か（回顾）", "<span class=\"ex\">だれ＋か</span>＝某个人。她其实知道是谁，却偏说“某个人”：一种不肯直说的温柔。"], ["句末 〜もの：……嘛", "<span class=\"ex\">だもの</span> 放在句末，带着点委屈地解释理由，像中文的“……嘛”“毕竟……”。口语里常缩成 <span class=\"ex\">だもん</span>。"]], ""]]],
+["间段 · 能回来的，与回不来的", [["b1", "{時計|とけい}の{針|はり}なら{戻|もど}る　{枯|か}れた{花|はな}でさえも", "tokei no hari nara modoru　kareta hana de sae mo", "时钟的指针，尽可以拨回；就连枯萎的花", "时钟的针的话会回去，就连枯了的花也", [["時計", "とけい", "名", "钟、表"], ["針", "はり", "名", "针；指针"], ["なら", "nara", "助", "如果是……的话（对比：别的不说，……倒是）"], ["戻る", "もどる", "动", "回到原处、复原"], ["枯れる", "かれる", "动", "（草木）枯萎"], ["枯れた", "かれた", "动", "枯れる 的た形：枯了的"], ["花", "はな", "名", "花"], ["でさえも", "de sae mo", "助", "就连……也"]], [["なら 的对比用法", "<span class=\"ex\">時計の針なら戻る</span>：“若是时钟的指针，倒是能回去”。言下之意：<b>别的东西</b>（我们的爱）就不一定了。<span class=\"ex\">なら</span> 在这里把一样东西单独挑出来，暗暗和别的作对比。"], ["〜でさえも：就连……也（回顾 さえ）", "《瞬きもせず》里讲过 <span class=\"ex\">さえ</span>：比 <span class=\"ex\">も</span> 更强的“连”。<span class=\"ex\">でさえも</span> 是加强版：<span class=\"ex\">枯れた花でさえも</span>＝就连枯了的花都……。句子在这里断开，下一行才说完。"], ["た形作定语＝状态（回顾）", "<span class=\"ex\">枯れた花</span>：不是“过去枯过的花”，而是“已经枯了的花”，表示状态。《歌姫》里的 <span class=\"ex\">やせた水夫</span> 是同样的用法。"]], ""], ["b2", "{季節|きせつ}が{巡|めぐ}れば{戻|もど}る", "kisetsu ga megureba modoru", "只要季节轮转，也会回来", "季节如果循环的话就会回来", [["季節", "きせつ", "名", "季节"], ["が", "ga", "助", "主语标记"], ["巡る", "めぐる", "动", "循环、轮转、绕一圈"], ["巡れば", "めぐれば", "动", "巡る 的ば形：如果轮转"], ["戻る", "もどる", "动", "回来"]], [["〜ば：只要……就（回顾）", "五段动词把词尾 う段 换成 え段＋ば：<span class=\"ex\">巡る→巡れば</span>。《二隻の舟》讲过。这里是“只要……就一定……”的规律：季节一转，花自然会回来。"], ["跨行的句子", "这一行接着上一行：<span class=\"ex\">枯れた花でさえも｜季節が巡れば戻る</span>＝就连枯了的花，只要季节轮转也会回来。翻译时要把两行拼起来读。"]], ""], ["b3", "でも{私|わたし}たちの{愛|あい}は", "demo watashitachi no ai wa", "可是我们的爱呢……", "但是我们的爱是……", [["でも", "でも", "接续", "但是、可是"], ["私たち", "わたしたち", "代", "我们"], ["の", "no", "助", "的"], ["愛", "あい", "名", "爱"], ["は", "wa", "助", "提示主题"]], [["只说主题的句子", "日语先说主题 <span class=\"ex\">〜は</span>，再说关于它的事。这一句只有 <span class=\"ex\">私たちの愛は</span>，后面的话<b>没有说</b>。听的人会自己补上：“……却回不来了”。这就是歌词最有力量的留白。"], ["〜たち（回顾）＋ でも（回顾）", "<span class=\"ex\">私＋たち</span>＝我们（《二隻の舟》讲过 <span class=\"ex\">たち</span>）。<span class=\"ex\">でも</span> 放在句首是口语的“但是”（《瞬きもせず》讲过）。"]], ""]]],
+["副歌 · Good bye", [["c1", "Good bye Good bye　{明日|あした}からひとり", "gubbai gubbai　ashita kara hitori", "Good bye，Good bye，明天起，我就是一个人", "再见再见，从明天开始一个人", [["Good bye", "gubbai", "叹", "英语“再见”，日语里也写作 グッバイ"], ["明日", "あした", "名", "明天"], ["から", "kara", "助", "从……开始"], ["ひとり", "ひとり", "名", "一个人；独自（汉字 一人／独り）"]], [["から：从……起", "<span class=\"ex\">明日から</span>＝从明天开始。时间、地点的起点都用 <span class=\"ex\">から</span>：<span class=\"ex\">東京から</span>（从东京）。和《世情》里表示“因为”的 <span class=\"ex\">から</span> 不同：接在名词后面是起点，接在句子后面是原因。"], ["熟字训：明日（回顾）", "<span class=\"ex\">明日</span> 不按单字读，整体读 <span class=\"ex\">あした</span>（也可读 あす）。《歌姫》讲过 <span class=\"ex\">昨日・明日・今日</span>。"], ["名词结句（回顾）", "句子停在 <span class=\"ex\">ひとり</span>，没有动词，像《二隻の舟》的体言止め：一个词落地，余韵留给听的人。"]], ""], ["c2", "どんな{寂|さび}しい{時|とき}でも　{頼|たよ}れないのね", "donna sabishii toki demo　tayorenai no ne", "无论多寂寞的时候，都不能再依靠你了吧", "无论怎样寂寞的时候，都不能依靠了啊", [["どんな", "どんな", "连体", "怎样的"], ["寂しい", "さびしい", "形", "寂寞的"], ["時", "とき", "名", "时候"], ["でも", "demo", "助", "（疑问词＋）无论……都"], ["頼る", "たよる", "动", "依靠、依赖"], ["頼れない", "たよれない", "动", "頼る 的可能形否定：不能依靠"], ["のね", "no ne", "终助", "……呀（自言自语地确认）"]], [["どんな〜でも（回顾）", "《EAST ASIA》讲过 <span class=\"ex\">どんな大地でも</span>＝无论怎样的土地。这里是 <span class=\"ex\">どんな寂しい時でも</span>＝无论多寂寞的时候。"], ["五段动词可能形的否定", "<span class=\"ex\">頼る</span> 是五段动词：<span class=\"ex\">る→れる</span> 变成可能形 <span class=\"ex\">頼れる</span>（能依靠），再变否定 <span class=\"ex\">頼れない</span>（不能依靠）。可能形《二隻の舟》讲过，这里多走一步变成否定。"], ["句末 のね", "<span class=\"ex\">の</span>＋<span class=\"ex\">ね</span>：说给自己听的确认，“原来……啊”“是吧”。听得出她在接受一个事实，而不是在问对方。"]], ""], ["c3", "Good bye Good bye　{慣|な}れてるわひとり", "gubbai gubbai　nareteru wa hitori", "Good bye，Good bye，一个人，我早已习惯", "再见再见，（我）习惯着呢，一个人", [["慣れる", "なれる", "动", "习惯"], ["慣れてる", "なれてる", "动", "慣れている 的口语：已经习惯了"], ["わ", "wa", "终助", "女性口吻的句末语气"], ["ひとり", "ひとり", "名", "一个人"]], [["〜てる＝〜ている（回顾）", "口语把 <span class=\"ex\">い</span> 吞掉：<span class=\"ex\">慣れている→慣れてる</span>。《歌姫》讲过。<span class=\"ex\">慣れている</span> 表示“已经处于习惯了的状态”，不是“正在习惯”。"], ["倒装（回顾）", "正常语序是 <span class=\"ex\">ひとりに慣れてるわ</span>（习惯一个人了）。把 <span class=\"ex\">ひとり</span> 挪到句末，像《EAST ASIA》的倒装，让这个词单独落地，听起来更像在逞强。"]], ""], ["c4", "{心配|しんぱい}なんかしないで　{幸|しあわ}せになって", "shinpai nanka shinaide　shiawase ni natte", "别为我担心什么了，你要幸福啊", "担心什么的不要做，请变得幸福", [["心配", "しんぱい", "名", "担心"], ["なんか", "nanka", "助", "……什么的（轻视、否定的语气）"], ["する", "する", "动", "做"], ["しないで", "しないで", "动", "する 的ない形＋で：别做"], ["幸せ", "しあわせ", "な形", "幸福"], ["に", "ni", "助", "变成……"], ["なる", "なる", "动", "成为、变得"], ["なって", "なって", "动", "なる 的て形：（请）变得……"]], [["〜なんか＋否定（回顾）", "《歌姫》讲过 <span class=\"ex\">淋しくなんかない</span>。<span class=\"ex\">心配なんかしないで</span>＝担心什么的，就别了。<span class=\"ex\">なんか</span> 把“担心”说得轻描淡写，好让对方安心。"], ["な形容词＋に＋なる：变得……", "<span class=\"ex\">幸せ＋に＋なる</span>＝变得幸福。比较《歌姫》的 <span class=\"ex\">重くなる</span>：い形容词用 <span class=\"ex\">く</span>，な形容词和名词用 <span class=\"ex\">に</span>。例：<span class=\"ex\">元気になる</span>（变得精神）。"], ["て形＝请求", "句末停在て形 <span class=\"ex\">なって</span>，是 <span class=\"ex\">なってください</span> 的省略，口语里亲近的人之间最常用：<span class=\"ex\">待って</span>（等等我）。和本曲 <span class=\"ex\">忘れないで</span> 是一对：一个是“别……”，一个是“请……”。"]], ""]]],
+["第二段 · 等我们老了", [["l5", "ねぇ{歳|とし}をとったらもう{一度|いちど}{会|あ}ってよね", "nē toshi o tottara mō ichido atte yo ne", "喂，等我们都老了，要再见一面哦", "喂，年纪大了以后再一次见面吧", [["ねぇ", "ねえ", "叹", "喂、哎（同 ねえ）"], ["歳", "とし", "名", "年龄"], ["とる", "とる", "动", "取、拿；（歳を〜）上年纪"], ["とったら", "とったら", "动", "とる 的たら形：等……了之后"], ["もう一度", "もういちど", "副", "再一次"], ["会う", "あう", "动", "见面"], ["会って", "あって", "动", "会う 的て形：（请）见面"], ["よね", "yo ne", "终助", "……哦、好吗（叮嘱）"]], [["歳をとる：上年纪", "惯用说法，字面是“拿年龄”，意思是“变老”。例：<span class=\"ex\">父も歳をとった</span>（父亲也老了）。"], ["〜たら：等……之后（回顾）", "《歌姫》讲过 <span class=\"ex\">口に出したら</span>＝如果说出口。<span class=\"ex\">たら</span> 也能表示“等……之后”：<span class=\"ex\">歳をとったら</span>＝等上了年纪以后。"], ["もう＋数量（回顾）", "《歌姫》讲过 <span class=\"ex\">もう二年</span>＝再两年。<span class=\"ex\">もう一度</span>＝再一次。注意和 l1 <span class=\"ex\">もう</span>（不再）的区别：后面接数量时是“再”。"]], ""], ["l6", "{今|いま}は{心|こころ}が{子供|こども}すぎて{謝|あやま}ることもできない", "ima wa kokoro ga kodomo sugite ayamaru koto mo dekinai", "如今的心还太孩子气，连一句对不起都说不出口", "现在心太是孩子了，连道歉的事也做不到", [["今", "いま", "名", "现在"], ["心", "こころ", "名", "心"], ["子供", "こども", "名", "孩子"], ["すぎる", "すぎる", "后缀", "太……、过于……"], ["子供すぎて", "こどもすぎて", "句", "太孩子气（て形表原因）"], ["謝る", "あやまる", "动", "道歉"], ["こと", "こと", "名", "把动作变成名词"], ["も", "mo", "助", "连……也"], ["できない", "できない", "动", "できる 的否定：做不到"]], [["名词＋すぎる（回顾）", "《瞬きもせず》讲过 <span class=\"ex\">裸すぎる</span>。名词也能接 <span class=\"ex\">すぎる</span>：<span class=\"ex\">子供すぎる</span>＝太像孩子了、太幼稚。"], ["て形表原因", "<span class=\"ex\">子供すぎて｜謝ることもできない</span>：前半是原因，后半是结果，“因为太幼稚，所以连道歉都做不到”。例：<span class=\"ex\">忙しすぎて寝られない</span>（太忙了睡不着）。"], ["〜こともできない（回顾 ことができる）", "《EAST ASIA》讲过 <span class=\"ex\">生きてゆくことができる</span>（能活下去）。把 <span class=\"ex\">が</span> 换成 <span class=\"ex\">も</span>，再变否定：<span class=\"ex\">謝ることもできない</span>＝<b>连</b>道歉都做不到。开头的 <span class=\"ex\">今は</span> 用 は 作对比：现在不行，言下之意“将来也许可以”。"]], ""], ["l7", "いつか{遠|とお}い{国|くに}から{長|なが}い{手紙|てがみ}{書|か}いたら", "itsuka tōi kuni kara nagai tegami kaitara", "如果有一天，我从遥远的国度写来一封长信", "如果什么时候从远的国家写了长的信", [["いつか", "いつか", "副", "总有一天、什么时候"], ["遠い", "とおい", "形", "远的"], ["国", "くに", "名", "国家、地方"], ["から", "kara", "助", "从……"], ["長い", "ながい", "形", "长的"], ["手紙", "てがみ", "名", "信"], ["書く", "かく", "动", "写"], ["書いたら", "かいたら", "动", "書く 的たら形：如果写了"]], [["疑问词＋か（回顾）", "<span class=\"ex\">いつ＋か</span>＝某个时候、总有一天。和 l4 的 <span class=\"ex\">だれか</span>（某人）是同一个规律。"], ["五段动词て形：く → いて（回顾）", "<span class=\"ex\">書く→書いて→書いた→書いたら</span>。《EAST ASIA》讲过 <span class=\"ex\">歩く→歩いて</span>。た形、たら形都跟着て形变。"], ["⚠ 汉字陷阱：手紙 ≠ 手纸", "<span class=\"ex\">手紙</span> 是“信”，不是中文的“手纸（卫生纸）”。“を”在这里也省掉了：<span class=\"ex\">長い手紙（を）書いたら</span>，《二隻の舟》讲过这种省略。"]], ""], ["l8", "{封|ふう}は{切|き}らず{隠|かく}しておいて　いつか{歳|とし}をとる{日|ひ}まで", "fū wa kirazu kakushite oite　itsuka toshi o toru hi made", "请别拆封，把它藏好，直到我们老去的那一天", "封口不切开，藏起来放着，直到总有一天上了年纪的日子", [["封", "ふう", "名", "封口"], ["切る", "きる", "动", "切、剪；（封を〜）拆开"], ["切らず", "きらず", "动", "切る 的文语否定：不拆而……"], ["隠す", "かくす", "动", "藏、隐藏"], ["おく", "おく", "补助动", "接在て形后：事先做好、放着不动"], ["隠しておいて", "かくしておいて", "动", "（请）藏起来放着"], ["日", "ひ", "名", "日子"], ["まで", "made", "助", "直到……"]], [["〜ず：不……而……（回顾）", "《瞬きもせず》讲过 <span class=\"ex\">瞬きもせずに</span>。<span class=\"ex\">切る→切らず</span>＝<span class=\"ex\">切らないで</span>，“不拆开，（而是）……”。<span class=\"ex\">封を切る</span> 是拆信的固定说法，这里用 <span class=\"ex\">は</span> 换掉 <span class=\"ex\">を</span>，强调“封口嘛，就别拆了”。"], ["〜ておく：做好放着", "て形＋<span class=\"ex\">おく</span>：为了将来，先做好某事、保持那个状态。<span class=\"ex\">隠しておく</span>＝藏好放着。例：<span class=\"ex\">窓を開けておく</span>（把窗开着）。句末的 <span class=\"ex\">おいて</span> 又是て形请求，和 c4 <span class=\"ex\">なって</span> 一样。"], ["动词原形＋まで（回顾）", "《歌姫》讲过 <span class=\"ex\">忘れすてるまで</span>。<span class=\"ex\">歳をとる日まで</span>＝直到上了年纪的那一天。<span class=\"ex\">歳をとる｜日</span> 也是定语从句修饰名词。"]], ""]]],
+["间段 · 再一次", [["b4", "{時計|とけい}の{針|はり}なら{戻|もど}る　{枯|か}れた{花|はな}でさえも", "", "时钟的指针可以拨回，就连枯萎的花", "", [], [], "b1"], ["b5", "{季節|きせつ}が{巡|めぐ}れば{戻|もど}る", "", "季节一轮转，也会回来", "", [], [], "b2"], ["b6", "でも{私|わたし}たちの{愛|あい}は", "", "可是我们的爱呢……", "", [], [], "b3"]], true],
+["副歌 · Good bye（二）", [["c5", "Good bye Good bye　{明日|あした}からひとり", "", "Good bye，Good bye，从明天起，独自一人", "", [], [], "c1"], ["c6", "どんな{寂|さび}しい{時|とき}でも　{頼|たよ}れないのね", "", "再寂寞的时候，也不能再靠着你了吧", "", [], [], "c2"], ["c7", "Good bye Good bye　{慣|な}れてるわひとり", "", "Good bye，Good bye，一个人，我早就习惯了", "", [], [], "c3"], ["c8", "{心配|しんぱい}なんかしないで　{幸|しあわ}せになって", "", "什么都别担心，你要幸福啊", "", [], [], "c4"]], true],
+["副歌 · Good bye（三）", [["c9", "Good bye Good bye　{明日|あした}からひとり", "", "Good bye，Good bye，明天起，我就是一个人", "", [], [], "c1"], ["c10", "どんな{寂|さび}しい{時|とき}でも　{頼|たよ}れないのね", "", "无论多寂寞，都不能再依靠你了吧", "", [], [], "c2"], ["c11", "Good bye Good bye　{慣|な}れてるわひとり", "", "Good bye，Good bye，一个人，我早已习惯", "", [], [], "c3"], ["c12", "{心配|しんぱい}なんかしないで　{幸|しあわ}せになって", "", "别为我担心了，你要幸福啊", "", [], [], "c4"]], true]
+];
+function R(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>')}
+function P(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1')}
+var BY={};D.forEach(function(st){st[1].forEach(function(l){BY[l[0]]=l})});
+function pc(p){return p=='动'?'v':(p=='助'||p=='终助')?'p':''}
+var ly='',sd='';
+D.forEach(function(st){
+ly+='<div class="stanza"><div class="tag">'+st[0]+'</div>';
+if(!st[2])sd+='<h3 class="st">'+st[0]+'</h3>';
+st[1].forEach(function(l){
+var t=l[7]||l[0];
+ly+='<a class="lyric" href="#study-s-'+t+'" onclick="go(\'study\',\'s-'+t+'\');return false;"><div class="ja">'+R(l[1])+'</div><div class="zh">'+l[3]+'</div></a>';
+if(st[2])return;
+if(l[7]){var r=BY[l[7]];sd+='<div class="study mini" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><p class="refnote">↺ 与前面的 <a href="#" onclick="go(\'study\',\'s-'+r[0]+'\');return false;">「'+P(r[1]).slice(0,12)+'…」</a> 相同（或几乎相同），讲解见那里。</p></div>';return}
+var rows=l[5].map(function(v){return '<tr><td class="w">'+v[0]+'</td><td class="k">'+v[1]+'</td><td><span class="pos '+pc(v[2])+'">'+v[2]+'</span></td><td>'+v[3]+'</td></tr>'}).join('');
+var gs=l[6].map(function(g){return '<div class="gram"><h4>'+g[0]+'</h4><p>'+g[1]+'</p></div>'}).join('');
+sd+='<div class="study" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><div class="roma">'+l[2]+'</div><div class="tr">'+l[3]+' <small>（直译：'+l[4]+'）</small></div><table><tr><th>单词</th><th>读音</th><th>词性</th><th>意思 &amp; 说明</th></tr>'+rows+'</table>'+gs+'</div>';
+});
+ly+='</div>';
+});
+document.getElementById('LY').innerHTML=ly;document.getElementById('SD').innerHTML=sd;
+</script>
+<script>
+function go(v, anchor){
+document.getElementById('v-main').classList.toggle('on', v==='main');
+document.getElementById('v-study').classList.toggle('on', v==='study');
+try{ history.replaceState(null,'', v==='study' ? '#study' + (anchor?'-'+anchor:'') : '#'); }catch(e){}
+if(anchor){ var el=document.getElementById(anchor); if(el){ el.scrollIntoView(); return; } }
+window.scrollTo(0,0);
+}
+function jump(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+(function(){ var h=location.hash; if(h.indexOf('#study')===0){ var a=h.slice(7); go('study', a||null); } })();
+</script>
+</body>
+</html>
