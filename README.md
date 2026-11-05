@@ -13,6 +13,8 @@ songs/<slug>/       每首歌一个子页面
 
 ## 新增歌曲
 
+完整工作流、页面模板和校验脚本在 `.claude/skills/miyuki-song/`。在本仓库里打开 Claude Code，说“用 miyuki-song 技能做《歌名》，歌词在 xxx.lrc”即可。手动步骤：
+
 1. 新建 `songs/<slug>/index.html`（目录里加 `<a href="../../">⌂ 首页</a>`，页脚写“第 N 首”）。
 2. 在 `songs.js` 里加一项。
 3. 提交并推送，Cloudflare Pages 会自动重新部署。
