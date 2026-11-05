@@ -1,0 +1,9 @@
+{
+  // 纯静态网站：把仓库根目录作为静态资产发布（Cloudflare Workers Static Assets）
+  "name": "miyuki-essays",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./"
+  },
+  "previews": {}
+}

@@ -10,21 +10,22 @@ index.html                     首页（卡片由 songs.js 生成）
 songs.js                       歌曲目录：新增歌曲在数组末尾加一项
 assets/                        图标；放 assets/miyuki.jpg 可替换首页插画
 songs/<slug>/index.html        每首歌一个解读页
-.claude/skills/miyuki-song/    制作新歌解读页的完整工作流（SKILL.md）、模板、校验脚本
 ```
 
 ## 做新歌
 
-**一律按 `.claude/skills/miyuki-song/SKILL.md` 的工作流来做**，从 `template.html` 复制开始，
+制作工作流不在本仓库里，单独放在本机 `D:/miyuki-song-skill/`（SKILL.md、template.html、scripts/、已讲语法索引.md）。
+
+**一律按 `D:/miyuki-song-skill/SKILL.md` 的工作流来做**，从 `template.html` 复制开始，
 不改动共用的 CSS 和渲染脚本，这样每首歌的风格才能保持一致。
 
 要点速记：
 - 歌词常是 UTF-16 的 .lrc：`iconv -f UTF-16 -t UTF-8`；里面自带的中文翻译不要用。
 - 三部分：壹 创作背景与歌曲含义 / 贰 歌词中日对照（信达雅）/ 叁 跟着歌词学日语（独立视图）。
 - 歌词数据写在页面底部的 `var D=[...]`（合法 JSON），每行 8 项；重复的句子用第 8 项引用第一次出现的 id。
-- 前几首讲过的语法标“（回顾）”，查 `.claude/skills/miyuki-song/已讲语法索引.md`。
-- 完成后：`python3 .claude/skills/miyuki-song/scripts/check_song.py songs/<slug>/index.html`
-  和 `python3 .claude/skills/miyuki-song/scripts/grammar_index.py`，再提交推送（Cloudflare Pages 自动部署）。
+- 前几首讲过的语法标“（回顾）”，查 `D:/miyuki-song-skill/已讲语法索引.md`。
+- 完成后：`python D:/miyuki-song-skill/scripts/check_song.py songs/<slug>/index.html`
+  和 `python D:/miyuki-song-skill/scripts/grammar_index.py`，再提交推送（Cloudflare 自动部署）。
 
 ## 已有歌曲
 
