@@ -21,4 +21,10 @@ songs/<slug>/       每首歌一个子页面
 
 ## 部署
 
-纯静态网站，无需构建。用 Cloudflare Workers 静态资产部署，配置在 `wrangler.jsonc`（根目录即网站，`.assetsignore` 排除非网站文件）。推送到 main 后自动部署。
+纯静态网站，无需构建。用 **Cloudflare Pages** 连接本仓库自动部署（推送到 main 即发布）：
+
+- 网址：https://miyuki-essays.pages.dev
+- Pages 设置：框架预设 None，构建命令留空，构建输出目录 `/`
+- `_redirects` 把 README.md、CLAUDE.md 跳回首页，不对外展示
+
+不要用 Cloudflare Workers（`*.workers.dev` 在中国大陆被封锁，`*.pages.dev` 可正常访问）。
