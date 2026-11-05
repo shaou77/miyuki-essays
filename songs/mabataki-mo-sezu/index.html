@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>瞬きもせず · 解读</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f1e6;--paper-2:#efe6d5;--ink:#2b2622;--ink-soft:#5d544c;--sea:#1f3a4d;--sea-2:#2f5670;--ember:#a4472d;--gold:#b48a4a;--line:#dccfb8;--card:#fffaf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Shippori Mincho",serif;line-height:1.9;font-size:17px;
+background-image:radial-gradient(circle at 20% 0%,#fbf6ec 0,transparent 55%),radial-gradient(circle at 100% 100%,#eadfca 0,transparent 50%)}
+a{color:var(--sea-2)}
+rt{font-size:.5em;color:var(--ember);font-family:"Shippori Mincho",serif}
+header.hero{position:relative;color:#f3ead9;text-align:center;padding:80px 20px 116px;overflow:hidden;background:linear-gradient(180deg,#0f2130 0%,#1f3a4d 55%,#2f5670 100%)}
+.hero.small{padding:46px 20px 84px}
+.hero .moon{position:absolute;top:42px;right:14%;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6e0,#e8d3a6 60%,#c9ae7a);box-shadow:0 0 60px 12px rgba(243,224,180,.25)}
+.hero .kicker{letter-spacing:.5em;font-size:13px;opacity:.75}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(44px,9vw,84px);margin:16px 0 6px;letter-spacing:.12em}
+.hero.small h1{font-size:clamp(30px,6vw,48px)}
+.hero h1 rt{color:#e8c98f;font-size:.28em}
+.hero .sub{font-size:18px;opacity:.9;letter-spacing:.2em}
+.hero .meta{margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
+.boats{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:260px;height:40px;opacity:.9}
+nav.toc{max-width:860px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
+nav.toc a,.btn{background:var(--card);border:1px solid var(--line);color:var(--sea);text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;box-shadow:0 4px 14px rgba(60,40,20,.08);cursor:pointer;font-family:inherit}
+nav.toc a.primary,.btn.primary{background:var(--ember);color:#fff;border-color:var(--ember)}
+main{max-width:860px;margin:0 auto;padding:36px 20px 80px}
+section{margin-top:60px}
+h2{font-weight:700;font-size:28px;color:var(--sea);margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
+h2 .num{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:40px;font-weight:400}
+.h2sub{color:var(--ink-soft);font-size:14px;letter-spacing:.2em;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px}
+h3{color:var(--ember);font-size:20px;margin:34px 0 10px}
+p{margin:0 0 1em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:10px 0 26px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.facts b{display:block;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);font-weight:400}
+.facts span{font-size:17px;color:var(--sea);font-weight:600}
+blockquote{margin:22px 0;padding:16px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,#f3e8d3,transparent);color:var(--ink-soft)}
+.jq{font-family:"Shippori Mincho",serif;color:var(--sea)}
+.note{font-size:14px;color:var(--ink-soft);background:var(--paper-2);border-radius:10px;padding:12px 16px;border:1px dashed var(--line)}
+.stanza{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 26px 6px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05)}
+.stanza .tag{font-size:12px;color:var(--gold);letter-spacing:.3em;padding:12px 0 2px}
+.lyric{display:grid;grid-template-columns:1.1fr 1fr;gap:4px 28px;padding:14px 0;border-bottom:1px dashed var(--line);align-items:center;text-decoration:none;color:inherit;position:relative}
+.lyric:last-child{border-bottom:none}
+.lyric:hover{background:linear-gradient(90deg,transparent,#f6ecdb,transparent)}
+.lyric:hover::after{content:"拆解 →";position:absolute;right:0;top:4px;font-size:11px;color:var(--ember)}
+.lyric .ja{font-family:"Shippori Mincho",serif;font-size:20px;line-height:2.3}
+.lyric .zh{font-size:17px;color:var(--sea-2);border-left:2px solid var(--line);padding-left:20px}
+@media (max-width:640px){.lyric{grid-template-columns:1fr}.lyric .zh{border-left:none;padding-left:0}.stanza{padding:8px 16px}}
+.cta{text-align:center;margin:44px 0 10px;padding:30px 20px;border-radius:16px;background:linear-gradient(135deg,#1f3a4d,#2f5670);color:#f3ead9}
+.cta p{opacity:.85;font-size:15px}
+.study{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 14px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05);scroll-margin-top:20px}
+.study.mini{padding:14px 24px 4px}
+.study .line{font-family:"Shippori Mincho",serif;font-size:23px;line-height:2.4;color:var(--sea)}
+.study .roma{font-family:Georgia,serif;font-style:italic;color:var(--ink-soft);font-size:15px;margin-top:-4px}
+.study .tr{margin:8px 0 14px;color:var(--ember)}
+.study .tr small{color:var(--ink-soft)}
+.refnote{font-size:14px;color:var(--ink-soft)}
+.st{border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:46px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 14px}
+th{background:var(--sea);color:#f3ead9;font-weight:600;text-align:left;padding:8px 10px;font-size:13px}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.w{font-family:"Shippori Mincho",serif;font-size:18px;white-space:nowrap;color:var(--sea)}
+td.k{color:var(--ember);white-space:nowrap;font-size:14px}
+.pos{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap}
+.pos.p{background:#f4dfd5;color:var(--ember)}.pos.v{background:#dbe6ee;color:var(--sea)}
+@media (max-width:640px){td.w,td.k{white-space:normal}table{font-size:14px}}
+.gram{background:var(--paper-2);border-radius:12px;padding:12px 18px;margin:10px 0}
+.gram h4{margin:0 0 4px;color:var(--sea);font-size:16px}
+.gram h4::before{content:"◆ ";color:var(--gold)}
+.gram p{margin:0;font-size:15.5px}
+.ex{font-family:"Shippori Mincho",serif;color:var(--ink)}
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cheat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.cheat b{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--ember);display:block}
+.back{position:fixed;right:18px;bottom:18px;z-index:9}
+footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 60px;border-top:1px solid var(--line);max-width:860px;margin:0 auto}
+.view{display:none}.view.on{display:block}
+.hero .stars{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero .tw{animation:tw 3.2s ease-in-out infinite;transform-origin:754px 104px}
+@keyframes tw{0%,100%{opacity:.35}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero .tw{animation:none}}
+.hero>*{position:relative}
+.hero .stars,.hero .waves{position:absolute}
+</style>
+</head>
+<body>
+<!-- ===================== MAIN VIEW ===================== -->
+<div class="view on" id="v-main">
+<header class="hero">
+<svg class="stars" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<g fill="#f3e3bd">
+<circle cx="80" cy="60" r="1.6"/><circle cx="170" cy="140" r="1.1"/><circle cx="260" cy="40" r="1.4"/><circle cx="330" cy="190" r="1"/><circle cx="420" cy="90" r="1.8"/><circle cx="520" cy="30" r="1.2"/><circle cx="600" cy="160" r="1.4"/><circle cx="690" cy="70" r="1"/><circle cx="770" cy="200" r="1.6"/><circle cx="860" cy="50" r="1.2"/><circle cx="930" cy="150" r="1.8"/><circle cx="120" cy="250" r="1"/><circle cx="460" cy="250" r="1.1"/><circle cx="880" cy="270" r="1"/><circle cx="40" cy="170" r="1.2"/><circle cx="560" cy="230" r="0.9"/>
+</g>
+<g class="tw"><path d="M745 92 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" fill="#fff4d6"/></g>
+<path d="M300 70 L190 118" stroke="url(#sh)" stroke-width="1.6" stroke-linecap="round"/>
+<defs><linearGradient id="sh" x1="0" x2="1"><stop offset="0" stop-color="#fff4d6" stop-opacity="0"/><stop offset="1" stop-color="#fff4d6"/></linearGradient></defs>
+</svg>
+<div class="kicker">中島みゆき · 1998</div>
+<h1><ruby>瞬<rt>まばた</rt></ruby>きもせず</h1>
+<div class="sub">目 不 转 睛</div>
+<div class="meta">作词 · 作曲：中岛美雪 ｜ 编曲：濑尾一三 &amp; David Campbell ｜ 电影《学校III》主题曲 ｜ MOVIE THEME VERSION</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a>
+<a href="#bg" onclick="jump('bg');return false;">一 · 创作背景与解读</a>
+<a href="#lyrics" onclick="jump('lyrics');return false;">二 · 歌词对照</a>
+<a class="primary" href="#study" onclick="go('study');return false;">三 · 跟着歌词学日语 →</a>
+</nav>
+<main>
+<section id="bg">
+<h2><span class="num">壹</span>创作背景与歌曲含义</h2>
+<div class="h2sub">BACKGROUND &amp; MEANING</div>
+<div class="facts">
+<div><b>单曲发行</b><span>1998 年 10 月 7 日</span></div>
+<div><b>电影上映</b><span>1998 年 10 月 17 日</span></div>
+<div><b>主题曲版收录</b><span>单曲第 3 轨 ·《大银幕》</span></div>
+<div><b>导演</b><span>山田洋次《学校III》</span></div>
+</div>
+<h3>电影《学校III》：中年之后，重新上学</h3>
+<p>山田洋次的“学校”系列，每一部都把镜头对准一所“不普通的学校”，以及在那里重新出发的普通人。1998 年的第三部<b>《学校III》</b>，舞台是东京下町的一所公立<b>职业训练学校</b>，学员们在这里考<b>锅炉技师</b>执照。</p>
+<p>主人公小岛纱和子（<b>大竹忍</b> 饰）的丈夫十年前过劳而死，她独自抚养患有自闭症的儿子富美男（小名“汤米”，<b>黑田勇树</b> 饰）。经济萧条中她被公司裁员，走进了这所学校。同班的高野周吉（<b>小林稔侍</b> 饰）原是证券公司的部长，被逼着“提前退休”后辞了职，又和家人分居。他放不下面子，起初跟谁都合不来。</p>
+<p>班里都是被时代甩下来的人：被裁的上班族、生意失败的小老板。大家一起上课、互相打气，高野慢慢敞开了心。汤米出了意外，纱和子一度想放弃，是高野劝她坚持下去。最后全班都考过了。可好日子没有持续多久：纱和子查出了乳腺癌。手术前，老同学们赶来看她，高野的一句鼓励，给了她走进手术室的勇气。</p>
+<blockquote>这是一部关于“没有人看得起的普通人生”的电影。中岛美雪写给它的主题曲，想说的正是：<b>就算世界不赞美你，我也要赞美你。</b></blockquote>
+<h3>关于这个版本</h3>
+<p>单曲《瞬きもせず》于 1998 年 10 月 7 日发行，在 Oricon 周榜最高第 22 位。单曲同时收入了原版和这个 <b>MOVIE THEME VERSION</b>（电影主题曲版），同年 11 月又收进影视主题曲精选辑<b>《大银幕》</b>，和《糸》《二隻の舟》《命の別名》排在一起。</p>
+<p>据唱片署名，主题曲版由濑尾一三和 David Campbell 共同编曲，演唱除中岛美雪外，还有洛杉矶国际学校学生的合唱。年轻的声音唱出“我们都是一瞬的星”，也正好呼应了电影里“学校”这个主题。</p>
+<p class="note">本页歌词依据你提供的电影主题曲版歌词文件整理，段落顺序按该版本排列。</p>
+<h3>标题：连眼都不眨</h3>
+<p><span class="jq">瞬き</span>（まばたき）是“眨眼”。副歌第一句说：人的一生，不过是<span class="jq">瞬きひとつのあいだ</span>，眨一下眼的工夫。正因为这么短，才要<span class="jq">瞬きもせずに</span>，连眼都不眨，盯着彼此看；甚至连呼吸都舍不得花时间，拼命地互相寻找。</p>
+<p>“星”的比喻也很妙。我们看到的星光好像永恒，可从宇宙的尺度看，每个人只是亮了一瞬的星。中岛美雪没有因此说人生虚无，反而说：所以每一瞬都珍贵。</p>
+<h3>全曲解读 · 五个层次</h3>
+<p><b>一、你会何时离去。</b>“你会在哪一天从这里消失？会在哪一天撇下我走掉？”这不是在埋怨，而是对“一瞬之星”最直接的恐惧：人都会离开，只是不知道是哪一天。放在电影里，这句话也像汤米依赖着母亲，或是病床边的人在心里默念的话。</p>
+<p><b>二、镜子里没有赞歌。</b><span class="jq">君を映す鏡の中　君を誉める歌はなくても</span>。镜子照出的是“你眼中的自己”。你看着镜子，听不到一句赞美，觉得自己一无是处。可“我”偏要赞美，而且要赞美<span class="jq">君の知らぬ君</span>，那个连你自己都不知道的你。这是全曲最温柔的一句：别人身上的好，往往本人最看不见。</p>
+<p><b>三、平凡的一生。</b><span class="jq">ささやかな人生</span>是“小小的、不起眼的人生”。有人不肯说它一句好，有人骂它是白费（<span class="jq">無駄</span>）。被裁员的中年人、单亲妈妈、失败的小老板，正是这样被社会“打了低分”的人。“可是我要赞美”，这句<span class="jq">でも</span>是整首歌的立场。</p>
+<p><b>四、人是赤裸的野兽。</b>第二段视角拉远到“人”本身：人也是野兽，却没有獠牙、没有毒、没有刺，生来只带着为疼痛而流的眼泪。这是我们的脆弱，也是我们的善良：我们不会伤人，只会痛。接着她说，那些别人一靠近就喊疼的人，不是天生难相处，<span class="jq">火傷してるから</span>，是因为他们早就被烫伤过。电影里放不下面子的高野、怕被触碰的汤米，都可以放进这句话里理解。</p>
+<p><b>五、那个人也许就是你。</b>“在擦肩而过的街头，你难道没见过那样的人吗？”然后歌词悄悄转身：<span class="jq">あのささやかな人生はもしかしたら僕に似ている……君だったのか</span>。前面说的“那平凡的一生”，原来就像我，说不定就是你。注意助词的变化：前面是别人<b>对</b>那人生说三道四（<span class="jq">人生を</span>），这里那人生成了句子的主角（<span class="jq">人生は</span>），旁观变成了认出自己。</p>
+<p>最后，歌在“我要赞美你”之后回到副歌：一眨眼的一生，我们都是一瞬的星。全曲从“你会离开”的不安出发，经过“没人赞美你”的冷，落在“所以更要目不转睛地珍惜彼此”的暖。它是一首写给所有普通人的赞歌。</p>
+</section>
+<section id="lyrics">
+<h2><span class="num">贰</span>歌词中日对照</h2>
+<div class="h2sub">LYRICS · 日文原文 × 中文译文</div>
+<p class="note"><b>翻译原则：</b>信（不违原意）、达（中文自然）、雅（保留诗意）。不逐字硬译，必要处略作演绎。<br>💡 <b>点击任意一句</b>，可直接跳到该句的逐词讲解。</p>
+<div id="LY"></div>
+<h3>译法小记</h3>
+<p><b>“瞬きひとつのあいだの一生” → “一眨眼的工夫，便是一生”</b>：原文是一个很长的名词短语，“眨一下眼之间的一生”。中文拆成两半，加“便是”，读起来像一声感叹。</p>
+<p><b>“瞬きもせずに” → “目不转睛”</b>：直译“连眼都不眨”，中文正好有现成的四字成语，意思和画面都对得上。</p>
+<p><b>“息をすることさえ惜しむ” → “连呼吸都舍不得”</b>：“惜しむ”是“舍不得花”。不是舍不得呼吸本身，而是舍不得把时间花在呼吸上，全部留给彼此。</p>
+<p><b>“君の知らぬ君” → “你自己都不知道的你”</b>：加“自己”二字，把“本人看不见的优点”这层意思点明。</p>
+<p><b>“ささやかな人生” → “平凡微小的一生”</b>：“ささやか”有“小、简朴、不起眼”的意思，又不带贬义。“平凡微小”两词并用，兼顾小与朴素。</p>
+<p><b>“火傷してるから” → “那是因为，他们早已被灼伤”</b>：日语里“火傷”就是烧伤烫伤，这里是比喻心里的伤。用“灼伤”，比“烫伤”更有文学感。</p>
+<div class="cta">
+<div style="font-size:22px;font-family:'Shippori Mincho',serif">跟着歌词学日语</div>
+<p>全曲逐句拆解：单词、读音、词性、语法点，专为日语初学者准备。</p>
+<button class="btn primary" onclick="go('study')">打开学习页 →</button>
+</div>
+</section>
+</main>
+</div>
+<!-- ===================== STUDY VIEW ===================== -->
+<div class="view" id="v-study">
+<header class="hero small">
+<div class="kicker">跟着歌词学日语</div>
+<h1><ruby>瞬<rt>まばた</rt></ruby>きもせず</h1>
+<div class="sub">逐 词 逐 句</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a><a href="#" onclick="go('main');return false;">← 返回解读与歌词</a><a href="#cheat" onclick="jump('cheat');return false;">语法速查卡</a></nav>
+<main>
+<p class="note">📖 <b>阅读方法：</b>先看整句和罗马音，跟着读一遍；再看单词表；最后看语法点。重复出现的句子只讲第一次。<br>
+标签：<span class="pos">名</span> 名词　<span class="pos v">动</span> 动词　<span class="pos p">助</span> 助词（标明词在句中角色的“小零件”）　<span class="pos">形</span> 形容词　<span class="pos">副</span> 副词</p>
+<div id="SD"></div>
+<h3 class="st" id="cheat">本曲语法速查卡</h3>
+<div class="cheat">
+<div><b>名＋の＋名</b>“的”，可以一直串下去，从后往前读</div>
+<div><b>は ／ も</b>主题 ／ 也、连……都</div>
+<div><b>さえ</b>甚至、连……都（比も更强）</div>
+<div><b>〜ず（に）</b>＝〜ないで：不……而……</div>
+<div><b>〜ぬ</b>＝〜ない（文语否定）：知らぬ、言わぬ</div>
+<div><b>动词＋こと</b>把动词变成名词</div>
+<div><b>〜かのように</b>仿佛……似的</div>
+<div><b>ます形＋あう</b>互相……：求めあう</div>
+<div><b>〜てしまう</b>（遗憾地）……掉了</div>
+<div><b>〜ても</b>即使……也</div>
+<div><b>について</b>关于……</div>
+<div><b>疑问词＋でも</b>无论：いくつでも、いつでも</div>
+<div><b>AをBと〜</b>把 A 说成／看作 B</div>
+<div><b>〜ための＋名</b>为了……的……</div>
+<div><b>〜すぎる</b>过于、太……</div>
+<div><b>意志形＋とする</b>想要、试图</div>
+<div><b>〜ている</b>状态：似ている、火傷している</div>
+<div><b>〜ないか</b>难道不……吗？（唤起共鸣）</div>
+</div>
+</main>
+<button class="btn back" onclick="go('main')">← 返回</button>
+</div>
+<footer>
+《瞬きもせず》词曲 © 中岛美雪。歌词由正版专辑持有者提供，仅供个人学习使用。<br>
+背景资料参考：<a href="https://eiga.com/movie/35620/" target="_blank" rel="noopener">映画.com《学校III》</a> · <a href="https://www.generasia.com/wiki/Mabataki_mo_Sezu" target="_blank" rel="noopener">generasia「瞬きもせず」单曲资料</a> · <a href="https://shopping.bookoff.co.jp/new/0000868915" target="_blank" rel="noopener">《大银幕》曲目</a><br>
+<a href="../../">中岛美雪解读</a> · 第 3 首
+</footer>
+<script>
+var D=[["序曲 · 一瞬之星", [["l1", "{瞬|まばた}きひとつのあいだの{一生|いっしょう}", "mabataki hitotsu no aida no isshō", "一眨眼的工夫，便是一生", "眨一下眼之间的一生", [["瞬き", "まばたき", "名", "眨眼（由动词 瞬く 变来）"], ["ひとつ", "hitotsu", "名", "一个、一次"], ["の", "no", "助", "“的”，连接两个名词"], ["あいだ", "あいだ", "名", "之间、期间（汉字写作 間）"], ["一生", "いっしょう", "名", "一辈子、一生"]], [["名词＋の＋名词：可以一直串下去", "“瞬きひとつ<b>の</b>あいだ<b>の</b>一生”＝一次眨眼 → 的期间 → 的一生。读这种长名词短语，<b>从后往前</b>翻译最顺：一生 ← 眨眼之间的。"], ["动词连用形 → 名词", "很多动词把词尾变成 i 段，就成了名词：<span class=\"ex\">瞬く→瞬き　休む→休み　泳ぐ→泳ぎ</span>。"]], ""], ["l2", "{僕|ぼく}たちはみんな{一瞬|いっしゅん}の{星|ほし}", "boku tachi wa minna isshun no hoshi", "我们都是，只亮一瞬的星", "我们大家都是一瞬间的星星", [["僕", "ぼく", "代", "我（男性自称）。中岛美雪常用男性口吻写词"], ["たち", "tachi", "后缀", "“们”，表示复数"], ["は", "wa", "助", "<b>主题助词</b>，写 ha 读 <b>wa</b>"], ["みんな", "みんな", "名", "大家、全都"], ["一瞬", "いっしゅん", "名", "一瞬间"], ["星", "ほし", "名", "星星"]], [["A は B（だ）：A 是 B", "最基础的判断句。<span class=\"ex\">私は学生だ</span>（我是学生）。歌词里常把句末的 だ 省掉，更有余韵。"], ["〜たち：们", "<span class=\"ex\">僕たち　子どもたち　獣たち</span>。注意日语名词一般没有复数变化，加 たち 时多指人或动物。"]], ""], ["l3", "{瞬|まばた}きもせずに", "mabataki mo sezu ni", "目不转睛", "连眼都不眨地", [["瞬き", "まばたき", "名", "眨眼"], ["も", "mo", "助", "此处是“连……都”"], ["せず", "せず", "动", "する（做）的文语否定形，＝しない"], ["に", "ni", "助", "接在 ず 后面，构成“不……地”"]], [["〜ず（に）＝〜ないで：不做……而……", "书面、文雅的说法。<span class=\"ex\">食べずに寝た</span>＝没吃饭就睡了。<span class=\"ex\">瞬きもせずに</span>＝连眼都不眨地（盯着）。"], ["名词＋も＋否定：连……都不", "<span class=\"ex\">一言も言わない</span>（一句话都不说）。"]], ""], ["l4", "{息|いき}をすることさえ{惜|お}しむかのように{求|もと}めあう", "iki o suru koto sae oshimu ka no yō ni motome-au", "仿佛连呼吸都舍不得，我们拼命地彼此寻觅", "好像连呼吸这件事都吝惜一样，互相寻求", [["息", "いき", "名", "气息"], ["息をする", "いきをする", "动", "呼吸（固定搭配）"], ["こと", "こと", "名", "“……这件事”，把动词变成名词"], ["さえ", "sae", "助", "甚至、连……都"], ["惜しむ", "おしむ", "动", "舍不得、吝惜（时间、力气）"], ["かのように", "ka no yō ni", "句型", "仿佛……似的"], ["求めあう", "もとめあう", "动", "互相寻求（求める＋あう）"]], [["动词原形＋こと：名词化", "<span class=\"ex\">息をすること</span>＝呼吸这件事；<span class=\"ex\">歌うことが好き</span>＝喜欢唱歌。"], ["さえ：比 も 更强的“连”", "<span class=\"ex\">子どもさえ知っている</span>＝连小孩子都知道。这里是：连“呼吸”这么必要的事，都舍不得花时间。"], ["〜かのように：仿佛……", "比 ように 多一层“其实不是，但看起来像”。<span class=\"ex\">夢を見ているかのように</span>（仿佛在做梦）。"], ["动词ます形＋あう：互相", "<span class=\"ex\">助けあう</span>（互相帮助）、<span class=\"ex\">話しあう</span>（商量）、<span class=\"ex\">求めあう</span>（彼此寻求）。"]], ""]]], ["第一段 · 你会何时离去", [["l5", "ああ　{君|きみ}は{何時|いつ}ここから{消|き}えるの", "aa kimi wa itsu koko kara kieru no", "啊，你会在哪一天，从这里消失", "啊，你什么时候会从这里消失呢", [["ああ", "ああ", "叹", "啊（感叹）"], ["君", "きみ", "代", "你（亲密，常用于恋人、晚辈）"], ["何時", "いつ", "疑", "什么时候（平时多写假名 いつ）"], ["ここ", "ここ", "代", "这里"], ["から", "kara", "助", "从……"], ["消える", "きえる", "动", "消失、熄灭"], ["の", "no", "终助", "句末上扬，柔和的疑问“……呢？”"]], [["こ・そ・あ・ど", "<span class=\"ex\">ここ／そこ／あそこ／どこ</span>＝这里／那里／那边／哪里。这套指示词是初级必背。"], ["自动词 消える ／ 他动词 消す", "<span class=\"ex\">火が消える</span>（火灭了，自己发生）；<span class=\"ex\">火を消す</span>（把火熄掉，有人去做）。"]], ""], ["l6", "ああ　{君|きみ}は{何時|いつ}{僕|ぼく}をおいて{去|さ}ってしまうの", "aa kimi wa itsu boku o oite satte shimau no", "啊，你会在哪一天，撇下我远去", "啊，你什么时候会丢下我离开呢", [["おいて", "おいて", "动", "置く（放下）的て形，这里是“撇下、丢下”"], ["去って", "さって", "动", "去る（离开）的て形"], ["しまう", "しまう", "补助动", "接在て形后，表示“……掉了、无可挽回”"]], [["⚠ 汉字陷阱：去る ≠ 去", "日语 <span class=\"ex\">去る</span> 是“离开”，不是“去某地”。“去”某地要用 <span class=\"ex\">行く</span>。<span class=\"ex\">東京を去る</span>＝离开东京。"], ["〜を おいて：撇下……", "<span class=\"ex\">子どもをおいて出かける</span>＝撇下孩子出门。"], ["〜てしまう：遗憾、无法挽回", "<span class=\"ex\">忘れてしまった</span>＝（不小心）忘掉了。<span class=\"ex\">去ってしまう</span>＝离开，再也不回来，带着惋惜。"]], ""], ["l7", "{僕|ぼく}をおいて{何処|どこ}へゆくの", "boku o oite doko e yuku no", "撇下我，你要去往何方", "丢下我，要去哪里呢", [["何処", "どこ", "疑", "哪里（平时多写假名）"], ["へ", "e", "助", "方向“往……”，写 he 读 <b>e</b>"], ["ゆく", "ゆく", "动", "＝いく（去），更文雅"]], [["へ ／ に：往……去", "<span class=\"ex\">どこへ行く</span>强调方向，<span class=\"ex\">どこに行く</span>强调目的地，口语里基本通用。"]], ""]]], ["第二段 · 镜中没有赞歌", [["l8", "{君|きみ}を{映|うつ}す{鏡|かがみ}の{中|なか}", "kimi o utsusu kagami no naka", "在那面映出你身影的镜中", "映照你的镜子里", [["映す", "うつす", "动", "映照、照出"], ["鏡", "かがみ", "名", "镜子"], ["中", "なか", "名", "里面"]], [["定语从句：动词原形直接修饰名词", "日语没有“的”这种连接词，动词句直接放在名词前面：<span class=\"ex\">君を映す｜鏡</span>＝映照你的｜镜子。<span class=\"ex\">本を読む人</span>＝读书的人。"], ["映す ／ 写す", "都读 うつす。<span class=\"ex\">映す</span>是映照（镜子、屏幕），<span class=\"ex\">写す</span>是抄写、拍照。"]], ""], ["l9", "{君|きみ}を{誉|ほ}める{歌|うた}はなくても", "kimi o homeru uta wa nakute mo", "纵然听不见一首赞美你的歌", "即使没有称赞你的歌", [["誉める", "ほめる", "动", "称赞、夸（也写 褒める）"], ["歌", "うた", "名", "歌"], ["は", "wa", "助", "这里带“对比”语气"], ["なくても", "なくても", "形", "ない（没有）的“即使”形"]], [["〜ても：即使……也", "动词／形容词的て形＋も。<span class=\"ex\">雨が降っても行く</span>（即使下雨也去）；<span class=\"ex\">ない→なくても</span>（即使没有）。"], ["又一个定语从句", "<span class=\"ex\">君を誉める｜歌</span>＝称赞你的｜歌。和上一句的结构一模一样。"]], ""], ["l10", "{僕|ぼく}は{誉|ほ}める", "boku wa homeru", "我要赞美你", "我称赞", [["僕", "ぼく", "代", "我"], ["は", "wa", "助", "对比：别人不赞美，“我”赞美"], ["誉める", "ほめる", "动", "称赞（现在形，表示意志）"]], [["は 的对比用法", "前一句 <span class=\"ex\">歌は</span>（歌是没有的），这一句 <span class=\"ex\">僕は</span>（我却会）。两个 は 一前一后，形成对照。"], ["动词现在形＝意志", "日语动词原形也能表达“我要做”：<span class=\"ex\">僕は行く</span>＝我要去。"]], ""], ["l11", "{君|きみ}の{知|し}らぬ{君|きみ}についていくつでも", "kimi no shiranu kimi ni tsuite ikutsu demo", "赞美那个你自己都不知道的你，千遍万遍", "关于你所不知道的你，无论多少（处都能称赞）", [["の", "no", "助", "在从句里代替 が，表示主语"], ["知らぬ", "しらぬ", "动", "＝知らない（不知道），文语否定"], ["について", "ni tsuite", "句型", "关于……"], ["いくつ", "いくつ", "疑", "几个、多少"], ["でも", "demo", "助", "接疑问词，表示“无论”"]], [["从句里的 が → の", "<span class=\"ex\">君が知らない君</span>＝<span class=\"ex\">君の知らぬ君</span>。修饰名词的从句里，主语可以用 の 代替 が。<span class=\"ex\">私の好きな歌</span>（我喜欢的歌）就是这个用法。"], ["〜ぬ：古典的否定", "<span class=\"ex\">知らぬ＝知らない　言わぬ＝言わない</span>。歌词、谚语里常见，更庄重。"], ["疑问词＋でも：无论……", "<span class=\"ex\">いくつでも</span>（无论多少）、<span class=\"ex\">いつでも</span>（随时）、<span class=\"ex\">どこでも</span>（哪里都）。"], ["省略", "句末省掉了动词“誉める”，因为上一句已经说过。"]], ""]]], ["第三段 · 平凡微小的一生", [["l12", "あのささやかな{人生|じんせい}を{良|よ}くは{言|い}わぬ{人|ひと}もあるだろう", "ano sasayaka na jinsei o yoku wa iwanu hito mo aru darō", "那平凡微小的一生，或许有人不肯说它一句好", "也许也有不说那微小人生好话的人吧", [["あの", "あの", "连体", "那个（双方都知道的那个）"], ["ささやか", "ささやか", "な形", "微小、简朴、不起眼"], ["人生", "じんせい", "名", "人生"], ["良く", "よく", "副", "好（良い→良く）"], ["は", "wa", "助", "放在否定前，加强“不”"], ["言わぬ", "いわぬ", "动", "＝言わない"], ["人", "ひと", "名", "人"], ["も", "mo", "助", "也"], ["ある", "ある", "动", "有（这里用于人，较文雅）"], ["だろう", "darō", "助动", "……吧（推测）"]], [["な形容词＋な＋名词", "<span class=\"ex\">ささやかな人生　静かな夜　きれいな花</span>。修饰名词时要加 な。"], ["良く言う：说好话", "<span class=\"ex\">人を良く言う</span>＝说人好话。<span class=\"ex\">良くは言わない</span>＝（至少）不说好话。"], ["〜だろう：推测", "<span class=\"ex\">明日は雨だろう</span>（明天会下雨吧）。礼貌形是 でしょう。"], ["人もある", "现代口语说 <span class=\"ex\">人もいる</span>。说“有某种人存在”时，书面语也会用 ある。"]], ""], ["l13", "あのささやかな{人生|じんせい}を{無駄|むだ}となじる{人|ひと}もあるだろう", "ano sasayaka na jinsei o muda to najiru hito mo aru darō", "那平凡微小的一生，或许也有人斥之为徒劳", "也许也有把那微小人生骂作白费的人吧", [["無駄", "むだ", "名", "白费、徒劳、浪费"], ["と", "to", "助", "引用、说成……"], ["なじる", "なじる", "动", "责难、数落"]], [["A を B と 〜：把 A 说成 B", "<span class=\"ex\">人生を無駄となじる</span>＝把人生斥为白费。<span class=\"ex\">彼を天才と呼ぶ</span>＝称他为天才。"], ["無駄 的日常用法", "<span class=\"ex\">時間の無駄</span>（浪费时间）、<span class=\"ex\">無駄遣い</span>（乱花钱）。很常用的词。"]], ""], ["l14", "でも{僕|ぼく}は{誉|ほ}める", "demo boku wa homeru", "可是，我偏要赞美", "但是我称赞", [["でも", "でも", "接续", "但是、可是"]], [["でも：口语里的“但是”", "放在句首。比 しかし 更口语、更柔和。这一个 でも，就是整首歌的立场。"]], ""], ["l15", "{君|きみ}の{知|し}らぬ{君|きみ}についていくつでも", "", "赞美那个你自己都不知道的你，千遍万遍", "", [], [], "l11"]]], ["副歌", [["c2a", "{瞬|まばた}きひとつのあいだの{一生|いっしょう}", "", "一眨眼的工夫，便是一生", "", [], [], "l1"], ["c2b", "{僕|ぼく}たちはみんな{一瞬|いっしゅん}の{星|ほし}", "", "我们都是，只亮一瞬的星", "", [], [], "l2"], ["c2c", "{瞬|まばた}きもせずに", "", "目不转睛", "", [], [], "l3"], ["c2d", "{息|いき}をすることさえ{惜|お}しむかのように{求|もと}めあう", "", "仿佛连呼吸都舍不得，我们拼命地彼此寻觅", "", [], [], "l4"]]], ["第四段 · 人是赤裸的野兽", [["l20", "ああ　{人|ひと}は{獣|けもの}", "aa hito wa kemono", "啊，人是野兽", "啊，人是野兽", [["人", "ひと", "名", "人"], ["獣", "けもの", "名", "野兽、兽类"]], [["獣 的两种读法", "单独用读 <span class=\"ex\">けもの</span>（训读）；组成词读 じゅう（音读）：<span class=\"ex\">猛獣（もうじゅう）</span>。"]], ""], ["l21", "{牙|きば}も{毒|どく}も{棘|とげ}もなく", "kiba mo doku mo toge mo naku", "没有獠牙，没有毒，也没有尖刺", "没有獠牙，也没有毒，也没有刺", [["牙", "きば", "名", "獠牙"], ["毒", "どく", "名", "毒"], ["棘", "とげ", "名", "刺"], ["なく", "なく", "形", "ない 的く形，句子中顿"]], [["AもBもCもない：……都没有", "<span class=\"ex\">お金も時間もない</span>（钱和时间都没有）。"], ["形容词く形：中顿", "<span class=\"ex\">ない→なく</span>，用来连接下一句，相当于“没有……，（而且）……”。"]], ""], ["l22", "ただ{痛|いた}むための{涙|なみだ}だけを{持|も}って{生|う}まれた", "tada itamu tame no namida dake o motte umareta", "生来只带着为疼痛而流的眼泪", "只带着为疼痛的眼泪出生了", [["ただ", "ただ", "副", "只、仅仅"], ["痛む", "いたむ", "动", "疼痛"], ["ため", "ため", "名", "为了"], ["涙", "なみだ", "名", "眼泪"], ["だけ", "dake", "助", "只"], ["持って", "もって", "动", "持つ（拿、带）的て形"], ["生まれた", "うまれた", "动", "生まれる（出生）的过去形"]], [["动词＋ための＋名词：为了……的……", "<span class=\"ex\">痛むための涙</span>＝为疼痛而有的眼泪。<span class=\"ex\">食べるための時間</span>＝用来吃饭的时间。"], ["ただ〜だけ：只……", "两个词前后呼应，加强“仅仅”。<span class=\"ex\">ただ見ているだけ</span>＝只是看着而已。"], ["〜て生まれる：带着……出生", "<span class=\"ex\">才能を持って生まれた</span>＝生来就有才华。"], ["た形：过去", "<span class=\"ex\">生まれる→生まれた　行く→行った　見る→見た</span>。"]], ""], ["l23", "{裸|はだか}すぎる{獣|けもの}たちだ", "hadaka sugiru kemono tachi da", "是赤裸得太过的野兽啊", "是过于赤裸的野兽们", [["裸", "はだか", "名", "赤裸"], ["すぎる", "すぎる", "动", "过于、太……"], ["たち", "tachi", "后缀", "们"], ["だ", "da", "助动", "断定“是”"]], [["〜すぎる：太……了", "接在形容词词干、动词ます形、部分名词后。<span class=\"ex\">高すぎる</span>（太贵）、<span class=\"ex\">食べすぎる</span>（吃太多）、<span class=\"ex\">裸すぎる</span>（太赤裸）。"], ["だ：断定", "<span class=\"ex\">学生だ</span>＝是学生。礼貌形是 です。"]], ""], ["l24", "{触|ふ}れようとされるだけで{痛|いた}む{人|ひと}は", "fureyō to sareru dake de itamu hito wa", "那些别人只想碰一碰，就会疼痛的人", "仅仅被（别人）试图触碰就会疼的人", [["触れよう", "ふれよう", "动", "触れる（触碰）的意志形"], ["とする", "to suru", "句型", "想要、试图"], ["される", "される", "动", "する 的被动形"], ["だけで", "dake de", "句型", "仅仅……就"]], [["意志形＋とする：试图……", "<span class=\"ex\">行こうとする</span>（正要去）、<span class=\"ex\">触れようとする</span>（想去碰）。"], ["被动：〜とされる", "<span class=\"ex\">触れようとする</span>→<span class=\"ex\">触れようとされる</span>＝被人试图触碰。主语是“痛的那个人”。"], ["〜だけで：光是……就", "<span class=\"ex\">聞くだけで悲しい</span>＝光听着就难过。"]], ""], ["l25", "{火傷|やけど}してるから", "yakedo shiteru kara", "那是因为，他们早已被灼伤", "因为（他们）烫伤着", [["火傷", "やけど", "名", "烧伤、烫伤（特殊读法）"], ["してる", "してる", "动", "＝している，口语省掉 い"], ["から", "kara", "助", "因为"]], [["〜ている：表示状态", "不只是“正在做”，也表示“处于某状态”：<span class=\"ex\">火傷している</span>＝身上有烫伤（的状态）。"], ["から：因为", "<span class=\"ex\">寒いから窓を閉める</span>（因为冷所以关窗）。这里把原因放在句末，像在补充解释：“……是因为啊，他们被烫伤过。”"], ["熟字训", "<span class=\"ex\">火傷（やけど）</span>不能按单字读，整个词有一个特殊读音，类似 <span class=\"ex\">今日（きょう）</span>、<span class=\"ex\">大人（おとな）</span>。"]], ""]]], ["第五段 · 街头擦肩的人", [["l26", "{通|とお}り{過|す}ぎる{街|まち}の{中|なか}で", "tōri sugiru machi no naka de", "在擦肩而过的街头", "在走过的街道中", [["通り過ぎる", "とおりすぎる", "动", "走过、经过（通る＋過ぎる）"], ["街", "まち", "名", "街道、城镇"], ["で", "de", "助", "动作的场所"]], [["复合动词", "两个动词连在一起：<span class=\"ex\">通る</span>（通过）＋<span class=\"ex\">過ぎる</span>（过去）＝擦肩走过，不停留。"]], ""], ["l27", "そんな{人|ひと}を{見|み}かけないか", "sonna hito o mikakenai ka", "你难道不曾见过那样的人吗", "没见过那样的人吗", [["そんな", "そんな", "连体", "那样的"], ["見かける", "みかける", "动", "（偶然）看到、碰见"], ["ない", "nai", "助动", "否定"], ["か", "ka", "终助", "疑问"]], [["〜ないか：难道不……吗？", "否定疑问，用来唤起对方共鸣：<span class=\"ex\">きれいじゃないか</span>（这不是很美吗）。"], ["こんな・そんな・あんな・どんな", "这样的／那样的／那样的（远）／怎样的。"]], ""], ["l28", "あのささやかな{人生|じんせい}はもしかしたら{僕|ぼく}に{似|に}ている", "ano sasayaka na jinsei wa moshikashitara boku ni nite iru", "那平凡微小的一生，或许正和我相像", "那微小的人生说不定和我很像", [["もしかしたら", "もしかしたら", "副", "说不定、也许"], ["に", "ni", "助", "“和……（相像）”"], ["似ている", "にている", "动", "像、相似（似る＋ている）"]], [["〜に似ている：像……", "用 に 不用 と，而且几乎总用 ている 形：<span class=\"ex\">母に似ている</span>（像妈妈）。"], ["を → は：视角转了", "前面是 <span class=\"ex\">人生を</span>（别人对这人生说三道四），这里变成 <span class=\"ex\">人生は</span>，人生成了主题，旁观变成了认出自己。"]], ""], ["l29", "あのささやかな{人生|じんせい}はもしかしたら{君|きみ}だったのか", "ano sasayaka na jinsei wa moshikashitara kimi datta no ka", "那平凡微小的一生，莫非，就是你吗", "那微小的人生说不定就是你吗", [["だった", "datta", "助动", "だ 的过去形"], ["のか", "no ka", "终助", "自言自语式的醒悟、发问"]], [["〜のか：恍然大悟", "不是问别人，是问自己：<span class=\"ex\">そうだったのか</span>＝原来是这样啊。"], ["だった：过去，也表示“发现”", "<span class=\"ex\">君だった</span>不一定指过去，而是“（原来）是你”。"]], ""], ["l30", "{通|とお}り{過|す}ぎる{街|まち}の{中|なか}で", "", "在擦肩而过的街头", "", [], [], "l26"], ["l31", "そんな{人|ひと}を{見|み}かけないか", "", "你难道不曾见过那样的人吗", "", [], [], "l27"]]], ["副歌", [["c3a", "{瞬|まばた}きひとつのあいだの{一生|いっしょう}", "", "一眨眼的工夫，便是一生", "", [], [], "l1"], ["c3b", "{僕|ぼく}たちはみんな{一瞬|いっしゅん}の{星|ほし}", "", "我们都是，只亮一瞬的星", "", [], [], "l2"], ["c3c", "{瞬|まばた}きもせずに", "", "目不转睛", "", [], [], "l3"], ["c3d", "{息|いき}をすることさえ{惜|お}しむかのように{求|もと}めあう", "", "仿佛连呼吸都舍不得，我们拼命地彼此寻觅", "", [], [], "l4"]]], ["终段 · 野兽与赞美", [["l36", "ああ　{人|ひと}は{獣|けもの}", "", "啊，人是野兽", "", [], [], "l20"], ["l37", "{牙|きば}も{毒|どく}も{棘|とげ}もなく", "", "没有獠牙，没有毒，也没有尖刺", "", [], [], "l21"], ["l38", "ただ{痛|いた}むための{涙|なみだ}だけを{持|も}って{生|う}まれた", "", "生来只带着为疼痛而流的眼泪", "", [], [], "l22"], ["l39", "{裸|はだか}すぎる{獣|けもの}たちだ", "", "是赤裸得太过的野兽啊", "", [], [], "l23"], ["l40", "{僕|ぼく}は{誉|ほ}める", "", "我要赞美你", "", [], [], "l10"], ["l41", "{君|きみ}の{知|し}らぬ{君|きみ}についていくつでも", "", "赞美那个你自己都不知道的你，千遍万遍", "", [], [], "l11"]]], ["尾声 · 一瞬之星", [["c4a", "{瞬|まばた}きひとつのあいだの{一生|いっしょう}", "", "一眨眼的工夫，便是一生", "", [], [], "l1"], ["c4b", "{僕|ぼく}たちはみんな{一瞬|いっしゅん}の{星|ほし}", "", "我们都是，只亮一瞬的星", "", [], [], "l2"], ["c4c", "{瞬|まばた}きもせずに", "", "目不转睛", "", [], [], "l3"], ["c4d", "{息|いき}をすることさえ{惜|お}しむかのように{求|もと}めあう", "", "仿佛连呼吸都舍不得，我们拼命地彼此寻觅", "", [], [], "l4"]]]];
+function R(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>')}
+function P(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1')}
+var BY={};D.forEach(function(st){st[1].forEach(function(l){BY[l[0]]=l})});
+function pc(p){return p=='动'?'v':(p=='助'||p=='终助')?'p':''}
+var ly='',sd='';
+D.forEach(function(st){
+ly+='<div class="stanza"><div class="tag">'+st[0]+'</div>';
+sd+='<h3 class="st">'+st[0]+'</h3>';
+st[1].forEach(function(l){
+var t=l[7]||l[0];
+ly+='<a class="lyric" href="#study-s-'+t+'" onclick="go(\'study\',\'s-'+t+'\');return false;"><div class="ja">'+R(l[1])+'</div><div class="zh">'+l[3]+'</div></a>';
+if(l[7]){var r=BY[l[7]];sd+='<div class="study mini" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><p class="refnote">↺ 与前面的 <a href="#" onclick="go(\'study\',\'s-'+r[0]+'\');return false;">「'+P(r[1]).slice(0,12)+'…」</a> 相同（或几乎相同），讲解见那里。</p></div>';return}
+var rows=l[5].map(function(v){return '<tr><td class="w">'+v[0]+'</td><td class="k">'+v[1]+'</td><td><span class="pos '+pc(v[2])+'">'+v[2]+'</span></td><td>'+v[3]+'</td></tr>'}).join('');
+var gs=l[6].map(function(g){return '<div class="gram"><h4>'+g[0]+'</h4><p>'+g[1]+'</p></div>'}).join('');
+sd+='<div class="study" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><div class="roma">'+l[2]+'</div><div class="tr">'+l[3]+' <small>（直译：'+l[4]+'）</small></div><table><tr><th>单词</th><th>读音</th><th>词性</th><th>意思 &amp; 说明</th></tr>'+rows+'</table>'+gs+'</div>';
+});
+ly+='</div>';
+});
+document.getElementById('LY').innerHTML=ly;document.getElementById('SD').innerHTML=sd;
+</script>
+<script>
+function go(v, anchor){
+document.getElementById('v-main').classList.toggle('on', v==='main');
+document.getElementById('v-study').classList.toggle('on', v==='study');
+try{ history.replaceState(null,'', v==='study' ? '#study' + (anchor?'-'+anchor:'') : '#'); }catch(e){}
+if(anchor){ var el=document.getElementById(anchor); if(el){ el.scrollIntoView(); return; } }
+window.scrollTo(0,0);
+}
+function jump(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+(function(){ var h=location.hash; if(h.indexOf('#study')===0){ var a=h.slice(7); go('study', a||null); } })();
+</script>
+</body>
+</html>

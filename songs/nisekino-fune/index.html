@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二隻の舟 · 解读</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f1e6;--paper-2:#efe6d5;--ink:#2b2622;--ink-soft:#5d544c;--sea:#1f3a4d;--sea-2:#2f5670;--ember:#a4472d;--gold:#b48a4a;--line:#dccfb8;--card:#fffaf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Shippori Mincho",serif;line-height:1.9;font-size:17px;
+background-image:radial-gradient(circle at 20% 0%,#fbf6ec 0,transparent 55%),radial-gradient(circle at 100% 100%,#eadfca 0,transparent 50%)}
+a{color:var(--sea-2)}
+rt{font-size:.5em;color:var(--ember);font-family:"Shippori Mincho",serif}
+header.hero{position:relative;color:#f3ead9;text-align:center;padding:80px 20px 116px;overflow:hidden;background:linear-gradient(180deg,#0f2130 0%,#1f3a4d 55%,#2f5670 100%)}
+.hero.small{padding:46px 20px 84px}
+.hero .moon{position:absolute;top:42px;right:14%;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6e0,#e8d3a6 60%,#c9ae7a);box-shadow:0 0 60px 12px rgba(243,224,180,.25)}
+.hero .kicker{letter-spacing:.5em;font-size:13px;opacity:.75}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(44px,9vw,84px);margin:16px 0 6px;letter-spacing:.12em}
+.hero.small h1{font-size:clamp(30px,6vw,48px)}
+.hero h1 rt{color:#e8c98f;font-size:.28em}
+.hero .sub{font-size:18px;opacity:.9;letter-spacing:.2em}
+.hero .meta{margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
+.boats{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:260px;height:40px;opacity:.9}
+nav.toc{max-width:860px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
+nav.toc a,.btn{background:var(--card);border:1px solid var(--line);color:var(--sea);text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;box-shadow:0 4px 14px rgba(60,40,20,.08);cursor:pointer;font-family:inherit}
+nav.toc a.primary,.btn.primary{background:var(--ember);color:#fff;border-color:var(--ember)}
+main{max-width:860px;margin:0 auto;padding:36px 20px 80px}
+section{margin-top:60px}
+h2{font-weight:700;font-size:28px;color:var(--sea);margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
+h2 .num{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:40px;font-weight:400}
+.h2sub{color:var(--ink-soft);font-size:14px;letter-spacing:.2em;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px}
+h3{color:var(--ember);font-size:20px;margin:34px 0 10px}
+p{margin:0 0 1em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:10px 0 26px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.facts b{display:block;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);font-weight:400}
+.facts span{font-size:17px;color:var(--sea);font-weight:600}
+blockquote{margin:22px 0;padding:16px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,#f3e8d3,transparent);color:var(--ink-soft)}
+.jq{font-family:"Shippori Mincho",serif;color:var(--sea)}
+.note{font-size:14px;color:var(--ink-soft);background:var(--paper-2);border-radius:10px;padding:12px 16px;border:1px dashed var(--line)}
+.stanza{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 26px 6px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05)}
+.stanza .tag{font-size:12px;color:var(--gold);letter-spacing:.3em;padding:12px 0 2px}
+.lyric{display:grid;grid-template-columns:1.1fr 1fr;gap:4px 28px;padding:14px 0;border-bottom:1px dashed var(--line);align-items:center;text-decoration:none;color:inherit;position:relative}
+.lyric:last-child{border-bottom:none}
+.lyric:hover{background:linear-gradient(90deg,transparent,#f6ecdb,transparent)}
+.lyric:hover::after{content:"拆解 →";position:absolute;right:0;top:4px;font-size:11px;color:var(--ember)}
+.lyric .ja{font-family:"Shippori Mincho",serif;font-size:20px;line-height:2.3}
+.lyric .zh{font-size:17px;color:var(--sea-2);border-left:2px solid var(--line);padding-left:20px}
+@media (max-width:640px){.lyric{grid-template-columns:1fr}.lyric .zh{border-left:none;padding-left:0}.stanza{padding:8px 16px}}
+.cta{text-align:center;margin:44px 0 10px;padding:30px 20px;border-radius:16px;background:linear-gradient(135deg,#1f3a4d,#2f5670);color:#f3ead9}
+.cta p{opacity:.85;font-size:15px}
+.study{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 14px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05);scroll-margin-top:20px}
+.study.mini{padding:14px 24px 4px}
+.study .line{font-family:"Shippori Mincho",serif;font-size:23px;line-height:2.4;color:var(--sea)}
+.study .roma{font-family:Georgia,serif;font-style:italic;color:var(--ink-soft);font-size:15px;margin-top:-4px}
+.study .tr{margin:8px 0 14px;color:var(--ember)}
+.study .tr small{color:var(--ink-soft)}
+.refnote{font-size:14px;color:var(--ink-soft)}
+.st{border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:46px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 14px}
+th{background:var(--sea);color:#f3ead9;font-weight:600;text-align:left;padding:8px 10px;font-size:13px}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.w{font-family:"Shippori Mincho",serif;font-size:18px;white-space:nowrap;color:var(--sea)}
+td.k{color:var(--ember);white-space:nowrap;font-size:14px}
+.pos{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap}
+.pos.p{background:#f4dfd5;color:var(--ember)}.pos.v{background:#dbe6ee;color:var(--sea)}
+@media (max-width:640px){td.w,td.k{white-space:normal}table{font-size:14px}}
+.gram{background:var(--paper-2);border-radius:12px;padding:12px 18px;margin:10px 0}
+.gram h4{margin:0 0 4px;color:var(--sea);font-size:16px}
+.gram h4::before{content:"◆ ";color:var(--gold)}
+.gram p{margin:0;font-size:15.5px}
+.ex{font-family:"Shippori Mincho",serif;color:var(--ink)}
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cheat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.cheat b{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--ember);display:block}
+.back{position:fixed;right:18px;bottom:18px;z-index:9}
+footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 60px;border-top:1px solid var(--line);max-width:860px;margin:0 auto}
+.view{display:none}.view.on{display:block}
+</style>
+</head>
+<body>
+<!-- ===================== MAIN VIEW ===================== -->
+<div class="view on" id="v-main">
+<header class="hero">
+<div class="moon"></div>
+<div class="kicker">中島みゆき · 1992</div>
+<h1><ruby>二隻<rt>にせき</rt></ruby>の<ruby>舟<rt>ふね</rt></ruby></h1>
+<div class="sub">两 叶 孤 舟</div>
+<div class="meta">作词 · 作曲：中岛美雪 ｜ 编曲：濑尾一三 ｜ 专辑《EAST ASIA》 ｜ 舞台《夜会》主题曲</div>
+<svg class="boats" viewBox="0 0 260 40" aria-hidden="true">
+<g fill="#e9d6ad"><path d="M30 30 h46 l-8 8 h-30z"/><path d="M52 4 v26 h-1 V4z"/><path d="M53 6 l18 20 h-18z" opacity=".85"/></g>
+<g fill="#e9d6ad" opacity=".75"><path d="M178 32 h40 l-7 7 h-26z"/><path d="M197 10 v22 h-1 V10z"/><path d="M198 12 l15 18 h-15z" opacity=".85"/></g>
+</svg>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a>
+<a href="#bg" onclick="jump('bg');return false;">一 · 创作背景与解读</a>
+<a href="#lyrics" onclick="jump('lyrics');return false;">二 · 歌词对照</a>
+<a class="primary" href="#study" onclick="go('study');return false;">三 · 跟着歌词学日语 →</a>
+</nav>
+<main>
+<section id="bg">
+<h2><span class="num">壹</span>创作背景与歌曲含义</h2>
+<div class="h2sub">BACKGROUND &amp; MEANING</div>
+<div class="facts">
+<div><b>首次登场</b><span>1989 年《夜会》</span></div>
+<div><b>录音收录</b><span>1992 年《EAST ASIA》</span></div>
+<div><b>编曲</b><span>濑尾一三</span></div>
+<div><b>同专辑名曲</b><span>《糸》《EAST ASIA》</span></div>
+</div>
+<h3>《夜会》的灵魂之歌</h3>
+<p>1989 年，中岛美雪在东京涩谷 Bunkamura 剧场开启了独创的舞台形式<b>《夜会》</b>。它不是普通的演唱会，也不是音乐剧，而是“用歌曲讲故事”的“言叶的实验剧场”。《二隻の舟》就是为《夜会》写的主题曲，此后在历届《夜会》中反复出现，成了这个系列的精神象征。</p>
+<p>1992 年，这首歌以录音室版本收进专辑《EAST ASIA》。录音时，中岛美雪把《夜会》的乐手原班请进录音室，用“录音室现场”的方式录成。她解释说，这首歌的速度随情绪起伏，“除了大家一起现场演奏，别无他法”。编曲大体保留了第一届《夜会》的样子，又加进了之后两年公演里打磨出的细节。全曲长近七分钟，结构像一出小小的舞台剧。</p>
+<h3>为什么是“两只”舟？</h3>
+<p>中岛美雪谈过“二隻”这个设定的来历：早期《夜会》的舞台上基本只有三位女性，她想用“两只船”作为<b>对照的象征</b>。它可以是面向同一个男人的两个女人，也可以是两个女人之间情感的共鸣。它不限定于恋人，而是可以套在各种关系上的比拟。</p>
+<blockquote>她说：如果只有一只船，那就只是一出孤独的戏；正因为是两只，才能在“即使分隔，也是一体”的结尾里，留下一点“也许最后是幸福结局”的可能。</blockquote>
+<p>她还说过自己写了很多关于海的歌，因为在海边长大，对海有一种近乎“哀愁”的感情。</p>
+<h3>全曲解读 · 六幕小剧场</h3>
+<p><b>第一幕：时光与寂寞。</b>开篇是一个温柔又尖锐的悖论：人说时间会带走一切，可为什么偏偏落下了寂寞？接着她问：要到几岁，才能学会放下对人的眷恋？她说自己没有奢求难事，也没有奢求不可能的事。最后一句最动人：<span class="jq">寂しさの分だけ　愚かさをください</span>。她不求解脱，只求一份与寂寞等量的“傻”。聪明的人看透一切，所以更寂寞；宁可傻一点，还肯去爱、去信。</p>
+<p><b>第二幕：两叶扁舟。</b>“你和我”被比作两只各自渡过黑暗之海的小舟。“暗い海”是看不清方向的人生，谁也无法替谁渡海。她用的是“舟”（小船）而不是“船”，更显出人的渺小。她<u>不</u>许诺两只舟会靠拢：波浪会把彼此的身影隔开。可它们<b>唱着同一支歌</b>前行，羁绊不靠距离，靠的是同一个心声。</p>
+<p><b>第三幕：海鸟。</b>在“时流”中游刃有余的海鸟，只顾低语着残酷的天理，盘旋得越来越高，等着看这份羁绊断裂的那一天。海鸟可以理解为世人、旁观者、命运的冷眼。它们不在海上挣扎，只是俯瞰，带着一点残忍的好奇。</p>
+<p><b>第四幕：共振。</b>假如有一天“我”碎在浪里，在某个遥远的地方，“你”的舟也会轻轻<span class="jq">きしむ</span>（吱呀一声）。仅凭这一点，“我”就能继续渡海。哪怕把两只舟系在一起的<span class="jq">舫い綱</span>（缆绳）已经断了，哪怕被风暴吞没，这份联系也还在。缆绳可以看作有形的纽带，比如承诺、婚约、日常的联络。有形的绳会断，无形的共振不会。</p>
+<p><b>第五幕：悲鸣与呼唤。</b>“你的悲鸣，总在我心底响起。”那悲鸣不是绝望，而是一声<span class="jq">越えてゆけ</span>（越过去！），照亮了前路。彼此的痛成了彼此前进的灯。接着那句“我明明没奢求什么……”再次出现，句末多了一个<span class="jq">のに</span>（明明……却），后半句咽了回去。</p>
+<p><b>第六幕：风浪之中。</b>风急、浪高、夜深、不见星光，海望不到尽头。在这样的风浪里，“区区爱情”轻得像一片树叶。可就在最渺小的时候，歌给出了答案：<span class="jq">わたしたちは二隻の舟　ひとつずつの　そしてひとつの</span>。我们是两只舟，各自一只，却又是同一只。还要注意一个细节：副歌里一直是“おまえとわたし”（你和我），到结尾第一次变成了“わたしたち”（我们）。</p>
+<p>所以，《二隻の舟》可以听作爱情歌，也可以听作友情、亲情，甚至是“我与另一个自己”的歌。它写成年人的孤独：我们终究各自漂流；也写成年人的希望：可我们并不孤单。</p>
+</section>
+<section id="lyrics">
+<h2><span class="num">贰</span>歌词中日对照</h2>
+<div class="h2sub">LYRICS · 日文原文 × 中文译文</div>
+<p class="note"><b>翻译原则：</b>信（不违原意）、达（中文自然）、雅（保留诗意）。不逐字硬译，必要处略作演绎。<br>💡 <b>点击任意一句</b>，可直接跳到该句的逐词讲解。</p>
+<div id="LY"></div>
+<h3>译法小记</h3>
+<p><b>“ものらしい” → “人说……终会”</b>：原文不是断言，而是“时间似乎本该带走一切”，带着怀疑，为下一句的反问埋下伏笔。</p>
+<p><b>“愚かさをください” → “赐我几分痴傻”</b>：“愚蠢”太贬义，“痴傻”既有傻，又有“痴情”的痴，更贴近她想要的那种不聪明的执着。</p>
+<p><b>“二隻の舟” → “两叶扁舟”</b>：直译“两艘船”太硬。“一叶扁舟”是中文现成的诗意意象，正对应“舟”的小与轻。</p>
+<p><b>“きしむ” → “吱呀一声”</b>：木船受力发出的声响。用拟声词保留画面，也让“共振”具体可感。</p>
+<p><b>“ひとつずつの　そしてひとつの” → “各自一叶，却又同为一体”</b>：原文话只说一半，中文补出“舟”的意象和转折，让“二即是一”的悖论落地。</p>
+<div class="cta">
+<div style="font-size:22px;font-family:'Shippori Mincho',serif">跟着歌词学日语</div>
+<p>全曲逐句拆解：单词、读音、词性、语法点，专为日语初学者准备。</p>
+<button class="btn primary" onclick="go('study')">打开学习页 →</button>
+</div>
+</section>
+</main>
+</div>
+<!-- ===================== STUDY VIEW ===================== -->
+<div class="view" id="v-study">
+<header class="hero small">
+<div class="kicker">跟着歌词学日语</div>
+<h1><ruby>二隻<rt>にせき</rt></ruby>の<ruby>舟<rt>ふね</rt></ruby></h1>
+<div class="sub">逐 词 逐 句</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a><a href="#" onclick="go('main');return false;">← 返回解读与歌词</a><a href="#cheat" onclick="jump('cheat');return false;">语法速查卡</a></nav>
+<main>
+<p class="note">📖 <b>阅读方法：</b>先看整句和罗马音，跟着读一遍；再看单词表；最后看语法点。重复出现的句子只讲第一次。<br>
+标签：<span class="pos">名</span> 名词　<span class="pos v">动</span> 动词　<span class="pos p">助</span> 助词（标明词在句中角色的“小零件”）　<span class="pos">形</span> 形容词　<span class="pos">副</span> 副词</p>
+<div id="SD"></div>
+<h3 class="st" id="cheat">本曲语法速查卡</h3>
+<div class="cheat">
+<div><b>は ／ が</b>主题 ／ 主语。从句里的主语用が。</div>
+<div><b>を</b>①宾语 ②经过的场所（海を渡る）</div>
+<div><b>に</b>变化结果、到达点、被动的“被谁”</div>
+<div><b>で</b>动作的场所；凭借</div>
+<div><b>も</b>也；连……都；疑问词＋も＝无论</div>
+<div><b>〜てゆく ／ 〜てくる</b>动作远去 ／ 动作朝我而来</div>
+<div><b>〜ば ／ なら</b>如果……</div>
+<div><b>〜ても ／ たとえ〜ても</b>即使……也</div>
+<div><b>〜ながら</b>一边……一边……</div>
+<div><b>〜られる ／ 〜れる</b>被动、可能</div>
+<div><b>〜てくれる</b>别人为我做</div>
+<div><b>〜ちゃいない</b>＝〜てはいない（口语）</div>
+<div><b>〜さ</b>形容词→名词：寂しさ、見たさ</div>
+<div><b>〜く ／ 〜に</b>形容词→副词：高く、かすかに</div>
+<div><b>〜ばかり</b>只顾、老是</div>
+<div><b>〜ように</b>像……一样</div>
+<div><b>〜ずつ</b>各、每</div>
+<div><b>命令形</b>ゆく→ゆけ（去！）</div>
+</div>
+</main>
+<button class="btn back" onclick="go('main')">← 返回</button>
+</div>
+<footer>
+《二隻の舟》词曲 © 中岛美雪。歌词由正版专辑持有者提供，仅供个人学习使用。<br>
+背景资料参考：<a href="https://ja.wikipedia.org/wiki/%E4%BA%8C%E9%9A%BB%E3%81%AE%E8%88%9F" target="_blank" rel="noopener">日文维基百科「二隻の舟」</a> · <a href="https://mizuirofashionista.com/twoboats" target="_blank" rel="noopener">中岛美雪谈《二隻の舟》</a><br>
+<a href="../../">中岛美雪解读</a> · 第 1 首
+</footer>
+<script>
+var D=[
+["第一段 · 时光与寂寞",[
+["l1","{時|とき}は　{全|すべ}てを{連|つ}れてゆくものらしい","toki wa subete o tsurete yuku mono rashii","人说，时光终会带走一切","时间似乎是会把一切带走的东西",[["時","とき","名","时间、时光"],["は","wa","助","<b>主题助词</b>，写作 ha 读作 <b>wa</b>，“说到……”"],["全て","すべて","名","一切、全部"],["を","o","助","<b>宾语助词</b>，标出动作对象"],["連れて","つれて","动","原形 連れる（带着、领着）的 て形"],["ゆく","ゆく","动","＝いく（去），更文雅"],["もの","もの","名","此处表示“事物的本性、常理”"],["らしい","らしい","助动","好像、听说"]],[["A は B を 动词：日语基本语序","日语是 <b>主题 → 宾语 → 动词</b>，动词永远在句末。<span class=\"ex\">私は水を飲む</span>（我喝水）。"],["〜てゆく：动作渐渐远去","て形＋ゆく，表示动作离说话人远去，或随时间持续下去。“連れてゆく”＝带走、带着远去。"],["〜ものらしい：“据说本该如此”","もの＝常理，らしい＝据说。透出半信半疑，下一句立刻反驳。"]],""],
+["l2","なのに　どうして　{寂|さび}しさを{置|お}き{忘|わす}れてゆくの","nanoni dōshite sabishisa o okiwasurete yuku no","可为何偏偏，把寂寞遗落在我身旁","可是为什么，（时间）把寂寞忘了带走呢",[["なのに","なのに","接续","可是、偏偏（带意外、不满）"],["どうして","どうして","副","为什么"],["寂しさ","さびしさ","名","寂寞（寂しい→寂しさ）"],["置き忘れて","おきわすれて","动","原形 置き忘れる：忘了带走、落下"],["の","の","终助","句末上扬，柔和的疑问“……呢？”"]],[["い形容词 → 名词：去い加さ","<span class=\"ex\">寂しい→寂しさ　高い→高さ　優しい→優しさ</span>"],["复合动词","动词ます形＋另一个动词：<span class=\"ex\">置く→置き＋忘れる＝置き忘れる</span>（放下后忘了）。"],["主语省略","这句没有主语，仍是上一句的“時”。日语上下文清楚就省主语。"]],""],
+["l3","いくつになれば　{人懐|ひとなつ}かしさ　うまく{捨|す}てられるようになるの","ikutsu ni nareba hitonatsukashisa umaku suterareru yō ni naru no","要到几岁，才能学会把对人的眷恋，轻轻放下","到了几岁，才会变得能够顺利地丢掉怀念人的心情呢",[["いくつ","いくつ","名","几个；问年龄时＝几岁"],["に","ni","助","变化的结果：“变成……”"],["なれば","なれば","动","なる（变成）的假定形＋ば：“如果变成……”"],["人懐かしさ","ひとなつかしさ","名","对人的眷恋、想念人的心情（人＋懐かしい＋さ）"],["うまく","うまく","副","顺利地、巧妙地（うまい→うまく）"],["捨てられる","すてられる","动","捨てる（扔掉）的<b>可能形</b>：能扔掉"],["ようになる","ようになる","句型","变得（能）……"],["の","の","终助","疑问“……呢？”"]],[["〜ば：假定条件","动词词尾 う段 → え段＋ば。<span class=\"ex\">なる→なれば</span>（如果成为）。“いくつになれば”＝要到几岁才……"],["形容词く形 = 副词","い形容词去い加く，变成副词修饰动词：<span class=\"ex\">うまい→うまく捨てる</span>（漂亮地丢掉）。"],["可能形 ＋ ようになる","一段动词去る加られる＝能……：<span class=\"ex\">捨てる→捨てられる</span>。再接“ようになる”＝“变得能……”，强调从不能到能的变化。"],["“を”的省略","“人懐かしさ（を）捨てる”，口语和歌词里宾语助词“を”常被省掉。"]],""],
+["l4","{難|むずか}しいこと{望|のぞ}んじゃいない","muzukashii koto nozonja inai","我从没奢求过什么难事","（我）并没有在期望困难的事",[["難しい","むずかしい","形","难的、困难的"],["こと","こと","名","事情；把前面变成“……的事”"],["望んじゃいない","のぞんじゃいない","动","＝望んではいない：并没有在期望。原形 望む（希望、期待）"]],[["形容词直接修饰名词","<span class=\"ex\">難しい＋こと＝难的事</span>，不需要“の”。"],["口语缩约：ては → ちゃ","<span class=\"ex\">望んで＋は＋いない → 望んじゃいない</span>。“〜ている”是进行/状态，“〜ていない”是否定。“は”加强对比：“（别的不说，）这个我可没奢望”。注意 望む 的て形是 望んで，所以 では→じゃ。"]],""],
+["l5","{有|あ}り{得|え}ないこと{望|のぞ}んじゃいない","arienai koto nozonja inai","也从没祈求过什么不可能","（我）并没有在期望不可能的事",[["有り得ない","ありえない","形","不可能的（有り得る＝可能有 的否定）"],["こと","こと","名","事情"],["望んじゃいない","のぞんじゃいない","动","并没有期望（见上句）"]],[["〜ない：否定","动词的否定形：<span class=\"ex\">有り得る→有り得ない　見える→見えない</span>。“ない”形本身也像形容词一样能直接修饰名词：<span class=\"ex\">有り得ないこと</span>。"],["对句","第4、5句结构完全相同，只换一个词。这种“对句”在日语歌词中很常见，读来像叹息般重复。"]],""],
+["l6","{時|とき}よ　{最後|さいご}に{残|のこ}してくれるなら","toki yo saigo ni nokoshite kureru nara","时光啊，倘若最后还肯为我留下些什么","时间啊，如果最后要为我留下（什么）的话",[["時よ","ときよ","名","“时间啊”。よ 在名词后＝呼唤"],["最後に","さいごに","副","最后"],["残して","のこして","动","残す（留下）的て形"],["くれる","くれる","动","（别人）为我做……"],["なら","なら","助","如果……的话"]],[["名词＋よ：呼格","对着某物呼唤，诗意语气：<span class=\"ex\">時よ</span>（时光啊）、<span class=\"ex\">神よ</span>（神啊）。"],["〜てくれる：别人为我做","<span class=\"ex\">残してくれる</span>＝为我留下。日语非常在意“动作的恩惠给了谁”，“くれる”表示受益者是“我”。"],["〜なら：如果是那样的话","接在句子后表示假设：“如果你肯留下什么，那么……”。"]],""],
+["l7","{寂|さび}しさの{分|ぶん}だけ　{愚|おろ}かさをください","sabishisa no bun dake orokasa o kudasai","寂寞有几分，便赐我几分痴傻吧","请给我和寂寞的份量相等的愚蠢",[["寂しさ","さびしさ","名","寂寞"],["の","no","助","的"],["分","ぶん","名","份、份量"],["だけ","だけ","助","只、仅；“……的分だけ”＝相应的份量"],["愚かさ","おろかさ","名","愚蠢、痴傻（愚か＋さ）"],["ください","ください","动","请给我"]],[["〜の分だけ：与……等量","<span class=\"ex\">努力した分だけ上手になる</span>（付出多少努力就进步多少）。"],["名词 を ください：请给我……","最实用的句型之一：<span class=\"ex\">水をください</span>（请给我水）。"],["为什么要“愚蠢”？","聪明的人看透一切、因而更寂寞；她宁愿要一份“傻”，傻到还肯去爱、去相信。这是整首歌的情感支点。"]],""]]],
+["副歌 · 两叶扁舟",[
+["l8","おまえとわたしは　たとえば{二隻|にせき}の{舟|ふね}","omae to watashi wa tatoeba niseki no fune","你与我，恰似两叶扁舟","你和我，打个比方，是两只船",[["おまえ","おまえ","代","你（极亲近、随意的叫法）"],["と","to","助","和、与"],["わたし","わたし","代","我"],["たとえば","たとえば","副","比如、打个比方"],["二隻","にせき","数量","两艘（隻＝船的量词）"],["舟","ふね","名","小船、扁舟"]],[["量词：数字＋量词＋の＋名词","<span class=\"ex\">二隻の舟　二人（ふたり）　二本（にほん）　二枚（にまい）</span>"],["体言止め：名词结句","本应是“……二隻の舟<b>だ</b>”，省去“だ”，余韵悠长。"],["“おまえ”的温度","日常略粗鲁，在中岛美雪的歌里却是不设防的亲密。"]],""],
+["l9","{暗|くら}い{海|うみ}を{渡|わた}ってゆく　ひとつひとつの{舟|ふね}","kurai umi o watatte yuku hitotsu hitotsu no fune","横渡漆黑的大海，各自孤身的小舟","渡过黑暗的海而去的、一只一只的船",[["暗い","くらい","形","黑暗的"],["海","うみ","名","海"],["を","o","助","<b>经过的场所</b>（不是宾语！）"],["渡って","わたって","动","渡る（渡过）的て形"],["ひとつひとつ","ひとつひとつ","名","一个一个、各自"]],[["を 的第二种用法：经过的地方","和“渡る、歩く、泳ぐ、飛ぶ”等移动动词连用：<span class=\"ex\">海を渡る</span>（渡海）、<span class=\"ex\">道を歩く</span>（走在路上）。"],["长定语","“暗い海を渡ってゆく”整段修饰后面的“ひとつひとつの舟”。"],["ひとつひとつ","强调“各自独立”——每只舟都只能自己渡海。"]],""],
+["l10","{互|たが}いの{姿|すがた}は{波|なみ}に{隔|へだ}てられても","tagai no sugata wa nami ni hedaterarete mo","纵使波涛隔断了彼此的身影","即使彼此的身影被波浪隔开",[["互い","たがい","名","彼此"],["姿","すがた","名","身影"],["波","なみ","名","波浪"],["に","ni","助","被动句中＝“被谁”"],["隔てられて","へだてられて","动","隔てる→被动 隔てられる→て形"],["も","mo","助","〜ても＝即使……也"]],[["被动：A は B に 〜られる","<span class=\"ex\">姿は波に隔てられる</span>（身影被波浪隔开）。一段动词去る加られる。"],["〜ても：即使","<span class=\"ex\">雨が降っても行きます</span>（即使下雨也去）。"]],""],
+["l11","{同|おな}じ{歌|うた}を{歌|うた}いながらゆく　{二隻|にせき}の{舟|ふね}","onaji uta o utai nagara yuku niseki no fune","仍唱着同一支歌前行——两叶扁舟","一边唱着同样的歌一边前行的两只船",[["同じ","おなじ","形","相同的（修饰名词不加の）"],["歌","うた","名","歌"],["歌い","うたい","动","歌う 的ます形词干"],["ながら","ながら","助","一边……一边……"]],[["ます形词干＋ながら","<span class=\"ex\">歌う→歌い→歌いながら</span>（边唱边……）"],["长定语修饰中心词","骨架只是“二隻の舟”，前面整句都是定语。动词原形可直接放在名词前：<span class=\"ex\">走る犬</span>（奔跑的狗）。"]],""]]],
+["间段 · 海鸟",[
+["l12","{時流|じりゅう}を{泳|およ}ぐ{海鳥|うみどり}たちは","jiryū o oyogu umidori-tachi wa","在时代洪流里浮游的海鸟们","在时代潮流中游动的海鸟们",[["時流","じりゅう","名","时代潮流、世风"],["を","o","助","经过的场所（同第9句）"],["泳ぐ","およぐ","动","游泳、游动"],["海鳥","うみどり","名","海鸟"],["たち","たち","接尾","……们（复数）"]],[["〜たち：复数","<span class=\"ex\">わたしたち</span>（我们）、<span class=\"ex\">子供たち</span>（孩子们）。日语名词本身不分单复数，需要时加“たち”。"],["隐喻","“海鸟”象征随波逐流、冷眼旁观的世人——它们在“时流”里游刃有余，却不在海上挣扎。"]],""],
+["l13","むごい{摂理|せつり}を　ささやくばかり","mugoi setsuri o sasayaku bakari","只顾低语着残酷的天理","只是在低声说着残酷的天理",[["むごい","むごい","形","残酷的、无情的"],["摂理","せつり","名","天理、（自然的）法则"],["ささやく","ささやく","动","低语、耳语"],["ばかり","ばかり","助","光是、只顾……"]],[["动词原形＋ばかり：老是只做……","带有不满：<span class=\"ex\">泣くばかり</span>（只是哭）、<span class=\"ex\">ささやくばかり</span>（只顾低语）。"]],""],
+["l14","いつかちぎれる{絆|きずな}　{見|み}たさに","itsuka chigireru kizuna mitasa ni","它们只想亲眼看看，这份羁绊终将断裂","出于想看总有一天会断掉的羁绊的心情",[["いつか","いつか","副","总有一天、迟早"],["ちぎれる","ちぎれる","动","被扯断、断裂"],["絆","きずな","名","羁绊、纽带"],["見たさ","みたさ","名","想看的心情（見たい→見たさ）"],["に","ni","助","原因、动机：“出于……”"]],[["〜たい：想做","ます形词干＋たい：<span class=\"ex\">見る→見たい</span>（想看）。它变形像い形容词，所以也能去い加さ：<span class=\"ex\">見たさ</span>（想看的心情）。"],["〜たさに：出于想……的心情","<span class=\"ex\">会いたさに</span>（因为想见你）。这里海鸟“想看羁绊断裂”，带着残忍的好奇。"]],""],
+["l15","{高|たか}く　{高|たか}く　{高|たか}く","takaku takaku takaku","盘旋着，高些，再高些，更高些","高高地、高高地、高高地",[["高く","たかく","副","高高地（高い→高く）"]],[["く形副词 + 省略动词","只有副词，动词（飞、盘旋）被省略了，留给听者想象海鸟越飞越高、俯瞰两只小舟的画面。三次重复把镜头不断拉远。"]],""]]],
+["第二段 · 共振",[
+["l16","{敢|あ}えなくわたしが　{波|なみ}に{砕|くだ}ける{日|ひ}には","aenaku watashi ga nami ni kudakeru hi ni wa","若有一天，我无力地碎在浪里","在我无力地被浪打碎的那一天",[["敢えなく","あえなく","副","无力地、轻易地（悲惨而无奈）"],["が","ga","助","<b>主语助词</b>（从句里用が）"],["波に","なみに","助","撞向/被浪"],["砕ける","くだける","动","碎裂、粉碎"],["日","ひ","名","日子、那一天"],["には","には","助","在……时（强调）"]],[["は 和 が","从句（修饰名词的小句子）里的主语用“が”而不用“は”：<span class=\"ex\">わたしが波に砕ける日</span>＝“我碎在浪里的那天”。"],["〜日には：到了……那天","<span class=\"ex\">雨の日には</span>（下雨的日子里）。"]],""],
+["l17","どこかで　おまえの{舟|ふね}が　かすかにきしむだろう","dokoka de omae no fune ga kasuka ni kishimu darō","你的舟，也会在某处轻轻吱呀一声吧","在某个地方，你的船会微微地嘎吱作响吧",[["どこか","どこか","代","某处（どこ＋か）"],["で","de","助","动作发生的场所"],["かすかに","かすかに","副","微微地（かすか＋に）"],["きしむ","きしむ","动","（木头）嘎吱作响"],["だろう","だろう","助动","推测：……吧"]],[["疑问词＋か = 不定","<span class=\"ex\">どこ→どこか</span>（某处）、<span class=\"ex\">誰→誰か</span>（某人）、<span class=\"ex\">何→何か</span>（某物）。"],["な形容词＋に = 副词","<span class=\"ex\">かすか→かすかに</span>、<span class=\"ex\">静か→静かに</span>。"],["意象","我的舟碎了，你的舟也随之“吱呀”一声——就像共振，痛楚能隔海传过去。"]],""],
+["l18","それだけのことで　わたしは{海|うみ}をゆけるよ","sore dake no koto de watashi wa umi o yukeru yo","仅仅如此，我便能继续渡海","只凭这么一点事，我就能在海上前行哦",[["それだけ","それだけ","名","仅此、就那么一点"],["のこと","のこと","名","……的事"],["で","de","助","凭借、因为"],["ゆける","ゆける","动","ゆく 的可能形：能去"],["よ","yo","终助","告诉对方、加强语气"]],[["五段动词可能形","词尾う段→え段＋る：<span class=\"ex\">ゆく→ゆける　書く→書ける　話す→話せる</span>。"],["句末 よ","把新信息告诉对方，带点坚定、安慰：“我能行的哦”。"]],""],
+["l19","たとえ{舫|もや}い{綱|づな}は{切|き}れて　{嵐|あらし}に{飲|の}まれても","tatoe moyaizuna wa kirete arashi ni nomarete mo","哪怕缆绳早已断开，哪怕被风暴吞没","即使系船的缆绳断了、被暴风雨吞没",[["たとえ","たとえ","副","即使（常与〜ても呼应）"],["舫い綱","もやいづな","名","把船系在一起/系在岸边的缆绳"],["切れて","きれて","动","切れる（断，自动词）的て形"],["嵐","あらし","名","暴风雨"],["飲まれて","のまれて","动","飲む→被动 飲まれる：被吞没"]],[["たとえ〜ても：哪怕……也","<span class=\"ex\">たとえ失敗しても、諦めない</span>（哪怕失败也不放弃）。"],["自动词 vs 他动词","<span class=\"ex\">切る</span>（切断，他动）／<span class=\"ex\">切れる</span>（断了，自动）。“綱は切れて”＝绳子自己断了，没说谁弄断的。"],["五段动词被动","词尾う段→あ段＋れる：<span class=\"ex\">飲む→飲まれる</span>。"],["舫い綱的含义","可理解为把两人系在一起的有形纽带（婚姻、承诺、联系方式……）。纵使有形的绳断了，无形的联系仍在。"]],""]]],
+["高潮 · 悲鸣与呼唤",[
+["l20","きこえてくるよ　どんな{時|とき}も","kikoete kuru yo donna toki mo","我听得见啊，无论何时","会传进耳朵来的哦，无论什么时候",[["きこえて","きこえて","动","きこえる（聞こえる，听得见）的て形"],["くる","くる","动","来"],["どんな","どんな","连体","什么样的"],["時","とき","名","时候"],["も","mo","助","也；疑问词＋も＝无论……都"]],[["〜てくる：动作朝我而来","与“〜てゆく”相反！声音从远方<b>传过来</b>。开篇时间“带走（てゆく）”，这里呼声“传来（てくる）”，方向的对照很美。"],["聞く vs 聞こえる","<span class=\"ex\">聞く</span>＝主动去听；<span class=\"ex\">聞こえる</span>＝自然听得见。"],["どんな〜も：无论……都","<span class=\"ex\">どんな時も</span>（无论何时）、<span class=\"ex\">どんな人も</span>（无论谁）。"]],""],
+["l21","おまえの{悲鳴|ひめい}が　{胸|むね}にきこえてくるよ","omae no himei ga mune ni kikoete kuru yo","你的悲鸣，在我心底声声回响","你的悲鸣传到我的心里来",[["悲鳴","ひめい","名","悲鸣、惨叫"],["が","ga","助","主语助词（聞こえる的对象用が）"],["胸","むね","名","胸口、心中"],["に","ni","助","到达点：传到……"]],[["聞こえる 用 が","“能力/感知”类动词的对象用が：<span class=\"ex\">音が聞こえる　山が見える</span>。"]],""],
+["l22","{越|こ}えてゆけ　と{叫|さけ}ぶ{声|こえ}が　ゆくてを{照|て}らすよ","koete yuke to sakebu koe ga yukute o terasu yo","那呼喊着“越过去！”的声音，照亮我前行的路","喊着“越过去吧”的声音照亮前路",[["越えて","こえて","动","越える（越过）的て形"],["ゆけ","ゆけ","动","ゆく 的<b>命令形</b>：去！"],["と","to","助","<b>引用</b>：说“……”"],["叫ぶ","さけぶ","动","呼喊"],["声","こえ","名","声音"],["ゆくて","ゆくて","名","行く手：前方的路"],["照らす","てらす","动","照亮"]],[["命令形","五段动词词尾う段→え段：<span class=\"ex\">ゆく→ゆけ</span>。语气强烈，歌词中常见。"],["引用の と","“「……」と言う／叫ぶ”：<span class=\"ex\">「越えてゆけ」と叫ぶ</span>。"],["意味","你的悲鸣不是绝望，而是在催我：“越过去！”——彼此的痛成了彼此前进的灯。"]],""],
+["l23","おまえの{悲鳴|ひめい}が　{胸|むね}にきこえてくるよ","","你的悲鸣，在我心底声声回响","",[],[],"l21"],
+["l24","{越|こ}えてゆけ　と{叫|さけ}ぶ{声|こえ}が　ゆくてを{照|て}らす","","那呼喊着“越过去！”的声音，照亮前路","",[],[],"l22"],
+["l25","{難|むずか}しいこと{望|のぞ}んじゃいない","","我从没奢求过什么难事","",[],[],"l4"],
+["l26","{有|あ}り{得|え}ないこと{望|のぞ}んじゃいないのに","arienai koto nozonja inai noni","也从没祈求过什么不可能——明明如此啊","明明并没有期望不可能的事",[["のに","のに","助","句末：明明……却（遗憾、委屈）"]],[["句末のに：未说完的委屈","“明明没奢望什么……（可为什么还是这样）”。后半句不说出口，更显痛楚。和第2句的“なのに”同源。"]],""]]],
+["尾声 · 风浪之中",[
+["l27","{風|かぜ}は{強|つよ}く{波|なみ}は{高|たか}く　{闇|やみ}は{深|ふか}く　{星|ほし}も{見|み}えない","kaze wa tsuyoku nami wa takaku yami wa fukaku hoshi mo mienai","风急，浪高，夜色深沉，连星光也看不见","风强，浪高，黑暗深，星星也看不见",[["風","かぜ","名","风"],["強く","つよく","形","強い 的く形（中顿）"],["闇","やみ","名","黑暗"],["深く","ふかく","形","深い 的く形"],["星","ほし","名","星星"],["も","mo","助","也、连……都"],["見えない","みえない","动","見える（看得见）的否定"]],[["形容词く形：句子的“顿号”","い形容词去い加く，可以把几个短句连起来：<span class=\"ex\">風は強く、波は高く、闇は深く</span>＝风急、浪高、夜深。节奏紧凑，像一口气喘不过来。"],["も：连……也","<span class=\"ex\">星も見えない</span>＝连星星都看不见。"]],""],
+["l28","{風|かぜ}は{強|つよ}く{波|なみ}は{高|たか}く　{暗|くら}い{海|うみ}は{果|は}てるともなく","kaze wa tsuyoku nami wa takaku kurai umi wa hateru tomo naku","风急，浪高，黑暗的海望不到尽头","风强浪高，黑暗的海仿佛没有尽头",[["果てる","はてる","动","到尽头、终结"],["ともなく","ともなく","句型","（看不出）要……的样子"]],[["〜ともなく：似乎永无……","书面、诗意的说法：<span class=\"ex\">果てるともなく続く</span>＝无休无止地延续。这里后半句“続く”被省略。"]],""],
+["l29","{風|かぜ}の{中|なか}で{波|なみ}の{中|なか}で　たかが{愛|あい}は　{木|こ}の{葉|は}のように","kaze no naka de nami no naka de takaga ai wa konoha no yō ni","在风里，在浪里，区区爱情，像一片飘零的落叶","在风中、在浪中，区区的爱，像树叶一样",[["中","なか","名","里面、之中"],["で","de","助","动作/状态的场所"],["たかが","たかが","副","区区、不过是"],["愛","あい","名","爱"],["木の葉","このは","名","树叶（木 在此读 こ）"],["ように","ように","助","像……一样"]],[["名词＋の＋ように：像……一样","<span class=\"ex\">木の葉のように</span>（像树叶一样）、<span class=\"ex\">夢のように</span>（如梦一般）。"],["たかが","自嘲地贬低：“不过是爱而已”。可正是这“区区”之物，撑着两只舟渡海。"]],""],
+["l30","わたしたちは{二隻|にせき}の{舟|ふね}　ひとつずつの　そしてひとつの","watashitachi wa niseki no fune hitotsu zutsu no soshite hitotsu no","我们是两叶扁舟——各自一叶，却又同为一体","我们是两只船，各自一只的，而且是同一只的（船）",[["わたしたち","わたしたち","代","我们"],["ひとつずつ","ひとつずつ","名","各一个（ずつ＝各、每）"],["そして","そして","接续","而且、然后"],["ひとつの","ひとつの","名","一个的（后面省略了“舟”）"]],[["〜ずつ：每……各","<span class=\"ex\">一人ずつ</span>（每人一个/一个一个地）、<span class=\"ex\">少しずつ</span>（一点一点地）。"],["省略中心词","“ひとつずつの（舟）、そしてひとつの（舟）”。话说一半停下，“二即是一”的悖论就留在空中。这是全曲的答案：分开，也是一体。"],["称呼的变化","副歌一直是“おまえとわたし”（你和我），到结尾第一次变成“わたしたち”（我们）。"]],""],
+["l31","わたしたちは{二隻|にせき}の{舟|ふね}　ひとつずつの　そしてひとつの","","我们是两叶扁舟——各自一叶，却又同为一体","",[],[],"l30"],
+["l32","わたしたちは{二隻|にせき}の{舟|ふね}","","我们是两叶扁舟……","",[],[],"l30"]]]
+];
+function R(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>')}
+function P(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1')}
+var BY={};D.forEach(function(st){st[1].forEach(function(l){BY[l[0]]=l})});
+function pc(p){return p=='动'?'v':(p=='助'||p=='终助')?'p':''}
+var ly='',sd='';
+D.forEach(function(st){
+ly+='<div class="stanza"><div class="tag">'+st[0]+'</div>';
+sd+='<h3 class="st">'+st[0]+'</h3>';
+st[1].forEach(function(l){
+var t=l[7]||l[0];
+ly+='<a class="lyric" href="#study-s-'+t+'" onclick="go(\'study\',\'s-'+t+'\');return false;"><div class="ja">'+R(l[1])+'</div><div class="zh">'+l[3]+'</div></a>';
+if(l[7]){var r=BY[l[7]];sd+='<div class="study mini" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><p class="refnote">↺ 与前面的 <a href="#" onclick="go(\'study\',\'s-'+r[0]+'\');return false;">「'+P(r[1]).slice(0,12)+'…」</a> 相同（或几乎相同），讲解见那里。</p></div>';return}
+var rows=l[5].map(function(v){return '<tr><td class="w">'+v[0]+'</td><td class="k">'+v[1]+'</td><td><span class="pos '+pc(v[2])+'">'+v[2]+'</span></td><td>'+v[3]+'</td></tr>'}).join('');
+var gs=l[6].map(function(g){return '<div class="gram"><h4>'+g[0]+'</h4><p>'+g[1]+'</p></div>'}).join('');
+sd+='<div class="study" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><div class="roma">'+l[2]+'</div><div class="tr">'+l[3]+' <small>（直译：'+l[4]+'）</small></div><table><tr><th>单词</th><th>读音</th><th>词性</th><th>意思 &amp; 说明</th></tr>'+rows+'</table>'+gs+'</div>';
+});
+ly+='</div>';
+});
+document.getElementById('LY').innerHTML=ly;document.getElementById('SD').innerHTML=sd;
+</script>
+<script>
+function go(v, anchor){
+document.getElementById('v-main').classList.toggle('on', v==='main');
+document.getElementById('v-study').classList.toggle('on', v==='study');
+try{ history.replaceState(null,'', v==='study' ? '#study' + (anchor?'-'+anchor:'') : '#'); }catch(e){}
+if(anchor){ var el=document.getElementById(anchor); if(el){ el.scrollIntoView(); return; } }
+window.scrollTo(0,0);
+}
+function jump(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+(function(){ var h=location.hash; if(h.indexOf('#study')===0){ var a=h.slice(7); go('study', a||null); } })();
+</script>
+</body>
+</html>

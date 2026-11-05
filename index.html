@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中岛美雪作品解读</title>
+<meta name="description" content="中岛美雪（中島みゆき）歌曲解读：创作背景、中日歌词对照、跟着歌词学日语。">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f1e6;--paper-2:#efe6d5;--ink:#2b2622;--ink-soft:#5d544c;--sea:#1f3a4d;--sea-2:#2f5670;--ember:#a4472d;--gold:#b48a4a;--line:#dccfb8;--card:#fffaf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Shippori Mincho",serif;line-height:1.9;font-size:17px;
+background-image:radial-gradient(circle at 20% 0%,#fbf6ec 0,transparent 55%),radial-gradient(circle at 100% 100%,#eadfca 0,transparent 50%)}
+a{color:var(--sea-2)}
+rt{font-size:.5em;color:var(--ember);font-family:"Shippori Mincho",serif}
+header.hero{position:relative;color:#f3ead9;text-align:center;padding:84px 20px 128px;overflow:hidden;background:linear-gradient(180deg,#0f2130 0%,#1f3a4d 55%,#2f5670 100%)}
+.hero .stars{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero .moon{position:absolute;top:42px;right:14%;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6e0,#e8d3a6 60%,#c9ae7a);box-shadow:0 0 60px 12px rgba(243,224,180,.25)}
+.hero .kicker{position:relative;letter-spacing:.5em;font-size:13px;opacity:.75}
+.hero h1{position:relative;font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(40px,8vw,76px);margin:16px 0 6px;letter-spacing:.12em}
+.hero h1 rt{color:#e8c98f;font-size:.26em}
+.hero .sub{position:relative;font-size:18px;opacity:.9;letter-spacing:.2em}
+.hero .meta{position:relative;margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
+nav.toc{max-width:960px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
+nav.toc a{background:var(--card);border:1px solid var(--line);color:var(--sea);text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;box-shadow:0 4px 14px rgba(60,40,20,.08)}
+nav.toc a.primary{background:var(--ember);color:#fff;border-color:var(--ember)}
+main{max-width:960px;margin:0 auto;padding:36px 20px 80px}
+section{margin-top:60px;scroll-margin-top:20px}
+h2{font-weight:700;font-size:28px;color:var(--sea);margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
+h2 .num{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:40px;font-weight:400}
+.h2sub{color:var(--ink-soft);font-size:14px;letter-spacing:.2em;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px}
+p{margin:0 0 1em}
+.jq{font-family:"Shippori Mincho",serif;color:var(--sea)}
+
+/* 艺人介绍 */
+.artist{display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:start}
+.portrait{margin:0;position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 30px rgba(60,40,20,.12);background:linear-gradient(180deg,#0f2130,#1f3a4d 60%,#2f5670)}
+.portrait svg{position:absolute;inset:0;width:100%;height:100%}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-size:12px;letter-spacing:.15em;color:#f3ead9;background:linear-gradient(transparent,rgba(10,22,32,.75));text-align:center}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 6px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.facts b{display:block;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);font-weight:400}
+.facts span{font-size:16px;color:var(--sea);font-weight:600}
+@media (max-width:900px){.facts{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:720px){.artist{grid-template-columns:1fr}.portrait{max-width:280px;margin:0 auto;width:100%}}
+
+/* 歌曲目录 */
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:-6px 0 22px}
+.search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+.search input{border:0;outline:0;background:transparent;font:inherit;font-size:15px;color:var(--ink);width:100%}
+.seg{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.seg button{border:0;background:transparent;font:inherit;font-size:14px;color:var(--sea);padding:8px 16px;cursor:pointer}
+.seg button.on{background:var(--sea);color:#f3ead9}
+.count{font-size:13px;color:var(--ink-soft);letter-spacing:.1em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.song{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px 18px;text-decoration:none;color:inherit;box-shadow:0 6px 24px rgba(60,40,20,.05);transition:transform .2s,box-shadow .2s,border-color .2s}
+.song:hover,.song:focus-visible{transform:translateY(-3px);box-shadow:0 14px 34px rgba(60,40,20,.12);border-color:var(--gold);outline:none}
+.song .no{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:34px;line-height:1;position:absolute;right:20px;top:18px;opacity:.8}
+.song .yr{font-size:12px;letter-spacing:.3em;color:var(--ink-soft)}
+.song .ja{font-family:"Shippori Mincho",serif;font-size:26px;color:var(--sea);line-height:2.1;margin:2px 0 0;padding-right:44px}
+.song .ja rt{font-size:.42em}
+.song .ja.long{font-size:20px}
+.song .zh{color:var(--ember);font-size:15px;letter-spacing:.15em}
+.song .src{font-size:13px;color:var(--ink-soft);margin:10px 0 8px;line-height:1.6}
+.song .bl{font-size:15px;line-height:1.8;margin:0 0 14px;flex:1}
+.song .tags{display:flex;gap:6px;flex-wrap:wrap}
+.song .tags span{font-size:12px;padding:1px 10px;border-radius:999px;background:var(--paper-2);color:var(--sea-2);border:1px solid var(--line)}
+.song .go{position:absolute;right:20px;bottom:16px;font-size:13px;color:var(--ember);opacity:0;transition:opacity .2s}
+.song:hover .go{opacity:1}
+.song.soon{align-items:center;justify-content:center;text-align:center;border-style:dashed;background:transparent;box-shadow:none;color:var(--ink-soft);min-height:200px}
+.song.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.song.soon .ja{font-size:20px;padding:0;color:var(--ink-soft)}
+.empty{display:none;text-align:center;color:var(--ink-soft);padding:30px 0}
+
+/* 阅读方式 */
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.how div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.how b{display:block;color:var(--ember);font-size:17px;margin-bottom:4px}
+.how .n{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:26px;margin-right:8px}
+.how p{font-size:15px;color:var(--ink-soft);margin:0}
+
+/* 友情链接 */
+.links{display:flex;gap:14px;flex-wrap:wrap}
+.links a{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#1f3a4d,#2f5670);color:#f3ead9;text-decoration:none;border-radius:16px;padding:16px 22px;min-width:260px;box-shadow:0 8px 24px rgba(31,58,77,.2);transition:transform .2s}
+.links a:hover{transform:translateY(-2px)}
+.links .ic{width:42px;height:42px;border-radius:50%;background:rgba(243,234,217,.12);display:grid;place-items:center;flex:none}
+.links small{display:block;opacity:.7;font-size:12px;letter-spacing:.1em}
+.links strong{font-weight:600;font-size:16px}
+
+footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 60px;border-top:1px solid var(--line);max-width:960px;margin:0 auto}
+</style>
+</head>
+<body>
+<header class="hero">
+<svg class="stars" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<g fill="#f3e3bd">
+<circle cx="80" cy="60" r="1.6"/><circle cx="170" cy="140" r="1.1"/><circle cx="260" cy="40" r="1.4"/><circle cx="330" cy="190" r="1"/><circle cx="420" cy="90" r="1.8"/><circle cx="520" cy="30" r="1.2"/><circle cx="600" cy="160" r="1.4"/><circle cx="690" cy="70" r="1"/><circle cx="770" cy="200" r="1.6"/><circle cx="860" cy="50" r="1.2"/><circle cx="930" cy="150" r="1.8"/><circle cx="120" cy="250" r="1"/><circle cx="460" cy="250" r="1.1"/><circle cx="880" cy="270" r="1"/><circle cx="40" cy="170" r="1.2"/>
+</g>
+</svg>
+<div class="moon" aria-hidden="true"></div>
+<div class="kicker">中島みゆき · 作品解读</div>
+<h1><ruby>中島<rt>なかじま</rt></ruby>みゆき</h1>
+<div class="sub">中 岛 美 雪 作 品 解 读</div>
+<div class="meta">创作背景 ｜ 中日歌词对照 ｜ 跟着歌词学日语</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+
+<nav class="toc">
+<a href="#artist">一 · 关于中岛美雪</a>
+<a class="primary" href="#songs">二 · 歌曲目录 →</a>
+<a href="#links">三 · 友情链接</a>
+</nav>
+
+<main>
+<section id="artist">
+<h2><span class="num">壹</span>关于中岛美雪</h2>
+<div class="h2sub">ABOUT THE ARTIST</div>
+<div class="artist">
+<figure class="portrait">
+<svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<g fill="#f3e3bd"><circle cx="40" cy="50" r="1.4"/><circle cx="110" cy="90" r="1"/><circle cx="250" cy="40" r="1.2"/><circle cx="270" cy="130" r="1"/><circle cx="60" cy="160" r="1.1"/><circle cx="160" cy="30" r="1"/></g>
+<circle cx="205" cy="105" r="38" fill="#ecd9ad"/><circle cx="205" cy="105" r="70" fill="#f3e0b4" opacity=".08"/>
+<path d="M0 270 C 60 290 120 250 180 270 S 260 290 300 272 V400 H0z" fill="#2f5670"/>
+<path d="M0 300 C 70 280 130 320 200 300 S 270 285 300 298 V400 H0z" fill="#f7f1e6" opacity=".18"/>
+<path d="M118 258 h42 l-6 10 h-32z M138 230 v28 M138 232 l16 22 h-16z" fill="#0c1b27" stroke="#0c1b27" stroke-width="2"/>
+<text x="150" y="350" text-anchor="middle" font-family="Shippori Mincho,serif" font-size="30" fill="#f3ead9" letter-spacing="6">中島みゆき</text>
+</svg>
+<!-- 照片：把授权可用的照片存为 assets/miyuki.jpg 即自动显示；没有该文件时显示上面的插画 -->
+<img src="assets/miyuki.jpg" alt="中岛美雪" onerror="this.remove();document.getElementById('cap').textContent='MIYUKI NAKAJIMA'">
+<figcaption id="cap">中岛美雪 · Miyuki Nakajima</figcaption>
+</figure>
+<div>
+<p>中岛美雪（<span class="jq">中島みゆき</span>，1952 年生于北海道札幌）是日本最具代表性的创作歌手之一。1975 年以《<span class="jq">アザミ嬢のララバイ</span>》出道，同年凭《<span class="jq">時代</span>》拿下世界歌谣祭大奖。此后半个世纪，她为自己、也为许多歌手写下了数百首歌。</p>
+<p>她的歌常常从一个很小的人、很小的场景写起：深夜的小酒馆、海上的两只船、公路上的车灯，最后却抵达人的命运与时代。1989 年起，她开创了“用歌曲讲故事”的舞台系列《<span class="jq">夜会</span>》。</p>
+<p>这个网站逐首解读她的作品：讲清创作背景，给出信、达、雅的中文译文，再一句句拆开日语语法，适合想借着她的歌走进日语的人。</p>
+<div class="facts">
+<div><b>出道</b><span>1975 年</span></div>
+<div><b>出身</b><span>北海道 · 札幌</span></div>
+<div><b>舞台</b><span>《夜会》1989–</span></div>
+<div><b>已解读</b><span id="n-songs">—</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="songs">
+<h2><span class="num">贰</span>歌曲目录</h2>
+<div class="h2sub">SONGS · 持续更新</div>
+<div class="tools">
+<label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5d544c" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="搜索歌名、假名、专辑、关键词…" aria-label="搜索歌曲"></label>
+<div class="seg" role="group" aria-label="排序">
+<button class="on" data-sort="no">解读顺序</button><button data-sort="year">发表年份</button>
+</div>
+<span class="count" id="count"></span>
+</div>
+<div class="grid" id="grid"></div>
+<p class="empty" id="empty">没有找到匹配的歌曲。</p>
+</section>
+
+<section id="how">
+<h2><span class="num">叁</span>每一页怎么读</h2>
+<div class="h2sub">HOW TO READ</div>
+<div class="how">
+<div><b><span class="n">一</span>创作背景与解读</b><p>这首歌从哪里来：专辑、电视剧、电影或舞台，以及一段一段的含义。</p></div>
+<div><b><span class="n">二</span>中日歌词对照</b><p>日文原词标注假名，旁边是尽量信、达、雅的中文译文。</p></div>
+<div><b><span class="n">三</span>跟着歌词学日语</b><p>点开独立的学习页，逐词、逐句拆解语法，附语法速查卡。</p></div>
+</div>
+</section>
+
+<section id="links">
+<h2><span class="num">肆</span>友情链接</h2>
+<div class="h2sub">LINKS</div>
+<div class="links">
+<a href="https://shaou77.github.io/" target="_blank" rel="noopener">
+<span class="ic"><svg width="22" height="22" viewBox="0 0 16 16" fill="#f3ead9" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span>
+<span><small>Nick 的个人主页</small><strong>shaou77.github.io</strong></span>
+</a>
+</div>
+</section>
+</main>
+
+<footer>
+歌曲词曲版权归中岛美雪及相关权利人所有。歌词由正版专辑持有者提供，仅供个人学习使用；解读为基于歌词与时代背景的常见读法，非作者官方说明。<br>
+中岛美雪解读 · 共 <span id="n-foot">—</span> 首
+</footer>
+
+<script src="songs.js"></script>
+<script>
+(function(){
+var S=(window.SONGS||[]).slice();
+function R(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>')}
+function P(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1')}
+function K(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1 $2')}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var grid=document.getElementById('grid'),q=document.getElementById('q'),sort='no';
+document.getElementById('n-songs').textContent=S.length+' 首';
+document.getElementById('n-foot').textContent=S.length;
+S.forEach(function(s){s._k=(K(s.title)+' '+P(s.title)+' '+s.zh+' '+s.year+' '+s.source+' '+s.blurb+' '+(s.tags||[]).join(' ')+' '+s.slug).toLowerCase()});
+function card(s){
+return '<a class="song" href="songs/'+esc(s.slug)+'/">'+
+'<span class="no">'+String(s.no).padStart(2,'0')+'</span>'+
+'<span class="yr">'+s.year+'</span>'+
+'<span class="ja'+(P(s.title).length>9?' long':'')+'">'+R(esc(s.title))+'</span>'+
+'<span class="zh">'+esc(s.zh)+'</span>'+
+'<span class="src">'+esc(s.source)+'</span>'+
+'<p class="bl">'+esc(s.blurb)+'</p>'+
+'<span class="tags">'+(s.tags||[]).map(function(t){return '<span>'+esc(t)+'</span>'}).join('')+'</span>'+
+'<span class="go">阅读解读 →</span></a>';
+}
+function draw(){
+var k=q.value.trim().toLowerCase();
+var list=S.filter(function(s){return !k||k.split(/\s+/).every(function(w){return s._k.indexOf(w)>-1})});
+list.sort(function(a,b){return sort==='year'?(a.year-b.year||a.no-b.no):a.no-b.no});
+grid.innerHTML=list.map(card).join('')+(k?'':'<div class="song soon"><span class="ja">更多歌曲</span><span class="src">陆续更新中……</span></div>');
+document.getElementById('empty').style.display=list.length?'none':'block';
+document.getElementById('count').textContent=k?('找到 '+list.length+' 首'):('共 '+S.length+' 首');
+}
+q.addEventListener('input',draw);
+document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
+document.querySelectorAll('.seg button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');sort=b.dataset.sort;draw();})});
+draw();
+})();
+</script>
+</body>
+</html>

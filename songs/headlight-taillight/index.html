@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ヘッドライト・テールライト · 解读</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f1e6;--paper-2:#efe6d5;--ink:#2b2622;--ink-soft:#5d544c;--sea:#1f3a4d;--sea-2:#2f5670;--ember:#a4472d;--gold:#b48a4a;--line:#dccfb8;--card:#fffaf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Shippori Mincho",serif;line-height:1.9;font-size:17px;
+background-image:radial-gradient(circle at 20% 0%,#fbf6ec 0,transparent 55%),radial-gradient(circle at 100% 100%,#eadfca 0,transparent 50%)}
+a{color:var(--sea-2)}
+rt{font-size:.5em;color:var(--ember);font-family:"Shippori Mincho",serif}
+header.hero{position:relative;color:#f3ead9;text-align:center;padding:80px 20px 116px;overflow:hidden;background:linear-gradient(180deg,#0f2130 0%,#1f3a4d 55%,#2f5670 100%)}
+.hero.small{padding:46px 20px 84px}
+.hero .moon{position:absolute;top:42px;right:14%;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6e0,#e8d3a6 60%,#c9ae7a);box-shadow:0 0 60px 12px rgba(243,224,180,.25)}
+.hero .kicker{letter-spacing:.5em;font-size:13px;opacity:.75}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(44px,9vw,84px);margin:16px 0 6px;letter-spacing:.12em}
+.hero.small h1{font-size:clamp(30px,6vw,48px)}
+.hero h1 rt{color:#e8c98f;font-size:.28em}
+.hero .sub{font-size:18px;opacity:.9;letter-spacing:.2em}
+.hero .meta{margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
+.boats{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:260px;height:40px;opacity:.9}
+nav.toc{max-width:860px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
+nav.toc a,.btn{background:var(--card);border:1px solid var(--line);color:var(--sea);text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;box-shadow:0 4px 14px rgba(60,40,20,.08);cursor:pointer;font-family:inherit}
+nav.toc a.primary,.btn.primary{background:var(--ember);color:#fff;border-color:var(--ember)}
+main{max-width:860px;margin:0 auto;padding:36px 20px 80px}
+section{margin-top:60px}
+h2{font-weight:700;font-size:28px;color:var(--sea);margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
+h2 .num{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:40px;font-weight:400}
+.h2sub{color:var(--ink-soft);font-size:14px;letter-spacing:.2em;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px}
+h3{color:var(--ember);font-size:20px;margin:34px 0 10px}
+p{margin:0 0 1em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:10px 0 26px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.facts b{display:block;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);font-weight:400}
+.facts span{font-size:17px;color:var(--sea);font-weight:600}
+blockquote{margin:22px 0;padding:16px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,#f3e8d3,transparent);color:var(--ink-soft)}
+.jq{font-family:"Shippori Mincho",serif;color:var(--sea)}
+.note{font-size:14px;color:var(--ink-soft);background:var(--paper-2);border-radius:10px;padding:12px 16px;border:1px dashed var(--line)}
+.stanza{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 26px 6px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05)}
+.stanza .tag{font-size:12px;color:var(--gold);letter-spacing:.3em;padding:12px 0 2px}
+.lyric{display:grid;grid-template-columns:1.1fr 1fr;gap:4px 28px;padding:14px 0;border-bottom:1px dashed var(--line);align-items:center;text-decoration:none;color:inherit;position:relative}
+.lyric:last-child{border-bottom:none}
+.lyric:hover{background:linear-gradient(90deg,transparent,#f6ecdb,transparent)}
+.lyric:hover::after{content:"拆解 →";position:absolute;right:0;top:4px;font-size:11px;color:var(--ember)}
+.lyric .ja{font-family:"Shippori Mincho",serif;font-size:20px;line-height:2.3}
+.lyric .zh{font-size:17px;color:var(--sea-2);border-left:2px solid var(--line);padding-left:20px}
+@media (max-width:640px){.lyric{grid-template-columns:1fr}.lyric .zh{border-left:none;padding-left:0}.stanza{padding:8px 16px}}
+.cta{text-align:center;margin:44px 0 10px;padding:30px 20px;border-radius:16px;background:linear-gradient(135deg,#1f3a4d,#2f5670);color:#f3ead9}
+.cta p{opacity:.85;font-size:15px}
+.study{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 14px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05);scroll-margin-top:20px}
+.study.mini{padding:14px 24px 4px}
+.study .line{font-family:"Shippori Mincho",serif;font-size:23px;line-height:2.4;color:var(--sea)}
+.study .roma{font-family:Georgia,serif;font-style:italic;color:var(--ink-soft);font-size:15px;margin-top:-4px}
+.study .tr{margin:8px 0 14px;color:var(--ember)}
+.study .tr small{color:var(--ink-soft)}
+.refnote{font-size:14px;color:var(--ink-soft)}
+.st{border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:46px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 14px}
+th{background:var(--sea);color:#f3ead9;font-weight:600;text-align:left;padding:8px 10px;font-size:13px}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.w{font-family:"Shippori Mincho",serif;font-size:18px;white-space:nowrap;color:var(--sea)}
+td.k{color:var(--ember);white-space:nowrap;font-size:14px}
+.pos{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap}
+.pos.p{background:#f4dfd5;color:var(--ember)}.pos.v{background:#dbe6ee;color:var(--sea)}
+@media (max-width:640px){td.w,td.k{white-space:normal}table{font-size:14px}}
+.gram{background:var(--paper-2);border-radius:12px;padding:12px 18px;margin:10px 0}
+.gram h4{margin:0 0 4px;color:var(--sea);font-size:16px}
+.gram h4::before{content:"◆ ";color:var(--gold)}
+.gram p{margin:0;font-size:15.5px}
+.ex{font-family:"Shippori Mincho",serif;color:var(--ink)}
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cheat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.cheat b{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--ember);display:block}
+.back{position:fixed;right:18px;bottom:18px;z-index:9}
+footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 60px;border-top:1px solid var(--line);max-width:860px;margin:0 auto}
+.view{display:none}.view.on{display:block}
+.hero .stars{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero .tw{animation:tw 3.2s ease-in-out infinite;transform-origin:754px 104px}
+@keyframes tw{0%,100%{opacity:.35}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero .tw{animation:none}}
+.hero>*{position:relative}
+.hero .stars,.hero .waves{position:absolute}
+
+.nb{display:inline-block;white-space:nowrap}
+.hero h1.long{font-size:clamp(26px,6.2vw,62px);letter-spacing:.06em}
+.hero.small h1.long{font-size:clamp(22px,5vw,42px)}
+header.hero:not(.small){padding-bottom:180px}
+.hero .road{position:absolute;left:0;right:0;bottom:62px;width:100%;height:96px}
+.hero .road .hl{animation:drive 6s linear infinite}
+.hero .road .tl{animation:drive2 7.5s linear infinite}
+@keyframes drive{from{stroke-dashoffset:0}to{stroke-dashoffset:-400}}
+@keyframes drive2{from{stroke-dashoffset:0}to{stroke-dashoffset:400}}
+@media (prefers-reduced-motion:reduce){.hero .road .hl,.hero .road .tl{animation:none}}
+.hero .road{position:absolute}
+</style>
+</head>
+<body>
+<!-- ===================== MAIN VIEW ===================== -->
+<div class="view on" id="v-main">
+<header class="hero">
+<svg class="stars" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<g fill="#f3e3bd">
+<circle cx="80" cy="60" r="1.6"/><circle cx="170" cy="140" r="1.1"/><circle cx="260" cy="40" r="1.4"/><circle cx="330" cy="150" r="1"/><circle cx="420" cy="90" r="1.8"/><circle cx="520" cy="30" r="1.2"/><circle cx="600" cy="130" r="1.4"/><circle cx="690" cy="70" r="1"/><circle cx="860" cy="50" r="1.2"/><circle cx="930" cy="140" r="1.8"/><circle cx="40" cy="160" r="1.2"/>
+</g>
+<g class="tw"><path d="M745 92 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" fill="#fff4d6"/></g>
+</svg>
+<svg class="road" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 70 C 360 20 720 110 1080 60 S 1380 40 1440 50" stroke="#0b1822" stroke-width="18" fill="none" opacity=".55"/>
+<path class="hl" d="M0 64 C 360 14 720 104 1080 54 S 1380 34 1440 44" stroke="#fff4d6" stroke-width="2.4" fill="none" stroke-dasharray="60 340" stroke-linecap="round" opacity=".9"/>
+<path class="tl" d="M0 76 C 360 26 720 116 1080 66 S 1380 46 1440 56" stroke="#e0563a" stroke-width="2.4" fill="none" stroke-dasharray="40 360" stroke-linecap="round" opacity=".9"/>
+</svg>
+<div class="kicker">中島みゆき · 2000</div>
+<h1 class="long"><span class="nb">ヘッドライト・</span><span class="nb">テールライト</span></h1>
+<div class="sub">前 灯 · 尾 灯</div>
+<div class="meta">作词 · 作曲：中岛美雪 ｜ 编曲：濑尾一三 ｜ NHK《Project X 挑战者们》片尾曲 ｜ 专辑《短篇集》</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a>
+<a href="#bg" onclick="jump('bg');return false;">一 · 创作背景与解读</a>
+<a href="#lyrics" onclick="jump('lyrics');return false;">二 · 歌词对照</a>
+<a class="primary" href="#study" onclick="go('study');return false;">三 · 跟着歌词学日语 →</a>
+</nav>
+<main>
+<section id="bg">
+<h2><span class="num">壹</span>创作背景与歌曲含义</h2>
+<div class="h2sub">BACKGROUND &amp; MEANING</div>
+<div class="facts">
+<div><b>单曲发行</b><span>2000 年 7 月 19 日</span></div>
+<div><b>形式</b><span>双 A 面单曲，与《地上の星》同碟</span></div>
+<div><b>用途</b><span>NHK《Project X》片尾曲</span></div>
+<div><b>收录专辑</b><span>《短篇集》· 2000 年 11 月</span></div>
+</div>
+<h3>一档纪录片，和它的两首歌</h3>
+<p>2000 年 3 月，NHK 开播纪录片<b>《プロジェクトX～挑戦者たち～》</b>（Project X：挑战者们）。每一集讲一项战后日本的“工程奇迹”或“产品奇迹”，但主角不是企业家或名人，而是当年在现场埋头苦干、名字从未被记住的技术员、工人和普通职员。</p>
+<p>据说，节目制作人今井彰被中岛美雪 1998 年的《命の別名》打动，专程请她为节目写主题曲。她写了两首：片头曲<b>《地上の星》</b>和片尾曲<b>《ヘッドライト・テールライト》</b>，2000 年 7 月 19 日以双 A 面单曲发行。这是中岛美雪转到新唱片公司 Yamaha Music Communications 后的第一张作品，编曲是长期合作的<b>濑尾一三</b>。</p>
+<p>单曲刚发行时只排到 Oricon 周榜第 15 位，却随着节目播出越卖越久。2002 年末的红白歌会上，中岛美雪在富山县黑部水坝的隧道里现场演唱《地上の星》，次月这张单曲登上周榜第一，距发行已过了两年半，累计销量超过百万张，在榜 183 周。2024 年节目以《新プロジェクトX》重新开播时，主题曲依然交给了她。</p>
+<blockquote>《地上の星》在片头追问：那些在地上发光的无名之星，都去了哪里？《ヘッドライト・テールライト》在片尾回答：<b>他们的名字也许被忘了，但旅途还没有结束。</b></blockquote>
+<h3>标题：前灯与尾灯</h3>
+<p>深夜的公路上，迎面而来的是一串白色的车前灯（headlight），远去的是一串红色的车尾灯（taillight）。中岛美雪用这两样再普通不过的东西，写出了一个人在人生之路上的位置：前灯照着还没走到的路，尾灯亮在已经走过的路上。</p>
+<p>歌词第三段把这层意思说破了：照亮前方的，是<span class="jq">まだ咲かぬ見果てぬ夢</span>，还没开花、一辈子也追不完的梦；照亮遥远身后的，是<span class="jq">あどけない夢</span>，小时候那些天真的梦。人就是那辆车，夹在两种梦中间，在夜里一直往前开。</p>
+<h3>全曲解读 · 五个层次</h3>
+<p><b>一、被风吹散的星名。</b>第一段没有出现“人”，只有“星”。这里的星，正是《地上の星》里那些无名的人。<span class="jq">語り継ぐ人もなく</span>，没有人把他们的故事讲给下一代听；他们的名字被卷进呼啸的风里，混散开去，最后被忘记。</p>
+<p><b>二、雨和时光，冲走了足迹。</b>第二段换成“足迹”。足迹消失在落下的雨里，也消失在落下的时光里。“时光像雨一样落下”是全曲最美的一句：它不是一下子把痕迹抹掉，而是一点一点、一层一层地覆盖上去。至于赞歌（<span class="jq">称える歌</span>），从来只为英雄而唱，从这些普通人头上掠过去了。</p>
+<p><b>三、两次“即使”，一个回答。</b>两段主歌都停在一个<span class="jq">〜ても</span>上：<span class="jq">忘れられても</span>（即使被遗忘），<span class="jq">過ぎても</span>（即使赞歌与你无关）。中岛美雪没有替他们争辩“你们应该被记住”，也没有说“我来赞美你们”（那是《瞬きもせず》的做法）。她只说了一句：<b>旅途还没有结束。</b>尊严不来自被看见，而来自继续往前走。</p>
+<p><b>四、前方的梦，身后的梦。</b>第三段第一次出现了“光”。前灯照亮的是还没实现的梦，尾灯照亮的是童年的梦。过去不是一片黑暗，那些天真的梦仍然在身后亮着；未来也不是一片黑暗，前面总有一个追不完的梦。所以这趟旅程停不下来。</p>
+<p><b>五、尾灯，留给后来的人。</b>（这是一种读法，并非作者说明。）车尾灯其实不是给自己看的，它是给<b>后面的车</b>看的。第一段说“没有人把故事讲下去”，可每一个在夜路上开过的人，都会在身后留下一点红光，让后来的人知道这条路有人走过。放进 Project X 的语境里，这就是一代代无名技术者之间的接力：名字被忘了，路却留下了。</p>
+<p>全曲只有三段短短的主歌，副歌反复了八次。“ヘッドライト・テールライト，旅はまだ終わらない”，像夜路上一盏接一盏掠过的路灯，单调、坚定，一直延伸到看不见的远处。</p>
+</section>
+<section id="lyrics">
+<h2><span class="num">贰</span>歌词中日对照</h2>
+<div class="h2sub">LYRICS · 日文原文 × 中文译文</div>
+<p class="note"><b>翻译原则：</b>信（不违原意）、达（中文自然）、雅（保留诗意）。不逐字硬译，必要处略作演绎。<br>💡 <b>点击任意一句</b>，可直接跳到该句的逐词讲解。</p>
+<div id="LY"></div>
+<h3>译法小记</h3>
+<p><b>“語り継ぐ人もなく” → “再没有人，把这些故事一代代讲下去”</b>：“語り継ぐ”是“讲述＋接续”，一个词里藏着“世代”的意思，中文必须展开成“一代代讲下去”才能说清楚。</p>
+<p><b>“紛れ散らばる” → “飘散、隐没”</b>：“紛れる”是混进去、分辨不出，“散らばる”是四散。“隐没”对前者，“飘散”对后者，又贴合“被风吹”的画面。</p>
+<p><b>“降る時” → “纷纷落下的时光”</b>：没有译成更顺口的“流逝的时光”，因为原文刻意让“时光”和“雨”用同一个动词“降る”。保留“落下”，才保留得住这个比喻。</p>
+<p><b>“英雄のために過ぎても” → “纵然只献给英雄，从我们身旁掠过”</b>：“過ぎる”既有“掠过”，又让人想到“〜に過ぎない（只不过是）”。中文用“只献给”和“掠过”两个词，把两层意思都放进去。</p>
+<p><b>“見果てぬ夢” → “永远做不完的梦”</b>：这是日语里的固定说法，指一生都追不到尽头的梦想。“未竟之梦”更雅，但唱起来太硬，所以用了更口语的说法。</p>
+<p><b>“ヘッドライト・テールライト” → “前灯，尾灯”</b>：原文是两个外来语并排，不加任何说明。中文也只用最短的“前灯，尾灯”，保留那种夜路上一闪而过的节奏。副歌反复时，译文在两种说法之间交替，免得读起来单调。</p>
+<div class="cta">
+<div style="font-size:22px;font-family:'Shippori Mincho',serif">跟着歌词学日语</div>
+<p>全曲逐句拆解：单词、读音、词性、语法点，专为日语初学者准备。</p>
+<button class="btn primary" onclick="go('study')">打开学习页 →</button>
+</div>
+</section>
+</main>
+</div>
+<!-- ===================== STUDY VIEW ===================== -->
+<div class="view" id="v-study">
+<header class="hero small">
+<div class="kicker">跟着歌词学日语</div>
+<h1 class="long"><span class="nb">ヘッドライト・</span><span class="nb">テールライト</span></h1>
+<div class="sub">逐 词 逐 句</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a><a href="#" onclick="go('main');return false;">← 返回解读与歌词</a><a href="#cheat" onclick="jump('cheat');return false;">语法速查卡</a></nav>
+<main>
+<p class="note">📖 <b>阅读方法：</b>先看整句和罗马音，跟着读一遍；再看单词表；最后看语法点。重复出现的句子只讲第一次。标“回顾”的语法点，前几首歌里已经讲过，可以对照复习。<br>
+标签：<span class="pos">名</span> 名词　<span class="pos v">动</span> 动词　<span class="pos p">助</span> 助词（标明词在句中角色的“小零件”）　<span class="pos">形</span> 形容词　<span class="pos">副</span> 副词</p>
+<div id="SD"></div>
+<h3 class="st" id="cheat">本曲语法速查卡</h3>
+<div class="cheat">
+<div><b>ます形＋动词</b>复合动词：語り継ぐ、吹きすさぶ</div>
+<div><b>〜もなく</b>连……也没有，（然后）</div>
+<div><b>连用形中顿</b>紛れ散らばる：……而……</div>
+<div><b>〜られる</b>被动：忘れられる（回顾）</div>
+<div><b>〜ても</b>即使……也（回顾）</div>
+<div><b>ない形</b>う段→あ段＋ない：終わらない</div>
+<div><b>まだ＋否定</b>还没……，还不会……</div>
+<div><b>て形中顿</b>消えて：……了，而且……</div>
+<div><b>のために</b>为了……（回顾）</div>
+<div><b>過ぎる</b>经过；〜に過ぎない＝只不过</div>
+<div><b>〜のは A</b>……的，是 A（强调）</div>
+<div><b>〜ぬ</b>＝〜ない：咲かぬ（回顾）</div>
+<div><b>見果てぬ夢</b>未竟之梦（惯用语）</div>
+<div><b>あどけない</b>天真。ない 不是否定！</div>
+<div><b>遥か＋名</b>遥か後ろ、遥か昔</div>
+<div><b>片假名＋ー</b>外来语与长音：テール</div>
+</div>
+</main>
+<button class="btn back" onclick="go('main')">← 返回</button>
+</div>
+<footer>
+《ヘッドライト・テールライト》词曲 © 中岛美雪。歌词由正版专辑持有者提供，仅供个人学习使用。<br>
+背景资料参考：<a href="https://en.wikipedia.org/wiki/Earthly_Stars_(Unsung_Heroes)" target="_blank" rel="noopener">英文维基百科「Earthly Stars (Unsung Heroes)」</a> · <a href="https://tower.jp/article/news/2024/03/22/tg014" target="_blank" rel="noopener">TOWER RECORDS《新プロジェクトX》报道</a>；歌词解读为基于歌词与节目背景的读法，非作者官方说明。<br>
+<a href="../../">中岛美雪解读</a> · 第 6 首
+</footer>
+<script>
+var D=[["第一段 · 被遗忘的星名", [["l1", "{語|かた}り{継|つ}ぐ{人|ひと}もなく", "kataritsugu hito mo naku", "再没有人，把这些故事一代代讲下去", "连传述下去的人也没有", [["語る", "かたる", "动", "讲述、叙说"], ["継ぐ", "つぐ", "动", "继承、接续"], ["語り継ぐ", "かたりつぐ", "动", "一代接一代地讲下去、传颂"], ["人", "ひと", "名", "人"], ["も", "mo", "助", "连（一个）……也"], ["なく", "なく", "形", "ない（没有）的く形，句子中顿"]], [["复合动词：ます形＋动词", "<span class=\"ex\">語る→語り</span>（ます形去掉ます）＋<span class=\"ex\">継ぐ</span>＝<span class=\"ex\">語り継ぐ</span>，“讲＋接续”＝传颂下去。同类还有 <span class=\"ex\">受け継ぐ</span>（继承）、<span class=\"ex\">引き継ぐ</span>（交接）。《瞬きもせず》里的 <span class=\"ex\">通り過ぎる</span> 也是这种结构（回顾）。"], ["定语从句（回顾）", "<span class=\"ex\">語り継ぐ｜人</span>＝会传述下去的｜人。动词原形直接放在名词前面，和 <span class=\"ex\">君を映す鏡</span> 一样。"], ["〜もなく：连……也没有，（然后……）", "<span class=\"ex\">人もない</span>＝一个人也没有；变成 <span class=\"ex\">なく</span> 就能接下一句。和《瞬きもせず》的 <span class=\"ex\">牙も毒も棘もなく</span> 是同一个用法（回顾）。"]], ""], ["l2", "{吹|ふ}きすさぶ{風|かぜ}の{中|なか}へ", "fukisusabu kaze no naka e", "在那呼啸肆虐的狂风里", "向着猛烈吹刮的风之中", [["吹く", "ふく", "动", "（风）吹"], ["すさぶ", "すさぶ", "动", "（文语）狂暴、肆虐，汉字写 荒ぶ"], ["吹きすさぶ", "ふきすさぶ", "动", "（风）狂吹、呼啸不止"], ["風", "かぜ", "名", "风"], ["の", "no", "助", "“的”"], ["中", "なか", "名", "里面"], ["へ", "e", "助", "方向“往……”，写 he 读 <b>e</b>"]], [["又一个复合动词", "<span class=\"ex\">吹き</span>＋<span class=\"ex\">すさぶ</span>：吹得狂暴。日语很爱用“动词＋动词”来给动作加上力度或方向。"], ["〜の中へ：往……里去", "<span class=\"ex\">へ</span> 表示方向，“进入”的感觉。<span class=\"ex\">風の中で</span> 是“在风里（做某事）”；<span class=\"ex\">風の中へ</span> 是“（被卷）进风里去”。这一行要和下一行的动词 <span class=\"ex\">紛れ散らばる</span> 连起来读。"]], ""], ["l3", "{紛|まぎ}れ{散|ち}らばる{星|ほし}の{名|な}は", "magire chirabaru hoshi no na wa", "那些飘散、隐没其中的星辰之名", "混杂而散落的星星的名字", [["紛れる", "まぎれる", "动", "混进去，混得分辨不出"], ["紛れ", "まぎれ", "动", "紛れる 的连用形（中顿）"], ["散らばる", "ちらばる", "动", "散落、四散"], ["星", "ほし", "名", "星星"], ["名", "な", "名", "名字（＝名前，更文雅）"], ["は", "wa", "助", "主题"]], [["动词连用形中顿：A し、B する", "<span class=\"ex\">紛れ</span>（混进去）＋<span class=\"ex\">散らばる</span>（散开）。连用形后面接另一个动词，表示“……而……”，比 て形 更书面。"], ["跨两行的长定语", "<span class=\"ex\">吹きすさぶ風の中へ紛れ散らばる｜星</span>＝卷进呼啸的风里、混散开去的｜星。歌词把一个长修饰语拆成两行，读的时候要拼起来，再<b>从后往前</b>翻。"], ["名 ／ 名前", "都是“名字”。<span class=\"ex\">名前</span> 是日常说法；单字 <span class=\"ex\">名（な）</span> 更庄重，常见于 <span class=\"ex\">名もなき人</span>（无名之人）这样的说法。"]], ""], ["l4", "{忘|わす}れられても", "wasurerarete mo", "纵然早已被人遗忘", "即使被忘记", [["忘れる", "わすれる", "动", "忘记"], ["忘れられる", "わすれられる", "动", "忘れる 的被动形：被忘记"], ["ても", "te mo", "助", "即使……也"]], [["被动 〜られる（回顾）", "一段动词去掉 る 加 <span class=\"ex\">られる</span>：<span class=\"ex\">忘れる→忘れられる</span>。在《二隻の舟》里讲过。注意：<span class=\"ex\">忘れられる</span> 也可以是“能忘记”（可能形），要靠上下文判断，这里显然是“被忘记”。"], ["〜ても（回顾）", "<span class=\"ex\">忘れられて＋も</span>＝即使被忘记。句子在这里停住，答案留给副歌：“旅途还没有结束。”"], ["省略的主语", "被<b>谁</b>忘记？歌词没说，也不需要说：是整个世界。日语常把不重要或不言自明的主语省掉。"]], ""], ["c1a", "ヘッドライト・テールライト<br>{旅|たび}はまだ{終|お}わらない", "heddoraito tēruraito tabi wa mada owaranai", "前灯，尾灯，旅途还没有走到尽头", "前灯·尾灯，旅程还没有结束", [["ヘッドライト", "heddoraito", "名", "headlight，车前灯"], ["テールライト", "tēruraito", "名", "taillight，车尾灯"], ["旅", "たび", "名", "旅行、旅途（常比喻人生）"], ["は", "wa", "助", "主题"], ["まだ", "まだ", "副", "还、仍然"], ["終わる", "おわる", "动", "结束"], ["ない", "nai", "助动", "否定"]], [["外来语：片假名＋长音ー", "英语词用片假名写：head→<span class=\"ex\">ヘッド</span>，light→<span class=\"ex\">ライト</span>，tail→<span class=\"ex\">テール</span>。“ー”是长音符号，<span class=\"ex\">テール</span> 读 tē-ru，要拖长。"], ["动词ない形：う段→あ段＋ない", "<span class=\"ex\">終わる→終わら＋ない</span>、<span class=\"ex\">行く→行かない</span>、<span class=\"ex\">書く→書かない</span>。五段动词的否定都这样变。"], ["まだ＋否定：还没……", "<span class=\"ex\">まだ終わらない</span> 带着“不会结束、还要继续”的意志感；<span class=\"ex\">まだ終わっていない</span> 只是客观地说“还没结束”。歌里用前者，所以听起来像一句宣言。"]], ""], ["c1b", "ヘッドライト・テールライト<br>{旅|たび}はまだ{終|お}わらない", "", "前灯，尾灯，这一程，还远远没有完", "", [], [], "c1a"]]], ["第二段 · 雨中消失的足迹", [["l5", "{足跡|あしあと}は　{降|ふ}る{雨|あめ}と", "ashiato wa furu ame to", "我们的足迹，随着落下的雨", "足迹，和落下的雨", [["足跡", "あしあと", "名", "脚印、足迹（足＋跡）"], ["は", "wa", "助", "主题"], ["降る", "ふる", "动", "（雨、雪）下、落"], ["雨", "あめ", "名", "雨"], ["と", "to", "助", "和、与"]], [["降る雨：定语从句", "<span class=\"ex\">降る｜雨</span>＝正在落下的｜雨。注意日语说“下雨”是 <span class=\"ex\">雨が降る</span>，不用“下”。"], ["A と B：并列", "<span class=\"ex\">と</span> 把 <span class=\"ex\">降る雨</span> 和下一行的 <span class=\"ex\">降る時</span> 连起来：“落下的雨，和落下的时光”。"], ["足跡 的读法", "训读 <span class=\"ex\">あしあと</span>（脚印）；音读 <span class=\"ex\">そくせき</span>，多用于“足迹、功绩”这种抽象意思。歌里唱的是 あしあと。"]], ""], ["l6", "{降|ふ}る{時|とき}の{中|なか}へ{消|き}えて", "furu toki no naka e kiete", "消失在纷纷落下的时光之中", "消失进落下的时间之中", [["時", "とき", "名", "时间、时光"], ["中", "なか", "名", "里面"], ["へ", "e", "助", "方向"], ["消えて", "きえて", "动", "消える（消失）的て形"]], [["诗的修辞：时光“落下”", "时间本来不会“降る”。中岛美雪让时光像雨一样一层层落下，把足迹慢慢盖住、冲走。前一行的“雨”是看得见的，这一行的“时光”是看不见的，两者重叠。"], ["て形中顿", "<span class=\"ex\">消えて</span>：句子没完，“消失了，而且……”，接到下一行。"], ["自动词 消える（回顾）", "《瞬きもせず》里讲过：<span class=\"ex\">消える</span>（自己消失）／<span class=\"ex\">消す</span>（把它弄掉）。足迹是“自己”消失的，没人故意去擦。"]], ""], ["l7", "{称|たた}える{歌|うた}は", "tataeru uta wa", "那些歌功颂德的赞歌", "称颂的歌", [["称える", "たたえる", "动", "称颂、赞扬（也写 讃える）"], ["歌", "うた", "名", "歌"], ["は", "wa", "助", "主题"]], [["称える ／ 誉める", "都是“称赞”。<span class=\"ex\">誉める</span>（《瞬きもせず》）是日常的夸奖，夸一个人；<span class=\"ex\">称える</span> 更庄重，是公开地颂扬功绩，常用于英雄、伟人。"]], ""], ["l8", "{英雄|えいゆう}のために{過|す}ぎても", "eiyū no tame ni sugite mo", "纵然只献给英雄，从我们身旁掠过", "即使是为了英雄而过去", [["英雄", "えいゆう", "名", "英雄"], ["のために", "no tame ni", "句型", "为了……"], ["過ぎる", "すぎる", "动", "经过、过去；超过"], ["ても", "te mo", "助", "即使……也"]], [["名词＋のために（回顾）", "《瞬きもせず》里有 <span class=\"ex\">痛むための涙</span>。名词后面要加 の：<span class=\"ex\">家族のために働く</span>（为家人工作）。"], ["過ぎる 的两层影子", "① 经过、掠过：<span class=\"ex\">通り過ぎる</span>；② 句型 <span class=\"ex\">〜に過ぎない</span>“只不过是……”。这句把两层叠在一起：赞歌只属于英雄，它从无名的我们头上掠过去了。所以中文译成“只献给英雄，从我们身旁掠过”。"], ["两段都以 〜ても 收尾", "第一段 <span class=\"ex\">忘れられても</span>，第二段 <span class=\"ex\">過ぎても</span>。“即使被遗忘”“即使没有赞歌”，两次让步，都由同一句副歌回答。"]], ""], ["c2a", "ヘッドライト・テールライト<br>{旅|たび}はまだ{終|お}わらない", "", "前灯，尾灯，旅途还没有走到尽头", "", [], [], "c1a"], ["c2b", "ヘッドライト・テールライト<br>{旅|たび}はまだ{終|お}わらない", "", "前灯，尾灯，这一程，还远远没有完", "", [], [], "c1a"]]], ["第三段 · 前方的梦，身后的梦", [["l9", "{行|ゆ}く{先|さき}を{照|て}らすのは", "yukusaki o terasu no wa", "照亮前方路途的", "照亮去处的东西是", [["行く先", "ゆくさき", "名", "去处、前方、前途（行く＋先）"], ["を", "o", "助", "宾语"], ["照らす", "てらす", "动", "照亮"], ["の", "no", "名", "形式名词：“……的（东西）”"], ["は", "wa", "助", "主题"]], [["〜のは A：……的，是 A", "把动词句变成名词再当主题：<span class=\"ex\">行く先を照らすのは＋夢</span>＝照亮前路的，是梦。用来<b>强调</b>后面的答案。<span class=\"ex\">好きなのは君だ</span>＝我喜欢的是你。"], ["照らす ／ 照る", "<span class=\"ex\">照らす</span>（他动词）：照亮某物；<span class=\"ex\">照る</span>（自动词）：（太阳）照着。<span class=\"ex\">月が道を照らす</span>（月亮照亮道路）。"], ["行く 读 ゆく", "和《二隻の舟》一样，歌词里的 <span class=\"ex\">行く</span> 常读文雅的 <span class=\"ex\">ゆく</span>（回顾）。"]], ""], ["l10", "まだ{咲|さ}かぬ{見果|みは}てぬ{夢|ゆめ}", "mada sakanu mihatenu yume", "是尚未绽放、永远做不完的梦", "还没开花的、看不到尽头的梦", [["まだ", "まだ", "副", "还（没）"], ["咲く", "さく", "动", "开花"], ["咲かぬ", "さかぬ", "动", "＝咲かない，文语否定"], ["見果てる", "みはてる", "动", "看到最后、看完（見る＋果てる）"], ["見果てぬ", "みはてぬ", "动", "＝見果てない"], ["夢", "ゆめ", "名", "梦、梦想"]], [["〜ぬ：文语否定（回顾）", "《瞬きもせず》的 <span class=\"ex\">知らぬ</span> 是同一个用法：<span class=\"ex\">咲かぬ＝咲かない</span>。"], ["見果てぬ夢：惯用语", "“没能做到最后的梦”，也就是<b>未竟之梦</b>、一辈子追不完的梦。英语名曲 The Impossible Dream 的日文译名就是《見果てぬ夢》。"], ["两个定语叠在一起", "<span class=\"ex\">まだ咲かぬ｜見果てぬ｜夢</span>：还没开花的、做不完的，一起修饰“梦”。梦被比作一朵还没开的花。"]], ""], ["l11", "{遥|はる}か{後|うし}ろを{照|て}らすのは", "haruka ushiro o terasu no wa", "而照亮遥远身后的", "照亮遥远后方的是", [["遥か", "はるか", "副", "遥远地"], ["後ろ", "うしろ", "名", "后面、身后"], ["を", "o", "助", "宾语"], ["照らす", "てらす", "动", "照亮"], ["のは", "no wa", "句型", "……的，是"]], [["遥か＋位置／时间名词", "<span class=\"ex\">遥か後ろ</span>（遥远的后方）、<span class=\"ex\">遥か遠く</span>（遥远的远方）、<span class=\"ex\">遥か昔</span>（很久很久以前）。"], ["对句：行く先 ↔ 遥か後ろ", "第九、十一行结构完全一样，只换了方向：前面 ↔ 后面。正好对应标题的 ヘッドライト（照前方）和 テールライト（亮在身后）。"]], ""], ["l12", "あどけない{夢|ゆめ}", "adokenai yume", "是那天真稚气的梦", "天真的梦", [["あどけない", "あどけない", "形", "天真无邪、稚气（多形容孩子）"], ["夢", "ゆめ", "名", "梦"]], [["⚠ あどけない 不是否定！", "结尾的 ない 是词本身的一部分，不是“不”。同类还有 <span class=\"ex\">少ない</span>（少）、<span class=\"ex\">危ない</span>（危险）、<span class=\"ex\">切ない</span>（揪心）。"], ["い形容词直接修饰名词", "不用加 な：<span class=\"ex\">あどけない夢　高い山　寒い夜</span>。（な形容词才要加 な，例如 <span class=\"ex\">ささやかな人生</span>。）"]], ""], ["c3a", "ヘッドライト・テールライト<br>{旅|たび}はまだ{終|お}わらない", "", "前灯，尾灯，旅途还没有走到尽头", "", [], [], "c1a"], ["c3b", "ヘッドライト・テールライト<br>{旅|たび}はまだ{終|お}わらない", "", "前灯，尾灯，这一程，还远远没有完", "", [], [], "c1a"], ["c3c", "ヘッドライト・テールライト<br>{旅|たび}はまだ{終|お}わらない", "", "前灯，尾灯，旅途还没有走到尽头", "", [], [], "c1a"], ["c3d", "ヘッドライト・テールライト<br>{旅|たび}はまだ{終|お}わらない", "", "前灯，尾灯，这一程，还远远没有完", "", [], [], "c1a"]]]];
+function R(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>')}
+function P(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1')}
+var BY={};D.forEach(function(st){st[1].forEach(function(l){BY[l[0]]=l})});
+function pc(p){return p=='动'?'v':(p=='助'||p=='终助')?'p':''}
+var ly='',sd='';
+D.forEach(function(st){
+ly+='<div class="stanza"><div class="tag">'+st[0]+'</div>';
+sd+='<h3 class="st">'+st[0]+'</h3>';
+st[1].forEach(function(l){
+var t=l[7]||l[0];
+ly+='<a class="lyric" href="#study-s-'+t+'" onclick="go(\'study\',\'s-'+t+'\');return false;"><div class="ja">'+R(l[1])+'</div><div class="zh">'+l[3]+'</div></a>';
+if(l[7]){var r=BY[l[7]];sd+='<div class="study mini" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><p class="refnote">↺ 与前面的 <a href="#" onclick="go(\'study\',\'s-'+r[0]+'\');return false;">「'+P(r[1]).slice(0,12)+'…」</a> 相同（或几乎相同），讲解见那里。</p></div>';return}
+var rows=l[5].map(function(v){return '<tr><td class="w">'+v[0]+'</td><td class="k">'+v[1]+'</td><td><span class="pos '+pc(v[2])+'">'+v[2]+'</span></td><td>'+v[3]+'</td></tr>'}).join('');
+var gs=l[6].map(function(g){return '<div class="gram"><h4>'+g[0]+'</h4><p>'+g[1]+'</p></div>'}).join('');
+sd+='<div class="study" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><div class="roma">'+l[2]+'</div><div class="tr">'+l[3]+' <small>（直译：'+l[4]+'）</small></div><table><tr><th>单词</th><th>读音</th><th>词性</th><th>意思 &amp; 说明</th></tr>'+rows+'</table>'+gs+'</div>';
+});
+ly+='</div>';
+});
+document.getElementById('LY').innerHTML=ly;document.getElementById('SD').innerHTML=sd;
+</script>
+<script>
+function go(v, anchor){
+document.getElementById('v-main').classList.toggle('on', v==='main');
+document.getElementById('v-study').classList.toggle('on', v==='study');
+try{ history.replaceState(null,'', v==='study' ? '#study' + (anchor?'-'+anchor:'') : '#'); }catch(e){}
+if(anchor){ var el=document.getElementById(anchor); if(el){ el.scrollIntoView(); return; } }
+window.scrollTo(0,0);
+}
+function jump(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+(function(){ var h=location.hash; if(h.indexOf('#study')===0){ var a=h.slice(7); go('study', a||null); } })();
+</script>
+</body>
+</html>

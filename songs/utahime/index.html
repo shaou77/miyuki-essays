@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>歌姫 · 解读</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f1e6;--paper-2:#efe6d5;--ink:#2b2622;--ink-soft:#5d544c;--sea:#1f3a4d;--sea-2:#2f5670;--ember:#a4472d;--gold:#b48a4a;--line:#dccfb8;--card:#fffaf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Shippori Mincho",serif;line-height:1.9;font-size:17px;
+background-image:radial-gradient(circle at 20% 0%,#fbf6ec 0,transparent 55%),radial-gradient(circle at 100% 100%,#eadfca 0,transparent 50%)}
+a{color:var(--sea-2)}
+rt{font-size:.5em;color:var(--ember);font-family:"Shippori Mincho",serif}
+header.hero{position:relative;color:#f3ead9;text-align:center;padding:80px 20px 116px;overflow:hidden;background:linear-gradient(180deg,#0f2130 0%,#1f3a4d 55%,#2f5670 100%)}
+.hero.small{padding:46px 20px 84px}
+.hero .moon{position:absolute;top:42px;right:14%;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6e0,#e8d3a6 60%,#c9ae7a);box-shadow:0 0 60px 12px rgba(243,224,180,.25)}
+.hero .kicker{letter-spacing:.5em;font-size:13px;opacity:.75}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(44px,9vw,84px);margin:16px 0 6px;letter-spacing:.12em}
+.hero.small h1{font-size:clamp(30px,6vw,48px)}
+.hero h1 rt{color:#e8c98f;font-size:.28em}
+.hero .sub{font-size:18px;opacity:.9;letter-spacing:.2em}
+.hero .meta{margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
+.boats{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:260px;height:40px;opacity:.9}
+nav.toc{max-width:860px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
+nav.toc a,.btn{background:var(--card);border:1px solid var(--line);color:var(--sea);text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;box-shadow:0 4px 14px rgba(60,40,20,.08);cursor:pointer;font-family:inherit}
+nav.toc a.primary,.btn.primary{background:var(--ember);color:#fff;border-color:var(--ember)}
+main{max-width:860px;margin:0 auto;padding:36px 20px 80px}
+section{margin-top:60px}
+h2{font-weight:700;font-size:28px;color:var(--sea);margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
+h2 .num{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:40px;font-weight:400}
+.h2sub{color:var(--ink-soft);font-size:14px;letter-spacing:.2em;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px}
+h3{color:var(--ember);font-size:20px;margin:34px 0 10px}
+p{margin:0 0 1em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:10px 0 26px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.facts b{display:block;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);font-weight:400}
+.facts span{font-size:17px;color:var(--sea);font-weight:600}
+blockquote{margin:22px 0;padding:16px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,#f3e8d3,transparent);color:var(--ink-soft)}
+.jq{font-family:"Shippori Mincho",serif;color:var(--sea)}
+.note{font-size:14px;color:var(--ink-soft);background:var(--paper-2);border-radius:10px;padding:12px 16px;border:1px dashed var(--line)}
+.stanza{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 26px 6px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05)}
+.stanza .tag{font-size:12px;color:var(--gold);letter-spacing:.3em;padding:12px 0 2px}
+.lyric{display:grid;grid-template-columns:1.1fr 1fr;gap:4px 28px;padding:14px 0;border-bottom:1px dashed var(--line);align-items:center;text-decoration:none;color:inherit;position:relative}
+.lyric:last-child{border-bottom:none}
+.lyric:hover{background:linear-gradient(90deg,transparent,#f6ecdb,transparent)}
+.lyric:hover::after{content:"拆解 →";position:absolute;right:0;top:4px;font-size:11px;color:var(--ember)}
+.lyric .ja{font-family:"Shippori Mincho",serif;font-size:20px;line-height:2.3}
+.lyric .zh{font-size:17px;color:var(--sea-2);border-left:2px solid var(--line);padding-left:20px}
+@media (max-width:640px){.lyric{grid-template-columns:1fr}.lyric .zh{border-left:none;padding-left:0}.stanza{padding:8px 16px}}
+.cta{text-align:center;margin:44px 0 10px;padding:30px 20px;border-radius:16px;background:linear-gradient(135deg,#1f3a4d,#2f5670);color:#f3ead9}
+.cta p{opacity:.85;font-size:15px}
+.study{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 14px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05);scroll-margin-top:20px}
+.study.mini{padding:14px 24px 4px}
+.study .line{font-family:"Shippori Mincho",serif;font-size:23px;line-height:2.4;color:var(--sea)}
+.study .roma{font-family:Georgia,serif;font-style:italic;color:var(--ink-soft);font-size:15px;margin-top:-4px}
+.study .tr{margin:8px 0 14px;color:var(--ember)}
+.study .tr small{color:var(--ink-soft)}
+.refnote{font-size:14px;color:var(--ink-soft)}
+.st{border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:46px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 14px}
+th{background:var(--sea);color:#f3ead9;font-weight:600;text-align:left;padding:8px 10px;font-size:13px}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.w{font-family:"Shippori Mincho",serif;font-size:18px;white-space:nowrap;color:var(--sea)}
+td.k{color:var(--ember);white-space:nowrap;font-size:14px}
+.pos{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap}
+.pos.p{background:#f4dfd5;color:var(--ember)}.pos.v{background:#dbe6ee;color:var(--sea)}
+@media (max-width:640px){td.w,td.k{white-space:normal}table{font-size:14px}}
+.gram{background:var(--paper-2);border-radius:12px;padding:12px 18px;margin:10px 0}
+.gram h4{margin:0 0 4px;color:var(--sea);font-size:16px}
+.gram h4::before{content:"◆ ";color:var(--gold)}
+.gram p{margin:0;font-size:15.5px}
+.ex{font-family:"Shippori Mincho",serif;color:var(--ink)}
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cheat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.cheat b{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--ember);display:block}
+.back{position:fixed;right:18px;bottom:18px;z-index:9}
+footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 60px;border-top:1px solid var(--line);max-width:860px;margin:0 auto}
+.view{display:none}.view.on{display:block}
+.hero .stars{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero .tw{animation:tw 3.2s ease-in-out infinite;transform-origin:754px 104px}
+@keyframes tw{0%,100%{opacity:.35}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero .tw{animation:none}}
+.hero>*{position:relative}
+.hero .stars,.hero .waves{position:absolute}
+
+.hero .ship{position:absolute;left:50%;bottom:62px;transform:translateX(-50%);width:200px;height:70px;opacity:.85}
+.hero .ship,.hero .moon{position:absolute}
+</style>
+</head>
+<body>
+<!-- ===================== MAIN VIEW ===================== -->
+<div class="view on" id="v-main">
+<header class="hero">
+<svg class="stars" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<g fill="#f3e3bd"><circle cx="80" cy="60" r="1.4"/><circle cx="190" cy="130" r="1"/><circle cx="300" cy="50" r="1.3"/><circle cx="410" cy="170" r="1"/><circle cx="520" cy="40" r="1.6"/><circle cx="620" cy="140" r="1.1"/><circle cx="900" cy="190" r="1.3"/><circle cx="40" cy="200" r="1"/><circle cx="470" cy="240" r="0.9"/></g>
+</svg>
+<div class="moon"></div>
+<div class="kicker">中島みゆき · 1982</div>
+<h1><ruby>歌姫<rt>うたひめ</rt></ruby></h1>
+<div class="sub">歌 姬</div>
+<div class="meta">作词 · 作曲：中岛美雪 ｜ 编曲：青木望 ｜ 专辑《寒水鱼》终曲</div>
+<svg class="ship" viewBox="0 0 200 70" aria-hidden="true"><g fill="#0f2130" opacity=".75"><path d="M30 52 L170 52 L156 64 L44 64 Z"/><rect x="70" y="40" width="56" height="12"/><rect x="84" y="28" width="10" height="12"/><rect x="100" y="24" width="10" height="16"/></g><g fill="#f3e3bd"><circle cx="78" cy="46" r="1.4"/><circle cx="90" cy="46" r="1.4"/><circle cx="102" cy="46" r="1.4"/><circle cx="114" cy="46" r="1.4"/></g></svg>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a>
+<a href="#bg" onclick="jump('bg');return false;">一 · 创作背景与解读</a>
+<a href="#lyrics" onclick="jump('lyrics');return false;">二 · 歌词对照</a>
+<a class="primary" href="#study" onclick="go('study');return false;">三 · 跟着歌词学日语 →</a>
+</nav>
+<main>
+<section id="bg">
+<h2><span class="num">壹</span>创作背景与歌曲含义</h2>
+<div class="h2sub">BACKGROUND &amp; MEANING</div>
+<div class="facts">
+<div><b>专辑发行</b><span>1982 年 3 月 21 日</span></div>
+<div><b>收录</b><span>《寒水鱼》第 9 曲 · 终曲</span></div>
+<div><b>时长</b><span>约 8 分钟，全辑最长</span></div>
+<div><b>专辑成绩</b><span>Oricon 第 1 位 · 日本唱片大奖最佳专辑</span></div>
+</div>
+<h3>《寒水鱼》：最好的年份，最长的终曲</h3>
+<p>1982 年春天，中岛美雪发行专辑<b>《寒水鱼》</b>。开篇是前一年的冠军单曲<b>《悪女》</b>，结尾就是这首<b>《歌姫》</b>。专辑登上 Oricon LP 周榜第 1 位，成为当年日本最畅销的 LP，还拿下了日本唱片大奖的最佳专辑奖。</p>
+<p>《歌姫》长约 8 分钟，是整张专辑最长的一首。编曲是青木望：前奏缓慢展开，副歌一遍比一遍宽阔，像潮水一次次涨上来。它不是单曲，却一直是歌迷心中的代表作之一，后来也收进了多张精选辑。</p>
+<p>一个小细节：排在它前面的第 8 曲叫<b>《砂の船》</b>（沙之船）。“沙”和“船”这两个意象，在《歌姫》里又出现了：沙里的锈玩具，远去的船。整张专辑在海边落幕。</p>
+<blockquote>这首歌没有讲一个完整的故事，它更像一个深夜：一个人，一杯便宜的酒，一首歌姬的歌。他不求被拯救，只求那歌声把心里的东西冲走。</blockquote>
+<h3>标题：歌姬是谁？</h3>
+<p><span class="jq">歌姫</span>（うたひめ）是“歌姬、女歌手”，比 歌手 多了几分华丽和距离感。歌里的“我”用<span class="jq">おまえ</span>称呼她，这是一种很粗放、又很亲近的叫法：像港口小酒馆里的醉客，对着唱片或台上的歌手喃喃自语。</p>
+<p>也有很多听众把它听成中岛美雪对自己职业的自白：歌手的工作，就是替听众承担那些说不出口的东西，然后把它们唱走。下面的解读会两种读法都提到，但请记得，这是解读，不是中岛美雪本人的说明。</p>
+<h3>全曲解读 · 五个层次</h3>
+<p><b>一、寂寞的两难。</b>开头四句是一个死结：说“我寂寞”，人人都嫌你烦，躲得远远的；笑着说“我才不寂寞”，那包袱反而更重。寂寞说出来不行，否认它也不行。中岛美雪用<span class="jq">淋しい荷物</span>（寂寞的行李）这个比喻，把一种情绪变成了压在肩上、能掂出分量的东西。</p>
+<p><b>二、至少，还有歌。</b><span class="jq">せめて</span>是“至少”：大的出路没有，那至少让我把你的歌和着廉价酒一口喝下去。喝下去之后，他看见自己站在<b>远去的船</b>的甲板上。船在离开港口，也在离开现实。这是醉意，也是逃离。</p>
+<p><b>三、被落下的身影。</b>第二段是一组画面：误了南归船的瘦水手，在码头吹口琴；落在沙中锈玩具上找蜜的瘦蝴蝶。两个“瘦”字，两次扑空。接着是全曲最锐利的一句：<span class="jq">握りこぶしの中にあるように見せた夢</span>，把拳头攥得紧紧的，让人以为里面握着梦。可那个人已经走远了，举起这只拳头，又给谁看？</p>
+<p><b>四、谎言的温柔。</b>第三段语气一转，像酒馆里的苦笑：男人总是会说谎，比女人、比孩子都会；女人总是爱听谎，爱它胜过爱昨天和明天。这不是简单的讽刺。回不去的昨天、看不清的明天，都不如眼前一句好听的话。谎言是男女之间互相给的一点止痛药。</p>
+<p><b>五、不是实现，是忘却。</b>最后一次，那个拳头里的“梦”又出现了，这一次的结局是：<span class="jq">もう二年　もう十年　忘れすてるまで</span>，再两年、再十年，直到把它忘掉、扔掉。中岛美雪没有说“坚持梦想”，她说的是：总有一天能放下。于是副歌那句<span class="jq">夢も哀しみも欲望も　歌い流してくれ</span>就有了分量：梦、哀愁、欲望，连梦也一起，请你唱着替我冲走。歌姬把裙裾抛向海风，像扬起一面帆，把这些东西带到海上去。</p>
+<p class="note">本页歌词依据你提供的歌词文件整理。文件里第一次副歌写作“夢も哀しみ欲望も”，后几次都是“夢も哀しみも欲望も”，此处按后者统一。</p>
+</section>
+<section id="lyrics">
+<h2><span class="num">贰</span>歌词中日对照</h2>
+<div class="h2sub">LYRICS · 日文原文 × 中文译文</div>
+<p class="note"><b>翻译原则：</b>信（不违原意）、达（中文自然）、雅（保留诗意）。不逐字硬译，必要处略作演绎。<br>💡 <b>点击任意一句</b>，可直接跳到该句的逐词讲解。</p>
+<div id="LY"></div>
+<h3>译法小记</h3>
+<p><b>“淋しい荷物” → “那名叫寂寞的行囊”</b>：直译“寂寞的行李”显得生硬。加“名叫”，让读者明白寂寞本身就是那件行李；用“行囊”，和后面的船、旅途更搭。</p>
+<p><b>“なお重くなる” → “更沉一分”</b>：“なお”是“越发”。说“更沉一分”，有一点一点往下压的感觉。</p>
+<p><b>“おまえ” → “你”</b>：原文是粗放亲昵的叫法，中文没有完全对应的词。用“你”，再靠整句的口吻带出醉客的随意。</p>
+<p><b>“歌い流してくれ” → “都替我唱着流走吧”</b>：“〜てくれ”是“为我做”，所以加“替我”；“流す”保留“流走”的画面，也暗含“付诸流水”。</p>
+<p><b>“握りこぶしの中にあるように見せた夢” → “攥紧拳头、装作握在手心里的梦”</b>：“見せた”是“做给人看”，译成“装作”，点出梦可能根本不在手里。</p>
+<p><b>“昨日よりも明日よりも嘘が好き” → “爱那谎言，胜过爱昨天，也胜过爱明天”</b>：把比较拆成两个“胜过”，节奏和原文的两个“よりも”对应。</p>
+<div class="cta">
+<div style="font-size:22px;font-family:'Shippori Mincho',serif">跟着歌词学日语</div>
+<p>全曲逐句拆解：单词、读音、词性、语法点，专为日语初学者准备。</p>
+<button class="btn primary" onclick="go('study')">打开学习页 →</button>
+</div>
+</section>
+</main>
+</div>
+<!-- ===================== STUDY VIEW ===================== -->
+<div class="view" id="v-study">
+<header class="hero small">
+<div class="kicker">跟着歌词学日语</div>
+<h1><ruby>歌姫<rt>うたひめ</rt></ruby></h1>
+<div class="sub">逐 词 逐 句</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a><a href="#" onclick="go('main');return false;">← 返回解读与歌词</a><a href="#cheat" onclick="jump('cheat');return false;">语法速查卡</a></nav>
+<main>
+<p class="note">📖 <b>阅读方法：</b>先看整句和罗马音，跟着读一遍；再看单词表；最后看语法点。重复出现的句子只讲第一次。标“回顾”的是前几首已经学过的语法。<br>
+标签：<span class="pos">名</span> 名词　<span class="pos v">动</span> 动词　<span class="pos p">助</span> 助词（标明词在句中角色的“小零件”）　<span class="pos">形</span> 形容词　<span class="pos">副</span> 副词</p>
+<div id="SD"></div>
+<h3 class="st" id="cheat">本曲语法速查卡</h3>
+<div class="cheat">
+<div><b>〜たら</b>如果……（之后）：出したら</div>
+<div><b>〜ば</b>如果……：笑えば、飲みほせば（回顾）</div>
+<div><b>〜なんて ／ 〜なんか</b>……什么的；才不……</div>
+<div><b>〜くない</b>形容词否定：淋しくない</div>
+<div><b>〜くて</b>形容词て形，表原因</div>
+<div><b>〜くなる</b>变得……：重くなる</div>
+<div><b>見える ／ 見せる</b>看得见 ／ 给人看、装作</div>
+<div><b>〜ように見せる</b>装成……的样子</div>
+<div><b>〜てくれ</b>（为我）……吧，てくれる 的命令形</div>
+<div><b>〜に遅れる</b>没赶上……</div>
+<div><b>た形＋名词</b>状态：やせた水夫、錆びた玩具</div>
+<div><b>〜にまみれる</b>浑身沾满……</div>
+<div><b>疑问词＋〜ばいい</b>该……才好？</div>
+<div><b>名＋のために</b>为了……</div>
+<div><b>AはBがうまい／好きだ</b>擅长 ／ 喜欢 B（对象用 が）</div>
+<div><b>Aよりも</b>比 A 更……</div>
+<div><b>〜気がする</b>总觉得……</div>
+<div><b>もう＋数量</b>再……：もう十年</div>
+<div><b>动词＋まで</b>直到……为止（回顾）</div>
+<div><b>复合动词</b>逃げ出す、飲みほす、吹き鳴らす、忘れすてる</div>
+</div>
+</main>
+<button class="btn back" onclick="go('main')">← 返回</button>
+</div>
+<footer>
+《歌姫》词曲 © 中岛美雪。歌词由正版专辑持有者提供，仅供个人学习使用。<br>
+背景资料参考：<a href="https://en.wikipedia.org/wiki/Kansuigyo" target="_blank" rel="noopener">Wikipedia「Kansuigyo」专辑资料</a><br>
+<a href="../../">中岛美雪解读</a> · 第 5 首
+</footer>
+<script>
+var D=[["第一段 · 说不出口的寂寞", [["v1", "{淋|さび}しいなんて　{口|くち}に{出|だ}したら", "sabishii nante kuchi ni dashitara", "若是把“寂寞”二字说出口", "如果把“寂寞什么的”说出口的话", [["淋しい", "さびしい", "形", "寂寞（也写 寂しい；淋しい 多一层“冷清、凄凉”的味道）"], ["なんて", "nante", "助", "“……什么的”，引用时带一点轻视、难为情"], ["口", "くち", "名", "嘴"], ["に", "ni", "助", "到达点：放到嘴上"], ["出したら", "だしたら", "动", "出す（拿出）的 たら 形：如果……的话"]], [["口に出す：说出口", "字面是“拿到嘴边”，意思是把心里话说出来。<span class=\"ex\">気持ちを口に出す</span>＝把心情说出口。反义：<span class=\"ex\">口に出さない</span>（藏在心里）。"], ["〜なんて：……之类的（带情绪的引用）", "把一个词“拎出来”说，带着难为情或不屑：<span class=\"ex\">寂しいなんて言えない</span>＝“寂寞”这种话我说不出口。"], ["〜たら：如果……（之后）", "动词た形＋ら：<span class=\"ex\">出した→出したら　見た→見たら</span>。表示“一旦……就……”，后面接结果。这是本曲新学的条件形。"]], ""], ["v2", "{誰|だれ}もがみんな　うとましくて{逃|に}げ{出|だ}してゆく", "dare mo ga minna utomashikute nigedashite yuku", "人人都会嫌我烦，一个个转身逃开", "谁都、大家都，觉得厌烦而逃走", [["誰も", "だれも", "代", "谁都（肯定句里＝每个人）"], ["が", "ga", "助", "主语"], ["みんな", "みんな", "名", "大家，和 誰も 叠用加强语气"], ["うとましくて", "うとましくて", "形", "うとましい（讨厌、想疏远）的 て 形，表原因"], ["逃げ出して", "にげだして", "动", "逃げ出す（逃走）的 て 形"], ["ゆく", "ゆく", "补助动", "〜てゆく：动作渐渐远去"]], [["形容词 て 形：〜い → 〜くて", "表示原因或并列：<span class=\"ex\">うとましい→うとましくて</span>（因为厌烦，所以……）。<span class=\"ex\">高くて買えない</span>＝太贵了买不起。"], ["复合动词：逃げる＋出す", "〜出す＝“……出去、开始……”。<span class=\"ex\">逃げ出す</span>（逃出去）、<span class=\"ex\">走り出す</span>（跑起来）。"], ["〜てゆく（回顾）", "动作离“我”远去：大家一个个走掉，越走越远。在《二隻の舟》里讲过。"]], ""], ["v3", "{淋|さび}しくなんかないと{笑|わら}えば", "sabishiku nanka nai to waraeba", "可若笑着说“我才不寂寞”", "如果笑着说“一点也不寂寞”", [["淋しくない", "さびしくない", "形", "不寂寞（淋しい 的否定）"], ["なんか", "nanka", "助", "插在中间加强否定：才不……"], ["と", "to", "助", "引用“……”"], ["笑えば", "わらえば", "动", "笑う（笑）的 ば 形：如果笑着……"]], [["形容词否定：〜い → 〜くない", "去掉 い 加 くない：<span class=\"ex\">淋しい→淋しくない　高い→高くない</span>。"], ["〜なんか＋否定：才不……", "嘴硬的语气：<span class=\"ex\">怖くなんかない</span>＝我才不怕呢。和第一句的 なんて 是亲戚。"], ["と＋动词：引用", "「……」と言う／笑う＝笑着说“……”。"], ["〜ば（回顾）", "如果……：<span class=\"ex\">笑う→笑えば</span>。u 段改 e 段加 ば。第一句用 たら，这句用 ば，两种“如果”对仗。"]], ""], ["v4", "{淋|さび}しい{荷物|にもつ}　{肩|かた}の{上|うえ}でなお{重|おも}くなる", "sabishii nimotsu kata no ue de nao omoku naru", "那名叫寂寞的行囊，便在肩头更沉一分", "寂寞的行李在肩膀上更加变重", [["荷物", "にもつ", "名", "行李、包袱"], ["肩", "かた", "名", "肩膀"], ["上", "うえ", "名", "上面"], ["で", "de", "助", "动作发生的场所"], ["なお", "なお", "副", "更加、越发（书面）"], ["重く", "おもく", "形", "重い 的 く 形"], ["なる", "なる", "动", "变成"]], [["形容词く形＋なる：变得……", "最常用的变化句型：<span class=\"ex\">重い→重くなる</span>（变重）、<span class=\"ex\">寒くなる</span>（变冷）。"], ["なお：更加", "和 もっと 意思相近，但更书面，带“本来就重，又更重”的语感。"], ["⚠ 汉字陷阱：荷物", "日语 <span class=\"ex\">荷物</span> 是“行李”，不是“货物”。<span class=\"ex\">荷物を持つ</span>＝拿行李。"]], ""], ["p1", "せめておまえの{歌|うた}を　{安酒|やすざけ}で{飲|の}みほせば", "semete omae no uta o yasuzake de nomihoseba", "至少让我，把你的歌和着廉价的酒一饮而尽", "至少如果把你的歌用便宜的酒喝干的话", [["せめて", "せめて", "副", "至少、哪怕只是"], ["おまえ", "おまえ", "代", "你（亲近、粗放的口吻，汉字写 お前）"], ["安酒", "やすざけ", "名", "便宜的酒（安い＋酒）"], ["で", "de", "助", "凭借、用"], ["飲みほせば", "のみほせば", "动", "飲みほす（喝干）的 ば 形"]], [["せめて：退而求其次", "大的愿望做不到，那“至少”这一点吧：<span class=\"ex\">せめて一目会いたい</span>＝哪怕只见一面也好。"], ["で：用……（回顾）", "手段、工具：<span class=\"ex\">安酒で</span>＝用廉价酒。"], ["复合动词：飲む＋ほす", "ほす（干す）＝弄干。<span class=\"ex\">飲みほす</span>＝一饮而尽。"], ["连浊：さけ → ざけ", "两个词连在一起时，后一个词首的清音常变浊音：<span class=\"ex\">安い＋酒＝やすざけ</span>、<span class=\"ex\">人＋人＝ひとびと</span>。"]], ""], ["p2", "{遠|とお}ざかる{船|ふね}のデッキに{立|た}つ{自分|じぶん}が{見|み}える", "tōzakaru fune no dekki ni tatsu jibun ga mieru", "恍惚间，我看见自己正站在远去的船甲板上", "能看见站在渐渐远去的船的甲板上的自己", [["遠ざかる", "とおざかる", "动", "远去、渐渐离开"], ["船", "ふね", "名", "船"], ["デッキ", "dekki", "名", "甲板（英语 deck）"], ["に", "ni", "助", "存在的位置"], ["立つ", "たつ", "动", "站"], ["自分", "じぶん", "名", "自己"], ["見える", "みえる", "动", "看得见、映入眼帘"]], [["长定语，从后往前读", "[<span class=\"ex\">遠ざかる船のデッキに立つ</span>]＋<span class=\"ex\">自分</span>＝站在远去之船甲板上的｜自己。"], ["見る ／ 見える", "見る 是主动“去看”；見える 是“自然映入眼帘”，对象用 が：<span class=\"ex\">山が見える</span>。这里是醉意中浮现的幻象，所以用 見える。"]], ""]]], ["副歌 · 歌姬", [["c1", "{歌姫|うたひめ}　スカートの{裾|すそ}を", "utahime sukāto no suso o", "歌姬啊，把你的裙裾", "歌姬，把裙子的下摆", [["歌姫", "うたひめ", "名", "歌姬、女歌手（歌＋姫，姫 读作 ひめ）"], ["スカート", "sukāto", "名", "裙子"], ["裾", "すそ", "名", "下摆、裙脚"], ["を", "o", "助", "宾语"]], [["呼唤：名词单独成句", "只喊一声名字，就是呼唤。像中文“歌姬啊——”。"], ["句子没说完", "宾语 を 后面的动词在下一句（なげて）。歌词常把一句拆成两行唱。"]], ""], ["c2", "{歌姫|うたひめ}　{潮風|しおかぜ}になげて", "utahime shiokaze ni nagete", "歌姬啊，抛向海风", "歌姬，向海风抛去", [["潮風", "しおかぜ", "名", "海风（带着潮水气味的风）"], ["に", "ni", "助", "方向、对象"], ["なげて", "なげて", "动", "投げる（扔、抛）的 て 形"]], [["て 形接下一句", "这里的 て 起连接作用：抛出裙裾，（然后）把一切唱走。<span class=\"ex\">投げて、歌い流して</span>，像一串连续的动作。"], ["投げる 的画面", "裙摆被海风扬起，像一面旗，也像一张帆。和后面的“远去的船”遥相呼应。"]], ""], ["c3", "{夢|ゆめ}も{哀|かな}しみも{欲望|よくぼう}も　{歌|うた}い{流|なが}してくれ", "yume mo kanashimi mo yokubō mo utai nagashite kure", "把梦，把哀愁，把欲望，都替我唱着流走吧", "梦也、悲伤也、欲望也，请唱着冲走", [["夢", "ゆめ", "名", "梦、梦想"], ["哀しみ", "かなしみ", "名", "哀愁、悲伤（哀しい→哀しみ）"], ["欲望", "よくぼう", "名", "欲望"], ["歌い流す", "うたいながす", "动", "唱着让它流走（歌う＋流す）"], ["くれ", "kure", "补助动", "てくれる 的命令形：给我……吧"]], [["AもBもCも：……也……也……也", "把三样东西并排列出，一样不落。"], ["形容词 → 名词：〜しみ", "有几个形容词去掉 い 加 み 变名词：<span class=\"ex\">哀しい→哀しみ　楽しい→楽しみ</span>。"], ["〜てくれ：（为我）……吧", "〜てくれる（别人为我做，回顾）的命令形，男性口吻、直接。<span class=\"ex\">待ってくれ</span>＝等等我。"], ["流す：让它流走", "他动词，“使……流走”。<span class=\"ex\">水に流す</span>＝付诸流水、一笔勾销，这里正有这层意思。"]], ""]]], ["第二段 · 被落下的人与物", [["v5", "{南|みなみ}へ{帰|かえ}る{船|ふね}に{遅|おく}れた", "minami e kaeru fune ni okureta", "误了那班南归的船", "没赶上回南方的船的", [["南", "みなみ", "名", "南方"], ["へ", "e", "助", "方向，写 he 读 e"], ["帰る", "かえる", "动", "回去"], ["に", "ni", "助", "“赶不上”的对象"], ["遅れた", "おくれた", "动", "遅れる（迟到、没赶上）的过去形"]], [["〜に遅れる：没赶上……", "对象用 に：<span class=\"ex\">電車に遅れる</span>（没赶上电车）、<span class=\"ex\">約束に遅れる</span>（约会迟到）。"], ["整句是定语", "这一行修饰下一行的“水手”：[没赶上南归船的]＋瘦水手。日语的长定语可以跨行。"]], ""], ["v6", "やせた{水夫|すいふ}　ハーモニカを{吹|ふ}き{鳴|な}らしてる", "yaseta suifu hāmonika o fukinarashiteru", "消瘦的水手，独自吹响口琴", "瘦了的水手在吹响口琴", [["やせた", "やせた", "动", "痩せる（变瘦）的た形，作定语＝瘦的"], ["水夫", "すいふ", "名", "水手、船员"], ["ハーモニカ", "hāmonika", "名", "口琴"], ["吹き鳴らしてる", "ふきならしてる", "动", "吹き鳴らす（吹响）＋てる"]], [["た形作定语＝状态", "有些动词的た形放在名词前，表示“已经是那样”的状态：<span class=\"ex\">やせた人</span>（瘦的人）、<span class=\"ex\">錆びた玩具</span>（生锈的玩具）。"], ["〜てる＝〜ている（回顾）", "口语省掉 い。正在吹着。"], ["复合动词：吹く＋鳴らす", "吹＋使发出声响＝吹响。"]], ""], ["v7", "{砂|すな}にまみれた{錆|さ}びた{玩具|おもちゃ}に", "suna ni mamireta sabita omocha ni", "落在沾满沙粒、锈迹斑斑的玩具上", "在沾满沙子的生锈的玩具上", [["砂", "すな", "名", "沙子"], ["まみれた", "まみれた", "动", "まみれる（沾满）的た形"], ["錆びた", "さびた", "动", "錆びる（生锈）的た形"], ["玩具", "おもちゃ", "名", "玩具（熟字训，也读 がんぐ）"], ["に", "ni", "助", "落脚的地点"]], [["〜にまみれる：浑身沾满", "多指不好的东西：<span class=\"ex\">泥にまみれる</span>（满身泥）、<span class=\"ex\">汗まみれ</span>（满身汗）。"], ["两个定语叠在一起", "[砂にまみれた][錆びた]＋玩具。日语可以把几个定语直接排在名词前。"], ["熟字训：玩具＝おもちゃ", "和 <span class=\"ex\">火傷（やけど）</span> 一样，整个词一个特殊读音。"]], ""], ["v8", "やせた{蝶々|ちょうちょう}　{蜜|みつ}をさがし{舞|ま}いおりている", "yaseta chōchō mitsu o sagashi maiorite iru", "消瘦的蝴蝶，翩翩落下，寻觅花蜜", "瘦了的蝴蝶在找蜜，飞舞着落下", [["蝶々", "ちょうちょう", "名", "蝴蝶（口语、可爱的说法）"], ["蜜", "みつ", "名", "蜜"], ["さがし", "さがし", "动", "探す（寻找）的ます形词干，句中中顿"], ["舞いおりて", "まいおりて", "动", "舞いおりる（盘旋着落下）的て形"]], [["ます形词干中顿（回顾）", "在《EAST ASIA》讲过：词干当逗号用，比て形更书面。<span class=\"ex\">蜜をさがし、舞いおりている</span>＝一边找蜜，一边飘落。"], ["々：重复符号", "表示重复前一个汉字：<span class=\"ex\">蝶々　人々　時々</span>。"], ["画面的意思", "在锈玩具上找蜜，当然找不到。和误船的水手一样，是“落在原地、扑了空”的身影。"]], ""], ["p3", "{握|にぎ}りこぶしの{中|なか}にあるように{見|み}せた{夢|ゆめ}を", "nigirikobushi no naka ni aru yō ni miseta yume o", "那个我攥紧拳头、装作握在手心里的梦", "做出好像在握紧的拳头里一样的样子的梦", [["握りこぶし", "にぎりこぶし", "名", "攥紧的拳头（握る＋こぶし）"], ["中", "なか", "名", "里面"], ["ある", "ある", "动", "在、有（物）"], ["ように", "ように", "句型", "像……一样（回顾）"], ["見せた", "みせた", "动", "見せる（给人看、装出）的过去形"]], [["〜ように見せる：装成……的样子", "让别人以为是那样：<span class=\"ex\">元気なように見せる</span>＝装作很有精神。这里是：拳头攥得紧紧的，让人以为里面握着梦，其实也许是空的。"], ["見える ／ 見せる", "見える（看得见，自然）↔ 見せる（给人看，故意）。一对很好用的词。"], ["整句是定语，核心词是 夢", "[握りこぶしの中にあるように見せた]＋夢を。を 的动词在下一句。"]], ""], ["p4", "{遠|とお}ざかる{誰|だれ}のためにふりかざせばいい", "tōzakaru dare no tame ni furikazaseba ii", "又该为哪一个远去的人，高高举起", "为了远去的谁挥举才好呢", [["遠ざかる", "とおざかる", "动", "远去"], ["誰", "だれ", "疑", "谁"], ["のために", "no tame ni", "句型", "为了……"], ["ふりかざせば", "ふりかざせば", "动", "ふりかざす（高举挥舞）的ば形"], ["いい", "いい", "形", "好"]], [["疑问词＋〜ばいい：该……才好？", "不知所措地问：<span class=\"ex\">どうすればいい</span>＝该怎么办才好？<span class=\"ex\">誰に聞けばいい</span>＝该问谁好？"], ["名词＋のために：为了……", "《瞬きもせず》学过 动词＋ための，这里是名词版：<span class=\"ex\">君のために</span>（为了你）。"], ["ふりかざす", "振り＋かざす，把东西高高举起挥动，常带“炫耀、示威”的意思。举起空拳头给谁看呢？人都走远了。"]], ""]]], ["副歌", [["c2a", "{歌姫|うたひめ}　スカートの{裾|すそ}を", "", "歌姬啊，把你的裙裾", "", [], [], "c1"], ["c2b", "{歌姫|うたひめ}　{潮風|しおかぜ}になげて", "", "歌姬啊，抛向海风", "", [], [], "c2"], ["c2c", "{夢|ゆめ}も{哀|かな}しみも{欲望|よくぼう}も　{歌|うた}い{流|なが}してくれ", "", "把梦，把哀愁，把欲望，都替我唱着流走吧", "", [], [], "c3"]]], ["第三段 · 谎言", [["v9", "{男|おとこ}はいつも　{嘘|うそ}がうまいね", "otoko wa itsumo uso ga umai ne", "男人啊，总是那么会说谎", "男人总是很会撒谎呢", [["男", "おとこ", "名", "男人"], ["いつも", "いつも", "副", "总是"], ["嘘", "うそ", "名", "谎言"], ["が", "ga", "助", "能力的对象"], ["うまい", "うまい", "形", "擅长、高明（也有“好吃”的意思）"], ["ね", "ne", "终助", "……呢、……啊（寻求共鸣）"]], [["Aは Bが うまい：A 擅长 B", "能力、喜好的对象用 が 不用 を：<span class=\"ex\">彼は歌がうまい</span>（他歌唱得好）。"], ["终助词 ね", "说话人觉得对方也会同意：<span class=\"ex\">いい天気だね</span>（天气真好啊）。这里像对着歌姬叹一口气。"]], ""], ["v10", "{女|おんな}よりも{子供|こども}よりも　{嘘|うそ}がうまいね", "onna yori mo kodomo yori mo uso ga umai ne", "比女人、比孩子，都更会说谎", "比女人还、比孩子还会撒谎呢", [["女", "おんな", "名", "女人"], ["よりも", "yori mo", "助", "比……（更）"], ["子供", "こども", "名", "孩子"]], [["Aより（も）：比 A 更……", "比较句：<span class=\"ex\">兄より背が高い</span>＝比哥哥高。加 も 语气更强：“连……都比不上”。"]], ""], ["v11", "{女|おんな}はいつも　{嘘|うそ}が{好|す}きだね", "onna wa itsumo uso ga suki da ne", "女人啊，总是那么爱听谎", "女人总是喜欢谎言呢", [["好き", "すき", "な形", "喜欢"], ["だ", "da", "助动", "断定"]], [["Aが好きだ：喜欢 A", "和 うまい 一样，对象用 が：<span class=\"ex\">猫が好きだ</span>（喜欢猫）。"], ["对仗", "男は〜嘘がうまい ／ 女は〜嘘が好き。一个会说，一个爱听：谎言成了两个人都需要的东西。"]], ""], ["v12", "{昨日|きのう}よりも　{明日|あした}よりも　{嘘|うそ}が{好|す}きだね", "kinō yori mo ashita yori mo uso ga suki da ne", "爱那谎言，胜过爱昨天，也胜过爱明天", "比起昨天、比起明天，更喜欢谎言呢", [["昨日", "きのう", "名", "昨天（熟字训）"], ["明日", "あした", "名", "明天（也读 あす）"]], [["比较的对象可以很抽象", "比的是“昨天”和“明天”：回不去的过去、不可知的未来，都不如眼前一句温柔的谎话。"], ["熟字训：昨日・明日・今日", "きのう・あした・きょう，都不能按单字读。"]], ""], ["p1b", "せめておまえの{歌|うた}を　{安酒|やすざけ}で{飲|の}みほせば", "", "至少让我，把你的歌和着廉价的酒一饮而尽", "", [], [], "p1"], ["p5", "{遠|とお}ざかる{船|ふね}のデッキに　たたずむ{気|き}がする", "tōzakaru fune no dekki ni tatazumu ki ga suru", "便觉得自己伫立在那远去的船甲板上", "觉得伫立在远去的船的甲板上", [["たたずむ", "たたずむ", "动", "伫立、久久站着（文雅）"], ["気がする", "ki ga suru", "句型", "觉得、感觉好像"]], [["〜気がする：总觉得……", "没有根据的直觉：<span class=\"ex\">雨が降る気がする</span>＝总觉得要下雨。"], ["立つ → たたずむ", "第一段说 <span class=\"ex\">立つ自分が見える</span>（看见自己站着），这里换成 <span class=\"ex\">たたずむ気がする</span>（觉得自己伫立着）：从“看见”变成“身在其中”，醉意更深了。"]], ""]]], ["副歌", [["c3a", "{歌姫|うたひめ}　スカートの{裾|すそ}を", "", "歌姬啊，把你的裙裾", "", [], [], "c1"], ["c3b", "{歌姫|うたひめ}　{潮風|しおかぜ}になげて", "", "歌姬啊，抛向海风", "", [], [], "c2"], ["c3c", "{夢|ゆめ}も{哀|かな}しみも{欲望|よくぼう}も　{歌|うた}い{流|なが}してくれ", "", "把梦，把哀愁，把欲望，都替我唱着流走吧", "", [], [], "c3"]]], ["终段 · 直到忘却", [["p7", "{握|にぎ}りこぶしの{中|なか}にあるように{見|み}せた{夢|ゆめ}を", "", "那个我攥紧拳头、装作握在手心里的梦", "", [], [], "p3"], ["p6", "もう{二年|にねん}　もう{十年|じゅうねん}　{忘|わす}れすてるまで", "mō ninen mō jūnen wasuresuteru made", "再过两年，再过十年，直到把它忘却、丢弃", "再两年、再十年，直到忘掉扔掉为止", [["もう", "もう", "副", "再、还（接数量）"], ["二年", "にねん", "名", "两年"], ["十年", "じゅうねん", "名", "十年"], ["忘れすてる", "わすれすてる", "动", "忘掉并丢弃（忘れる＋捨てる）"], ["まで", "made", "助", "直到……为止（回顾）"]], [["もう＋数量：再……", "不是“已经”，而是“再加”：<span class=\"ex\">もう一杯</span>（再来一杯）、<span class=\"ex\">もう少し</span>（再一点）。"], ["动词原形＋まで：直到……", "在《EAST ASIA》学过 まで：<span class=\"ex\">君が来るまで待つ</span>＝等到你来。"], ["复合动词：忘れる＋捨てる", "忘记还不够，还要扔掉。这个组合，比单说 忘れる 更决绝。"]], ""]]], ["尾声 · 副歌", [["c4a", "{歌姫|うたひめ}　スカートの{裾|すそ}を", "", "歌姬啊，把你的裙裾", "", [], [], "c1"], ["c4b", "{歌姫|うたひめ}　{潮風|しおかぜ}になげて", "", "歌姬啊，抛向海风", "", [], [], "c2"], ["c4c", "{夢|ゆめ}も{哀|かな}しみも{欲望|よくぼう}も　{歌|うた}い{流|なが}してくれ", "", "把梦，把哀愁，把欲望，都替我唱着流走吧", "", [], [], "c3"]]]];
+function R(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>')}
+function P(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1')}
+var BY={};D.forEach(function(st){st[1].forEach(function(l){BY[l[0]]=l})});
+function pc(p){return p=='动'?'v':(p=='助'||p=='终助')?'p':''}
+var ly='',sd='';
+D.forEach(function(st){
+ly+='<div class="stanza"><div class="tag">'+st[0]+'</div>';
+sd+='<h3 class="st">'+st[0]+'</h3>';
+st[1].forEach(function(l){
+var t=l[7]||l[0];
+ly+='<a class="lyric" href="#study-s-'+t+'" onclick="go(\'study\',\'s-'+t+'\');return false;"><div class="ja">'+R(l[1])+'</div><div class="zh">'+l[3]+'</div></a>';
+if(l[7]){var r=BY[l[7]];sd+='<div class="study mini" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><p class="refnote">↺ 与前面的 <a href="#" onclick="go(\'study\',\'s-'+r[0]+'\');return false;">「'+P(r[1]).slice(0,12)+'…」</a> 相同（或几乎相同），讲解见那里。</p></div>';return}
+var rows=l[5].map(function(v){return '<tr><td class="w">'+v[0]+'</td><td class="k">'+v[1]+'</td><td><span class="pos '+pc(v[2])+'">'+v[2]+'</span></td><td>'+v[3]+'</td></tr>'}).join('');
+var gs=l[6].map(function(g){return '<div class="gram"><h4>'+g[0]+'</h4><p>'+g[1]+'</p></div>'}).join('');
+sd+='<div class="study" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><div class="roma">'+l[2]+'</div><div class="tr">'+l[3]+' <small>（直译：'+l[4]+'）</small></div><table><tr><th>单词</th><th>读音</th><th>词性</th><th>意思 &amp; 说明</th></tr>'+rows+'</table>'+gs+'</div>';
+});
+ly+='</div>';
+});
+document.getElementById('LY').innerHTML=ly;document.getElementById('SD').innerHTML=sd;
+</script>
+<script>
+function go(v, anchor){
+document.getElementById('v-main').classList.toggle('on', v==='main');
+document.getElementById('v-study').classList.toggle('on', v==='study');
+try{ history.replaceState(null,'', v==='study' ? '#study' + (anchor?'-'+anchor:'') : '#'); }catch(e){}
+if(anchor){ var el=document.getElementById(anchor); if(el){ el.scrollIntoView(); return; } }
+window.scrollTo(0,0);
+}
+function jump(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+(function(){ var h=location.hash; if(h.indexOf('#study')===0){ var a=h.slice(7); go('study', a||null); } })();
+</script>
+</body>
+</html>

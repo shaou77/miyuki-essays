@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EAST ASIA · 解读</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f1e6;--paper-2:#efe6d5;--ink:#2b2622;--ink-soft:#5d544c;--sea:#1f3a4d;--sea-2:#2f5670;--ember:#a4472d;--gold:#b48a4a;--line:#dccfb8;--card:#fffaf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Shippori Mincho",serif;line-height:1.9;font-size:17px;
+background-image:radial-gradient(circle at 20% 0%,#fbf6ec 0,transparent 55%),radial-gradient(circle at 100% 100%,#eadfca 0,transparent 50%)}
+a{color:var(--sea-2)}
+rt{font-size:.5em;color:var(--ember);font-family:"Shippori Mincho",serif}
+header.hero{position:relative;color:#f3ead9;text-align:center;padding:80px 20px 116px;overflow:hidden;background:linear-gradient(180deg,#0f2130 0%,#1f3a4d 55%,#2f5670 100%)}
+.hero.small{padding:46px 20px 84px}
+.hero .moon{position:absolute;top:42px;right:14%;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6e0,#e8d3a6 60%,#c9ae7a);box-shadow:0 0 60px 12px rgba(243,224,180,.25)}
+.hero .kicker{letter-spacing:.5em;font-size:13px;opacity:.75}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(44px,9vw,84px);margin:16px 0 6px;letter-spacing:.12em}
+.hero.small h1{font-size:clamp(30px,6vw,48px)}
+.hero h1 rt{color:#e8c98f;font-size:.28em}
+.hero .sub{font-size:18px;opacity:.9;letter-spacing:.2em}
+.hero .meta{margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
+.boats{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:260px;height:40px;opacity:.9}
+nav.toc{max-width:860px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
+nav.toc a,.btn{background:var(--card);border:1px solid var(--line);color:var(--sea);text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;box-shadow:0 4px 14px rgba(60,40,20,.08);cursor:pointer;font-family:inherit}
+nav.toc a.primary,.btn.primary{background:var(--ember);color:#fff;border-color:var(--ember)}
+main{max-width:860px;margin:0 auto;padding:36px 20px 80px}
+section{margin-top:60px}
+h2{font-weight:700;font-size:28px;color:var(--sea);margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
+h2 .num{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:40px;font-weight:400}
+.h2sub{color:var(--ink-soft);font-size:14px;letter-spacing:.2em;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px}
+h3{color:var(--ember);font-size:20px;margin:34px 0 10px}
+p{margin:0 0 1em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:10px 0 26px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.facts b{display:block;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);font-weight:400}
+.facts span{font-size:17px;color:var(--sea);font-weight:600}
+blockquote{margin:22px 0;padding:16px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,#f3e8d3,transparent);color:var(--ink-soft)}
+.jq{font-family:"Shippori Mincho",serif;color:var(--sea)}
+.note{font-size:14px;color:var(--ink-soft);background:var(--paper-2);border-radius:10px;padding:12px 16px;border:1px dashed var(--line)}
+.stanza{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 26px 6px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05)}
+.stanza .tag{font-size:12px;color:var(--gold);letter-spacing:.3em;padding:12px 0 2px}
+.lyric{display:grid;grid-template-columns:1.1fr 1fr;gap:4px 28px;padding:14px 0;border-bottom:1px dashed var(--line);align-items:center;text-decoration:none;color:inherit;position:relative}
+.lyric:last-child{border-bottom:none}
+.lyric:hover{background:linear-gradient(90deg,transparent,#f6ecdb,transparent)}
+.lyric:hover::after{content:"拆解 →";position:absolute;right:0;top:4px;font-size:11px;color:var(--ember)}
+.lyric .ja{font-family:"Shippori Mincho",serif;font-size:20px;line-height:2.3}
+.lyric .zh{font-size:17px;color:var(--sea-2);border-left:2px solid var(--line);padding-left:20px}
+@media (max-width:640px){.lyric{grid-template-columns:1fr}.lyric .zh{border-left:none;padding-left:0}.stanza{padding:8px 16px}}
+.cta{text-align:center;margin:44px 0 10px;padding:30px 20px;border-radius:16px;background:linear-gradient(135deg,#1f3a4d,#2f5670);color:#f3ead9}
+.cta p{opacity:.85;font-size:15px}
+.study{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 14px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05);scroll-margin-top:20px}
+.study.mini{padding:14px 24px 4px}
+.study .line{font-family:"Shippori Mincho",serif;font-size:23px;line-height:2.4;color:var(--sea)}
+.study .roma{font-family:Georgia,serif;font-style:italic;color:var(--ink-soft);font-size:15px;margin-top:-4px}
+.study .tr{margin:8px 0 14px;color:var(--ember)}
+.study .tr small{color:var(--ink-soft)}
+.refnote{font-size:14px;color:var(--ink-soft)}
+.st{border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:46px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 14px}
+th{background:var(--sea);color:#f3ead9;font-weight:600;text-align:left;padding:8px 10px;font-size:13px}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.w{font-family:"Shippori Mincho",serif;font-size:18px;white-space:nowrap;color:var(--sea)}
+td.k{color:var(--ember);white-space:nowrap;font-size:14px}
+.pos{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap}
+.pos.p{background:#f4dfd5;color:var(--ember)}.pos.v{background:#dbe6ee;color:var(--sea)}
+@media (max-width:640px){td.w,td.k{white-space:normal}table{font-size:14px}}
+.gram{background:var(--paper-2);border-radius:12px;padding:12px 18px;margin:10px 0}
+.gram h4{margin:0 0 4px;color:var(--sea);font-size:16px}
+.gram h4::before{content:"◆ ";color:var(--gold)}
+.gram p{margin:0;font-size:15.5px}
+.ex{font-family:"Shippori Mincho",serif;color:var(--ink)}
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cheat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.cheat b{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--ember);display:block}
+.back{position:fixed;right:18px;bottom:18px;z-index:9}
+footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 60px;border-top:1px solid var(--line);max-width:860px;margin:0 auto}
+.view{display:none}.view.on{display:block}
+.gram i,.cheat i{font-style:normal;font-family:"Shippori Mincho",serif;color:var(--ink)}
+.hero h1.latin{font-family:"Shippori Mincho",serif;letter-spacing:.18em}
+.hills{position:absolute;left:0;right:0;bottom:40px;width:100%;height:110px;opacity:.55}
+.rain{position:absolute;inset:0;background-image:repeating-linear-gradient(105deg,rgba(243,234,217,.07) 0 1px,transparent 1px 22px);pointer-events:none}
+.imagery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:14px 0 22px}
+.imagery div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:15px}
+.imagery b{display:block;font-family:"Shippori Mincho",serif;color:var(--ember);font-size:19px;margin-bottom:2px}
+</style>
+</head>
+<body>
+<!-- ===================== MAIN VIEW ===================== -->
+<div class="view on" id="v-main">
+<header class="hero">
+<div class="rain"></div>
+<div class="moon"></div>
+<div class="kicker">中島みゆき · 1992</div>
+<h1 class="latin">EAST ASIA</h1>
+<div class="sub">东 亚</div>
+<div class="meta">作词 · 作曲：中岛美雪 ｜ 编曲：濑尾一三 · David Campbell ｜ 专辑《EAST ASIA》开篇曲</div>
+<svg class="hills" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 110 L0 70 L120 40 L230 66 L360 22 L470 60 L600 34 L720 64 L840 18 L980 58 L1100 36 L1230 62 L1340 30 L1440 52 L1440 110z" fill="#0f2130" opacity=".55"/>
+<path d="M0 110 L0 84 L160 62 L300 80 L450 56 L620 82 L780 60 L940 84 L1090 58 L1260 80 L1440 66 L1440 110z" fill="#0f2130" opacity=".8"/>
+<g stroke="#e9d6ad" stroke-width="1.4" fill="none" opacity=".7"><path d="M1360 30 q-6 30 -2 62"/><path d="M1360 30 q4 26 10 54"/><path d="M1360 30 q-14 22 -16 50"/><path d="M1360 30 q14 18 22 40"/><path d="M1360 30 q-2 34 4 70"/></g>
+</svg>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a>
+<a href="#bg" onclick="jump('bg');return false;">一 · 创作背景与解读</a>
+<a href="#lyrics" onclick="jump('lyrics');return false;">二 · 歌词对照</a>
+<a class="primary" href="#study" onclick="go('study');return false;">三 · 跟着歌词学日语 →</a>
+</nav>
+<main>
+<section id="bg">
+<h2><span class="num">壹</span>创作背景与歌曲含义</h2>
+<div class="h2sub">BACKGROUND &amp; MEANING</div>
+<div class="facts">
+<div><b>发行</b><span>1992 年 10 月 7 日</span></div>
+<div><b>位置</b><span>同名专辑第 1 曲</span></div>
+<div><b>编曲</b><span>濑尾一三 × David Campbell</span></div>
+<div><b>同专辑名曲</b><span>《糸》《二隻の舟》《浅い眠り》</span></div>
+</div>
+<h3>一张专辑的“开场白”</h3>
+<p>《EAST ASIA》是中岛美雪 1992 年同名专辑的开篇曲，全长近七分钟。整张专辑由她与濑尾一三共同制作、濑尾一三编曲，唯独这首标题曲另请美国编曲家 David Campbell 合作，加入了宽阔的弦乐。专辑在 Oricon 专辑榜最高第 2 位，收录了日后家喻户晓的《糸》，以及上一首我们读过的《二隻の舟》。</p>
+<p>如果说《二隻の舟》写的是“我与你”，《EAST ASIA》就把镜头一下拉远到了“我与我所在的这片土地”。这是中岛美雪作品里少见的、视野如此辽阔的一首。</p>
+<h3>时代的背景</h3>
+<p>歌曲诞生的前后几年，世界的地图正在剧烈改写：1989 年柏林墙倒塌、日本昭和时代结束，1990 年两德统一，1991 年苏联解体，1992 年中韩建交。旧的“墙”在倒，新的边界在画。中岛美雪本人并没有给这首歌附上明确的政治注解，下面的解读是从歌词出发、结合时代氛围的常见读法，并非她的官方说法。</p>
+<blockquote>歌里最用力的一句话，其实很朴素：身体可以随遇而安，<b>心却不受任何力量的捆绑</b>。</blockquote>
+<h3>全曲解读 · 四个镜头</h3>
+<p><b>镜头一：雨中的旅人与鸽子。</b>开篇是一幅水墨般的画面：雨下个不停，天地连成一片灰蒙蒙。一个旅人独自前行，去寻找星星。接着她把自己比作<span class="jq">どこにでも住む鳩</span>，随处都能栖身的鸽子，贴着地面低低地走。鸽子是最平凡的鸟，也是和平的象征。她说，我一定能和任何人相处、随和地活下去。这是一种柔软的生存姿态：不强硬，不对抗，能适应。</p>
+<p><b>但是</b>，转折立刻到来：<span class="jq">でも心は誰のもの　心はあの人のもの</span>。心属于谁？属于“那个人”。“あの人”没有说明是谁，可以是恋人，也可以是心中牵挂的故人、故乡。哪怕总被<span class="jq">大きな力</span>（巨大的力量）逼着屈从，“我的心依然在笑”：单凭这样的力量，休想连心也一并缚住。身体可以低头，心不低头，这是全曲的骨架。</p>
+<p><b>镜头二：副歌，黑眼睛的“くに”。</b><span class="jq">くにの名はEAST ASIA　黒い瞳のくに</span>。注意“くに”写的是平假名，不是汉字“国”。汉字“国”带着国界、政府、国家机器的硬度；平假名“くに”更柔软，在日语里还有“故乡、家乡”的意思（问人“お国はどちら？”就是问“您老家哪里”）。她用一个地理名词 EAST ASIA 代替任何一个国名，用“黑眼睛”这个人人共有的特征来定义这片土地。接着一句<span class="jq">むずかしくは知らない</span>：深奥的道理我不懂。这不是无知，而是拒绝：不去争论那些复杂的历史和政治，只说“这里就是东亚”。</p>
+<p><b>镜头三：季风、柳与柳絮。</b>第二段换成了更有大陆气息的意象。<span class="jq">モンスーン</span>（季风）是东亚共同的气候；<span class="jq">柳</span>在中国诗词里是离别与思念（“折柳送别”）。她要用柳枝编一只摇篮，把悲伤摇睡。然后化作<span class="jq">柳絮</span>，随风飘到哪里都能落地生根。“柳絮”是日语里很少用的汉语词，原歌词特地注上读音“りゅうじょ”，这个选择本身就让人联想到中国北方春天漫天的飞絮。</p>
+<p>可心还是要回去，<span class="jq">心はあの人のもと</span>，回到那个人身边。第一段是“心はあの人の<b>もの</b>”（属于那个人），这里是“あの人の<b>もと</b>”（那个人的身旁），一字之差，从“归属”变成了“归去”。纵使筑起<span class="jq">山より高い壁</span>（比山还高的墙），温柔的风也会笑着越过去。这堵墙，可以联想到那几年刚刚倒下的柏林墙，也可以是任何把人分开的边界。</p>
+<p><b>镜头四：地图与地球。</b>间奏之后，歌词变得幽默：每一张告诉你世界在哪里的地图，都一口咬定“自己才在正中间”。这是事实：日本印行的世界地图把日本放在中央，欧洲的地图把欧洲放在中央。而地球呢，载着“我的くに”在某个角落，<span class="jq">くすくす笑いながら</span>，一边吃吃地偷笑，一边转下去。在地球眼里，人类争来争去的“中心”有点可笑。</p>
+<p>所以，《EAST ASIA》不是一首宣言式的歌。它用很轻的语气，说了一件很重的事：边界、墙、强大的力量，都管不住一颗心；而这片土地上的人，本来就共享着同样的季风、同样的柳树、同样的黑眼睛。</p>
+<h3>反复出现的意象</h3>
+<div class="imagery">
+<div><b>鳩 · 鸽子</b>平凡、随处可见，又是和平的象征。代表“能适应任何环境”的身体。</div>
+<div><b>柳 · 柳絮</b>柔韧的柳枝能编摇篮，飞絮能落地生根。柔软，所以不会被折断。</div>
+<div><b>力 · 壁</b>“大きな力”与“高い壁”，是一切试图束缚、分隔人的东西。</div>
+<div><b>風 · 笑い</b>心在笑，风笑着越墙，地球也在偷笑。“笑”是全曲最温柔的反抗。</div>
+</div>
+</section>
+<section id="lyrics">
+<h2><span class="num">贰</span>歌词中日对照</h2>
+<div class="h2sub">LYRICS · 日文原文 × 中文译文</div>
+<p class="note"><b>翻译原则：</b>信（不违原意）、达（中文自然）、雅（保留诗意）。不逐字硬译，必要处略作演绎。<br>💡 <b>点击任意一句</b>，可直接跳到该句的逐词讲解。</p>
+<div id="LY"></div>
+<h3>译法小记</h3>
+<p><b>“くに” → “故土”“国度”</b>：平假名的“くに”比汉字“国”柔软，兼有“家乡”之意。所以副歌第一个“くに”译作“故土”，第二个译作“国度”，避开“国家”二字的政治硬度。</p>
+<p><b>“むずかしくは知らない” → “深奥的道理我不懂”</b>：字面是“难的（那一面）我不知道”。补出“道理”，并保留一点“不想去懂”的态度。</p>
+<p><b>“縛れはしない” → “休想缚住”</b>：“〜はしない”是语气很强的否定，“休想”比“不能”更有骨气。</p>
+<p><b>“悲しみ揺らそう” → “把悲伤轻轻摇睡”</b>：摇篮是用来哄孩子睡的，所以“摇”之后补一个“睡”字，画面才完整。</p>
+<p><b>“くすくす笑いながら” → “吃吃地偷笑”</b>：くすくす 是忍着、偷偷地笑，中文的“吃吃”“窃笑”恰好对应。</p>
+<div class="cta">
+<div style="font-size:22px;font-family:'Shippori Mincho',serif">跟着歌词学日语</div>
+<p>全曲逐句拆解：单词、读音、词性、语法点，专为日语初学者准备。</p>
+<button class="btn primary" onclick="go('study')">打开学习页 →</button>
+</div>
+</section>
+</main>
+</div>
+<!-- ===================== STUDY VIEW ===================== -->
+<div class="view" id="v-study">
+<header class="hero small">
+<div class="kicker">跟着歌词学日语</div>
+<h1 class="latin">EAST ASIA</h1>
+<div class="sub">逐 词 逐 句</div>
+<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+</svg>
+</header>
+<nav class="toc">
+<a href="../../">⌂ 首页</a><a href="#" onclick="go('main');return false;">← 返回解读与歌词</a><a href="#cheat" onclick="jump('cheat');return false;">语法速查卡</a></nav>
+<main>
+<p class="note">📖 <b>阅读方法：</b>先看整句和罗马音，跟着读一遍；再看单词表；最后看语法点。重复出现的句子只讲第一次。标有“回顾”的语法点在《二隻の舟》里学过。<br>
+标签：<span class="pos">名</span> 名词　<span class="pos v">动</span> 动词　<span class="pos p">助</span> 助词（标明词在句中角色的“小零件”）　<span class="pos">形</span> 形容词　<span class="pos">副</span> 副词</p>
+<div id="SD"></div>
+<h3 class="st" id="cheat">本曲语法速查卡</h3>
+<div class="cheat">
+<div><b>ます形词干 中顿</b>像逗号一样连接两句：<i>雨は霞み、</i></div>
+<div><b>〜ことができる</b>能做……：<i>生きてゆくことができる</i></div>
+<div><b>疑问词＋でも</b>无论……都：<i>どこにでも、誰とでも</i></div>
+<div><b>〜される（使役被动）</b>被迫做……：<i>従わされる</i></div>
+<div><b>〜はしない</b>强调否定，决不……：<i>縛れはしない</i></div>
+<div><b>まで</b>①到……为止 ②连……都</div>
+<div><b>〜う ／ 〜よう（意志形）</b>……吧：<i>揺らそう</i></div>
+<div><b>〜さ ／ 〜み</b>形容词变名词：<i>寂しさ、悲しみ</i></div>
+<div><b>自动词 ／ 他动词</b><i>揺れる／揺らす、乗る／乗せる</i></div>
+<div><b>AよりB</b>比 A 更 B：<i>山より高い</i></div>
+<div><b>な形容词＋な＋名词</b><i>柔らかな風</i></div>
+<div><b>〜と言う</b>引用：<i>真ん中だと言い張る</i></div>
+<div><b>た形修饰名词</b><i>枝を編んだゆりかご</i></div>
+<div><b>拟声拟态词</b><i>くすくす、きらきら</i></div>
+<div><b>こ・そ・あ・ど</b><i>こんな、その、あの、どこ</i></div>
+<div><b>〜てゆく</b>动作远去、持续下去（回顾）</div>
+</div>
+</main>
+<button class="btn back" onclick="go('main')">← 返回</button>
+</div>
+<footer>
+《EAST ASIA》词曲 © 中岛美雪。歌词由正版专辑持有者提供，仅供个人学习使用。<br>
+背景资料参考：<a href="https://en.wikipedia.org/wiki/East_Asia_(album)" target="_blank" rel="noopener">英文维基百科「East Asia (album)」</a>；歌词解读为基于歌词与时代背景的常见读法，非作者官方说明。<br>
+<a href="../../">中岛美雪解读</a> · 第 2 首
+</footer>
+<script>
+var D=[
+["第一段 · 雨中的旅人",[
+["a1","{降|ふ}りしきる{雨|あめ}は{霞|かす}み　{地平|ちへい}は{空|そら}まで","furishikiru ame wa kasumi chihei wa sora made","连绵的雨幕一片迷蒙，地平线一直融进了天空","下个不停的雨朦朦胧胧，地平线（连）到天空",[["降りしきる","ふりしきる","动","（雨、雪）下个不停"],["雨","あめ","名","雨"],["は","wa","助","主题助词，写作 ha 读作 wa"],["霞み","かすみ","动","霞む（变得朦胧）的ます形词干，这里起“逗号”作用"],["地平","ちへい","名","地平线"],["空","そら","名","天空"],["まで","made","助","到……为止"]],[["复合动词：降る＋しきる","しきる＝“接连不断地……”。<i>降る</i>（下）＋<i>しきる</i>＝<i>降りしきる</i>（下个不停）。前一个动词要变成ます形词干：降る→降り。"],["ます形词干的“中顿”","动词的ます形词干（去掉ます的部分）可以放在句中当逗号用，相当于て形但更书面：<i>雨は霞み、</i>＝<i>雨は霞んで、</i>（雨朦胧着，……）。"],["まで后面省略了动词","完整说法是“地平は空まで（続いている）”，地平线一直延伸到天空。歌词常把显而易见的动词省掉，只留画面。"]],""],
+["a2","{旅人|たびびと}{一人|ひとり}{歩|ある}いてゆく　{星|ほし}をたずねて","tabibito hitori aruite yuku hoshi o tazunete","一个旅人独自走向远方，去追寻星辰","旅人一个人走去，寻访着星星",[["旅人","たびびと","名","旅人、行者"],["一人","ひとり","名","一个人、独自（特殊读音）"],["歩いて","あるいて","动","歩く（走路）的て形"],["ゆく","ゆく","动","＝いく（去），更文雅"],["星","ほし","名","星星"],["を","o","助","宾语助词"],["たずねて","たずねて","动","尋ねる（寻找、探寻）的て形"]],[["五段动词て形：く → いて","<i>歩く→歩いて　書く→書いて　聞く→聞いて</i>（例外：行く→行って）。"],["〜てゆく（回顾）","动作离我远去：<i>歩いてゆく</i>＝越走越远。"],["倒装","正常语序是“星をたずねて歩いてゆく”。歌词把“去寻找星星”挪到后面，像镜头先拍背影、再说他去哪里。"],["人数的特殊读法","<i>一人（ひとり）　二人（ふたり）</i>，从三人开始才是<i>三人（さんにん）</i>。"]],""],
+["a3","どこにでも{住|す}む{鳩|はと}のように　{地|ち}を{這|は}いながら","doko ni demo sumu hato no yō ni chi o hai nagara","像随处栖身的鸽子，伏着身子，贴地而行","像在哪里都能住的鸽子一样，一边在地上爬着",[["どこにでも","どこにでも","句","无论在哪里都（どこ＋に＋でも）"],["住む","すむ","动","居住、栖息"],["鳩","はと","名","鸽子（也是和平的象征）"],["のように","のように","句型","像……一样（回顾）"],["地","ち","名","地面、大地"],["を","o","助","经过的场所（回顾：海を渡る）"],["這い","はい","动","這う（爬、匍匐）的ます形词干"],["ながら","ながら","助","一边……一边……"]],[["疑问词＋でも：无论……都","<i>どこでも</i>（哪里都）、<i>誰でも</i>（谁都）、<i>何でも</i>（什么都）。中间可以夹助词：<i>どこにでも住む</i>（在哪里都能住）。"],["动词原形直接修饰名词","<i>どこにでも住む＋鳩</i>＝随处栖身的鸽子。日语没有“的”，动词原形直接放在名词前就行。"],["ます形词干＋ながら（回顾）","<i>這う→這い→這いながら</i>（一边爬一边……）。"]],""],
+["a4","{誰|だれ}とでもきっと　{合|あ}わせて{生|い}きてゆくことができる","dare to demo kitto awasete ikite yuku koto ga dekiru","我一定能和任何人相处，随遇而安地活下去","无论和谁，一定都能配合着活下去",[["誰とでも","だれとでも","句","无论和谁都（誰＋と＋でも）"],["きっと","きっと","副","一定、肯定"],["合わせて","あわせて","动","合わせる（配合、迎合）的て形"],["生きて","いきて","动","生きる（活）的て形"],["こと","こと","名","把动词变成“……这件事”"],["が","ga","助","できる 的对象用が"],["できる","できる","动","能、会、做得到"]],[["动词原形＋ことができる：能做……","最基础的“能力”表达：<i>泳ぐことができる</i>（会游泳）、<i>生きてゆくことができる</i>（能活下去）。"],["て形表示方式","<i>合わせて生きる</i>＝“配合着（别人）活”。前一个动作说明后一个动作“怎么做”：<i>歩いて行く</i>（走着去）。"],["と＋でも","<i>誰と</i>（和谁）＋<i>でも</i>（无论）＝<i>誰とでも</i>（不管和谁）。"]],""],
+["a5","でも{心|こころ}は{誰|だれ}のもの　{心|こころ}はあの{人|ひと}のもの","demo kokoro wa dare no mono kokoro wa ano hito no mono","可这颗心属于谁？这颗心，只属于那个人","但是心是谁的东西？心是那个人的东西",[["でも","でも","接续","但是、可是（放句首）"],["心","こころ","名","心"],["誰の","だれの","代","谁的"],["もの","もの","名","东西；Aのもの＝A 的所有物"],["あの","あの","连体","那个（远处的，或双方心里都知道的）"],["人","ひと","名","人"]],[["A は B のもの：A 属于 B","<i>この本は私のものだ</i>（这本书是我的）。句末的“だ”在歌词里被省略了。"],["自问自答","前半句“心は誰のもの”是问（省略了“か”），后半句马上自答。没有问号，却能听出问的语气。"],["こ・そ・あ・ど","<i>この</i>（这）<i>その</i>（那，靠近对方）<i>あの</i>（那，离两人都远）<i>どの</i>（哪）。“あの人”常指“彼此都知道、却不点名的那个人”，所以很有余味。"]],""],
+["a6","{大|おお}きな{力|ちから}にいつも{従|したが}わされても","ōkina chikara ni itsumo shitagawasarete mo","纵然总被强大的力量逼着低头","即使总是被巨大的力量强迫服从",[["大きな","おおきな","连体","大的（只能放在名词前）"],["力","ちから","名","力量"],["に","ni","助","被动句里的“被谁”"],["いつも","いつも","副","总是"],["従わされて","したがわされて","动","従う（服从）→ 使役被动 従わされる → て形"],["も","mo","助","〜ても＝即使……也（回顾）"]],[["使役被动：被迫做……","这是新语法，分两步看：<i>従う</i>（服从）→ 使役 <i>従わせる</i>（让人服从）→ 使役被动 <i>従わされる</i>（被逼着服从）。五段动词常用简短形“〜される”：<i>飲む→飲まされる</i>（被灌酒）、<i>待つ→待たされる</i>（被迫等）。"],["大きな 和 大きい","两者都是“大的”。<i>大きな</i>只能修饰名词，更有感情色彩；<i>大きい</i>还能放句末：<i>力が大きい</i>。"]],""],
+["a7","{私|わたし}の{心|こころ}は{笑|わら}っている","watashi no kokoro wa waratte iru","我的心，依然在微笑","我的心在笑着",[["私","わたし","代","我"],["の","no","助","的"],["笑って","わらって","动","笑う（笑）的て形"],["いる","いる","动","〜ている：正在、处于……状态"]],[["〜ている：正在进行","<i>笑っている</i>（正在笑）、<i>雨が降っている</i>（正在下雨）。"],["五段动词て形：う → って","<i>笑う→笑って　買う→買って　会う→会って</i>"]],""],
+["a8","こんな{力|ちから}だけで　{心|こころ}まで{縛|しば}れはしない","konna chikara dake de kokoro made shibare wa shinai","单凭这样的力量，休想连我的心也一并缚住","只靠这种力量，是捆不住连心都的",[["こんな","こんな","连体","这样的、这种"],["だけ","だけ","助","只、仅"],["で","de","助","凭借、靠"],["まで","made","助","这里是“连……都、甚至”"],["縛れ","しばれ","动","縛れる（能捆住，縛る 的可能形）的ます形词干"],["は","wa","助","加强否定的语气"],["しない","しない","动","する 的否定：不做"]],[["まで 的第二种意思：连……都","<i>空まで</i>（到天空）是“到……为止”；<i>心まで</i>是“连心都”，表示程度到了极限：身体可以捆住，连心也想捆？办不到。"],["ます形词干＋はしない：决不……","比普通否定更强硬：<i>縛れない</i>（捆不住）→ <i>縛れはしない</i>（才捆不住呢！）。"],["五段动词可能形（回顾）","う段→え段＋る：<i>縛る→縛れる</i>（能捆）、<i>ゆく→ゆける</i>。"]],""]]],
+["副歌 · 黑眼睛的国度",[
+["c1","くにの{名|な}はEAST ASIA　{黒|くろ}い{瞳|ひとみ}のくに","kuni no na wa īsuto ējia kuroi hitomi no kuni","我的故土名叫东亚——黑眼睛的国度","国家的名字是东亚，黑瞳的国家",[["くに","くに","名","国家；也指故乡、家乡（这里故意写平假名）"],["名","な","名","名字（比“名前”更简练、诗意）"],["EAST ASIA","イーストアジア","名","东亚（日语通常说“東アジア”）"],["黒い","くろい","形","黑的"],["瞳","ひとみ","名","瞳孔、眼眸"]],[["为什么写“くに”不写“国”？","日语里同一个词写汉字或平假名，感觉不同。汉字“国”偏政治、硬；平假名“くに”柔和，还带“老家”的意味：<i>お国はどちら？</i>＝您老家是哪里？"],["A の名は B：A 的名字叫 B","<i>この花の名は桜</i>（这花名叫樱）。"],["名词结句（回顾）","“黒い瞳のくに”后面省略了“だ”，以名词收尾，余音悠长。"]],""],
+["c2","むずかしくは{知|し}らない　ただEAST ASIA","muzukashiku wa shiranai tada īsuto ējia","深奥的道理我不懂，只知道——东亚","难的（那一面）我不知道，只是东亚",[["むずかしく","むずかしく","形","難しい 的く形（作副词）"],["は","wa","助","对比、限定：“（难的）那方面”"],["知らない","しらない","动","知る（知道）的否定：不知道"],["ただ","ただ","副","只、仅仅"]],[["く形＋は＋否定","<i>むずかしくは知らない</i>＝“往复杂里说的我不懂”。“は”把“复杂的那一面”单独拎出来否定，言外之意：“简单的我知道，就是——东亚”。"],["“知道”的特别之处","肯定说<i>知っている</i>（知道），否定却说<i>知らない</i>（不知道），不说“知っていない”。初学者很容易错。"],["ただ","<i>ただ EAST ASIA</i>：只有这一个词，别的都不重要。"]],""],
+["c3","くにの{名|な}はEAST ASIA　{黒|くろ}い{瞳|ひとみ}のくに","","我的故土名叫东亚——黑眼睛的国度","",[],[],"c1"],
+["c4","むずかしくは{知|し}らない　ただEAST ASIA","","深奥的道理我不懂，只知道——东亚","",[],[],"c2"]]],
+["第二段 · 柳与柳絮",[
+["b1","モンスーンに{抱|だ}かれて　{柳|やなぎ}は{揺|ゆ}れる","monsūn ni dakarete yanagi wa yureru","柳枝在季风的怀抱里，轻轻摇曳","被季风抱着，柳树摇动",[["モンスーン","モンスーン","名","季风（英语 monsoon）"],["に","ni","助","被动句里的“被谁”"],["抱かれて","だかれて","动","抱く（抱）→ 被动 抱かれる → て形"],["柳","やなぎ","名","柳树"],["揺れる","ゆれる","动","摇晃（自动词：自己晃）"]],[["片假名 = 外来语","从西方语言借来的词用片假名写：<i>モンスーン</i>（monsoon）、<i>コーヒー</i>（coffee）。"],["五段动词被动（回顾）","う段→あ段＋れる：<i>抱く→抱かれる</i>（被抱）。“被季风抱着”是拟人，柳像孩子一样被大自然揽在怀里。"]],""],
+["b2","その{枝|えだ}を{編|あ}んだゆりかごで　{悲|かな}しみ{揺|ゆ}らそう","sono eda o anda yurikago de kanashimi yurasō","就用柳枝编一只摇篮，把悲伤轻轻摇睡吧","用编了那枝条的摇篮，摇晃悲伤吧",[["その","その","连体","那个（指前面说过的柳）"],["枝","えだ","名","树枝"],["編んだ","あんだ","动","編む（编织）的た形（过去式）"],["ゆりかご","ゆりかご","名","摇篮"],["で","de","助","工具、手段：用……"],["悲しみ","かなしみ","名","悲伤（悲しい→悲しみ）"],["揺らそう","ゆらそう","动","揺らす（摇动，他动词）的意志形"]],[["た形修饰名词","<i>枝を編んだ＋ゆりかご</i>＝用枝条编成的摇篮。た形也能直接放在名词前：<i>昨日買った本</i>（昨天买的书）。"],["意志形：……吧","五段动词 う段→お段＋う：<i>揺らす→揺らそう</i>（摇吧）、<i>行く→行こう</i>（走吧）。一段动词去る加よう：<i>見る→見よう</i>。"],["自动词 vs 他动词","<i>柳は揺れる</i>（柳自己晃）↔ <i>悲しみを揺らす</i>（我去摇悲伤）。上下两句一个自动、一个他动，正好成对。"],["〜み 和 〜さ","形容词变名词，<i>悲しさ</i>偏“悲伤的程度”，<i>悲しみ</i>偏“悲伤这种感受本身”。"]],""],
+["b3","どこにでもゆく{柳絮|りゅうじょ}に{姿|すがた}を{変|か}えて","doko ni demo yuku ryūjo ni sugata o kaete","化作随风飘去天涯的柳絮","把样子变成无论哪里都会去的柳絮",[["どこにでも","どこにでも","句","无论哪里都"],["ゆく","ゆく","动","去"],["柳絮","りゅうじょ","名","柳絮（日语少用的汉语词，原歌词特别注了读音）"],["に","ni","助","变化的结果：变成……"],["姿","すがた","名","样子、身影"],["を","o","助","宾语"],["変えて","かえて","动","変える（改变，他动词）的て形"]],[["B に 姿を変える：化身为 B","<i>鳥に姿を変える</i>（化身为鸟）。“に”表示变成的结果，和《二隻の舟》里“いくつになれば”的“に”同一用法。"],["音读汉语词","“柳絮”用的是汉字的音读 りゅう＋じょ，和中文读音很像。日语里大量这样的词来自古汉语。"]],""],
+["b4","どんな{大地|だいち}でも　きっと{生|い}きてゆくことができる","donna daichi demo kitto ikite yuku koto ga dekiru","无论落在哪片土地，我都一定能活下去","无论什么样的大地，一定都能活下去",[["どんな","どんな","连体","什么样的"],["大地","だいち","名","大地、土地"],["でも","demo","助","无论……都"]],[["どんな＋名词＋でも","<i>どんな大地でも</i>（无论什么样的土地）、<i>どんな人でも</i>（无论什么人）。"],["与第一段呼应","第一段是“誰とでも……生きてゆくことができる”（和谁都能活），这里是“どんな大地でも……”（在哪儿都能活）。从“人”扩展到“土地”。后半句的语法见 <a href=\"#\" onclick=\"go('study','s-a4');return false;\">第一段</a>。"]],""],
+["b5","でも{心|こころ}は{帰|かえ}りゆく　{心|こころ}はあの{人|ひと}のもと","demo kokoro wa kaeri yuku kokoro wa ano hito no moto","可心终要归去——归向那个人的身旁","但是心回归而去，心（在）那个人的身边",[["帰りゆく","かえりゆく","动","归去（帰る＋ゆく）"],["もと","もと","名","（某人的）身边、跟前"]],[["ます形词干＋ゆく","比“帰ってゆく”更书面、更有诗意：<i>帰りゆく</i>（归去）、<i>過ぎゆく</i>（逝去）。"],["もの 与 もと","第一段：<i>あの人のもの</i>（属于那个人）；这里：<i>あの人のもと</i>（那个人身边）。只差一个假名，从“归属”变成了“归去”。"]],""],
+["b6","{山|やま}より{高|たか}い{壁|かべ}が{築|きず}きあげられても","yama yori takai kabe ga kizukiagerarete mo","纵使有人筑起比山还高的墙","即使比山还高的墙被筑起来",[["山","やま","名","山"],["より","yori","助","比"],["高い","たかい","形","高的"],["壁","かべ","名","墙"],["が","ga","助","主语助词"],["築きあげられて","きずきあげられて","动","築き上げる（筑起）→ 被动 → て形"],["も","mo","助","〜ても＝即使"]],[["A より B：比 A 更 B","<i>山より高い</i>（比山还高）、<i>私より若い</i>（比我年轻）。注意语序：比较对象在前。"],["一段动词被动","去る加られる：<i>上げる→上げられる</i>。“築きあげられる”没有说谁筑的墙，被动句正好可以把“谁”藏起来。"]],""],
+["b7","{柔|やわ}らかな{風|かぜ}は　{笑|わら}って{越|こ}えてゆく","yawaraka na kaze wa waratte koete yuku","温柔的风也会笑着，轻轻越过","柔和的风笑着越过而去",[["柔らかな","やわらかな","形","柔和的（な形容词）"],["風","かぜ","名","风"],["笑って","わらって","动","笑着"],["越えて","こえて","动","越える（越过）的て形"]],[["な形容词修饰名词要加な","<i>柔らか＋な＋風</i>、<i>静か＋な＋夜</i>。い形容词则直接接：<i>高い壁</i>。"],["越えてゆく（回顾）","《二隻の舟》里是命令形“越えてゆけ”（越过去！），这里是平静的陈述“越えてゆく”。"]],""],
+["b8","{力|ちから}だけで　{心|こころ}まで{縛|しば}れはしない","","单凭力量，休想连心也一并缚住","",[],[],"a8"]]],
+["副歌 · 反复",[
+["c5","くにの{名|な}はEAST ASIA　{黒|くろ}い{瞳|ひとみ}のくに","","我的故土名叫东亚——黑眼睛的国度","",[],[],"c1"],
+["c6","むずかしくは{知|し}らない　ただEAST ASIA","","深奥的道理我不懂，只知道——东亚","",[],[],"c2"],
+["c7","くにの{名|な}はEAST ASIA　{黒|くろ}い{瞳|ひとみ}のくに","","我的故土名叫东亚——黑眼睛的国度","",[],[],"c1"],
+["c8","むずかしくは{知|し}らない　ただEAST ASIA","","深奥的道理我不懂，只知道——东亚","",[],[],"c2"]]],
+["第三段 · 地图与地球",[
+["d1","{世界|せかい}の{場所|ばしょ}を{教|おし}える{地図|ちず}は","sekai no basho o oshieru chizu wa","那些为人指点世界方位的地图","告诉（人）世界的位置的地图",[["世界","せかい","名","世界"],["場所","ばしょ","名","地方、位置"],["教える","おしえる","动","教、告诉"],["地図","ちず","名","地图"]],[["动词原形修饰名词","<i>場所を教える＋地図</i>＝告诉人位置的地图。整句话都是“地図”的定语，主干只是“地図は……”。"]],""],
+["d2","{誰|だれ}でも　{自分|じぶん}が{真|ま}ん{中|なか}だと{言|い}い{張|は}る","dare demo jibun ga mannaka da to iiharu","不论出自谁手，都一口咬定自己才在正中央","无论谁都坚持说自己是正中间",[["誰でも","だれでも","代","无论谁都"],["自分","じぶん","代","自己"],["真ん中","まんなか","名","正中间"],["だ","da","助动","是（断定）"],["と","to","助","引用：说“……”"],["言い張る","いいはる","动","坚持说、一口咬定"]],[["〜だと言う：引用","<i>自分が真ん中だ</i>（自己是中心）＋<i>と言い張る</i>（硬说）。名词后面先加“だ”再加“と”。"],["复合动词：言う＋張る","<i>張る</i>＝撑开、绷紧，加在后面表示“硬撑着”：<i>言い張る</i>（硬说）、<i>頑張る</i>（坚持、加油）。"],["誰でも 指谁？","字面是“谁都”，这里指每一张地图（以及画地图的人）：哪一国的地图都把自己画在中间。"]],""],
+["d3","{私|わたし}のくにをどこかに{乗|の}せて　{地球|ちきゅう}は","watashi no kuni o dokoka ni nosete chikyū wa","地球把我的故土，载在某个角落","把我的国家放在某处载着，地球……",[["どこか","どこか","代","某处（回顾）"],["に","ni","助","放置的地点"],["乗せて","のせて","动","乗せる（载、放上）的て形"],["地球","ちきゅう","名","地球"]],[["乗る 与 乗せる","<i>私が乗る</i>（我乘坐，自动）↔ <i>私を乗せる</i>（载我，他动）。"],["主语放在最后","“地球は”出现在句尾，其实是下一句的主语。先讲“载着我的くに”，再揭晓是谁在载，像个小小的悬念。"]],""],
+["d4","くすくす{笑|わら}いながら　{回|まわ}ってゆく","kusukusu warai nagara mawatte yuku","一边吃吃地偷笑，一边悠悠转下去","一边嗤嗤地笑着，一边转动下去",[["くすくす","くすくす","副","偷偷地、忍着笑的样子"],["笑い","わらい","动","笑う 的ます形词干"],["ながら","ながら","助","一边……一边……"],["回って","まわって","动","回る（旋转）的て形"],["ゆく","ゆく","动","〜てゆく：持续下去"]],[["拟声拟态词","日语有大量 ABAB 型的拟声拟态词：<i>くすくす</i>（偷笑）、<i>きらきら</i>（闪闪）、<i>ゆらゆら</i>（摇摇）。"],["〜てゆく 表示时间上的持续","<i>回ってゆく</i>不是“转到别处去”，而是“就这样一直转下去”。"]],""]]],
+["终段副歌",[
+["c9","くにの{名|な}はEAST ASIA　{黒|くろ}い{瞳|ひとみ}のくに","","我的故土名叫东亚——黑眼睛的国度","",[],[],"c1"],
+["c10","むずかしくは{知|し}らない　ただEAST ASIA","","深奥的道理我不懂，只知道——东亚","",[],[],"c2"]]]
+];
+function R(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>')}
+function P(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1')}
+var BY={};D.forEach(function(st){st[1].forEach(function(l){BY[l[0]]=l})});
+function pc(p){return p=='动'?'v':(p=='助'||p=='终助')?'p':''}
+var ly='',sd='';
+D.forEach(function(st){
+ly+='<div class="stanza"><div class="tag">'+st[0]+'</div>';
+sd+='<h3 class="st">'+st[0]+'</h3>';
+st[1].forEach(function(l){
+var t=l[7]||l[0];
+ly+='<a class="lyric" href="#study-s-'+t+'" onclick="go(\'study\',\'s-'+t+'\');return false;"><div class="ja">'+R(l[1])+'</div><div class="zh">'+l[3]+'</div></a>';
+if(l[7]){var r=BY[l[7]];sd+='<div class="study mini" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><p class="refnote">↺ 与前面的 <a href="#" onclick="go(\'study\',\'s-'+r[0]+'\');return false;">「'+P(r[1]).slice(0,12)+'…」</a> 相同（或几乎相同），讲解见那里。</p></div>';return}
+var rows=l[5].map(function(v){return '<tr><td class="w">'+v[0]+'</td><td class="k">'+v[1]+'</td><td><span class="pos '+pc(v[2])+'">'+v[2]+'</span></td><td>'+v[3]+'</td></tr>'}).join('');
+var gs=l[6].map(function(g){return '<div class="gram"><h4>'+g[0]+'</h4><p>'+g[1]+'</p></div>'}).join('');
+sd+='<div class="study" id="s-'+l[0]+'"><div class="line">'+R(l[1])+'</div><div class="roma">'+l[2]+'</div><div class="tr">'+l[3]+' <small>（直译：'+l[4]+'）</small></div><table><tr><th>单词</th><th>读音</th><th>词性</th><th>意思 &amp; 说明</th></tr>'+rows+'</table>'+gs+'</div>';
+});
+ly+='</div>';
+});
+document.getElementById('LY').innerHTML=ly;document.getElementById('SD').innerHTML=sd;
+</script>
+<script>
+function go(v, anchor){
+document.getElementById('v-main').classList.toggle('on', v==='main');
+document.getElementById('v-study').classList.toggle('on', v==='study');
+try{ history.replaceState(null,'', v==='study' ? '#study' + (anchor?'-'+anchor:'') : '#'); }catch(e){}
+if(anchor){ var el=document.getElementById(anchor); if(el){ el.scrollIntoView(); return; } }
+window.scrollTo(0,0);
+}
+function jump(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+(function(){ var h=location.hash; if(h.indexOf('#study')===0){ var a=h.slice(7); go('study', a||null); } })();
+</script>
+</body>
+</html>
