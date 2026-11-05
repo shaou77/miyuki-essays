@@ -189,8 +189,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 
 </main>
 
 <footer>
-歌曲词曲版权归中岛美雪及相关权利人所有。歌词由正版专辑持有者提供，仅供个人学习使用；解读为基于歌词与时代背景的常见读法，非作者官方说明。<br>
-中岛美雪解读 · 共 <span id="n-foot">—</span> 首
+歌曲词曲版权归中岛美雪及相关权利人所有。歌词由正版专辑持有者提供，仅供个人学习使用；解读为基于歌词与时代背景的常见读法，非作者官方说明。
 <div class="by">作者 · 沙鸥</div>
 </footer>
 
@@ -204,7 +203,6 @@ function K(s){return s.replace(/\{([^|}]+)\|([^}]+)\}/g,'$1 $2')}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var grid=document.getElementById('grid'),q=document.getElementById('q'),sort='no';
 document.getElementById('n-songs').textContent=S.length+' 首';
-document.getElementById('n-foot').textContent=S.length;
 S.forEach(function(s){s._k=(K(s.title)+' '+P(s.title)+' '+s.zh+' '+s.year+' '+s.source+' '+s.blurb+' '+(s.tags||[]).join(' ')+' '+s.slug).toLowerCase()});
 function card(s){
 return '<a class="song" href="songs/'+esc(s.slug)+'/">'+
