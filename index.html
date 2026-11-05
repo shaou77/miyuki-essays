@@ -24,11 +24,6 @@ header.hero{position:relative;color:#f3ead9;text-align:center;padding:84px 20px 
 .hero h1 rt{color:#e8c98f;font-size:.26em}
 .hero .sub{position:relative;font-size:18px;opacity:.9;letter-spacing:.2em}
 .hero .meta{position:relative;margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
-.hero .inner{position:relative;display:flex;align-items:center;justify-content:center;gap:56px;max-width:960px;margin:0 auto}
-.hero .photo{flex:0 0 auto;width:230px;aspect-ratio:474/656;margin:0;border-radius:18px;overflow:hidden;border:2px solid rgba(232,201,143,.55);box-shadow:0 18px 50px rgba(0,0,0,.45),0 0 0 8px rgba(243,234,217,.06)}
-.hero .photo img{display:block;width:100%;height:100%;object-fit:cover}
-.hero .text{text-align:left}
-@media (max-width:720px){.hero{padding-top:56px}.hero .inner{flex-direction:column;gap:26px}.hero .photo{width:180px}.hero .text{text-align:center}}
 footer .by{margin-top:10px;font-size:14px;color:var(--sea);letter-spacing:.2em}
 .waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
 nav.toc{max-width:960px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
@@ -109,15 +104,10 @@ footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 
 </g>
 </svg>
 <div class="moon" aria-hidden="true"></div>
-<div class="inner">
-<figure class="photo"><img src="assets/miyuki-hero.webp" alt="中岛美雪" width="474" height="656"></figure>
-<div class="text">
 <div class="kicker">中島みゆき · 作品解读</div>
 <h1><ruby>中島<rt>なかじま</rt></ruby>みゆき</h1>
 <div class="sub">中 岛 美 雪 作 品 解 读</div>
 <div class="meta">创作背景 ｜ 中日歌词对照 ｜ 跟着歌词学日语</div>
-</div>
-</div>
 <svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
 <path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
 <path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
@@ -144,8 +134,8 @@ footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 
 <path d="M118 258 h42 l-6 10 h-32z M138 230 v28 M138 232 l16 22 h-16z" fill="#0c1b27" stroke="#0c1b27" stroke-width="2"/>
 <text x="150" y="350" text-anchor="middle" font-family="Shippori Mincho,serif" font-size="30" fill="#f3ead9" letter-spacing="6">中島みゆき</text>
 </svg>
-<!-- 照片：把授权可用的照片存为 assets/miyuki.jpg 即自动显示；没有该文件时显示上面的插画 -->
-<img src="assets/miyuki.jpg" alt="中岛美雪" onerror="this.remove();document.getElementById('cap').textContent='MIYUKI NAKAJIMA'">
+<!-- 照片：assets/miyuki.webp；加载失败时显示上面的插画 -->
+<img src="assets/miyuki.webp" style="object-position:center 20%" alt="中岛美雪" onerror="this.remove();document.getElementById('cap').textContent='MIYUKI NAKAJIMA'">
 <figcaption id="cap">中岛美雪 · Miyuki Nakajima</figcaption>
 </figure>
 <div>
