@@ -7,80 +7,10 @@
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
 <style>
-:root{--paper:#f7f1e6;--paper-2:#efe6d5;--ink:#2b2622;--ink-soft:#5d544c;--sea:#1f3a4d;--sea-2:#2f5670;--ember:#a4472d;--gold:#b48a4a;--line:#dccfb8;--card:#fffaf1}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Shippori Mincho",serif;line-height:1.9;font-size:17px;
-background-image:radial-gradient(circle at 20% 0%,#fbf6ec 0,transparent 55%),radial-gradient(circle at 100% 100%,#eadfca 0,transparent 50%)}
-a{color:var(--sea-2)}
-rt{font-size:.5em;color:var(--ember);font-family:"Shippori Mincho",serif}
-header.hero{position:relative;color:#f3ead9;text-align:center;padding:80px 20px 116px;overflow:hidden;background:linear-gradient(180deg,#0f2130 0%,#1f3a4d 55%,#2f5670 100%)}
-.hero.small{padding:46px 20px 84px}
-.hero .moon{position:absolute;top:42px;right:14%;width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6e0,#e8d3a6 60%,#c9ae7a);box-shadow:0 0 60px 12px rgba(243,224,180,.25)}
-.hero .kicker{letter-spacing:.5em;font-size:13px;opacity:.75}
-.hero h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(44px,9vw,84px);margin:16px 0 6px;letter-spacing:.12em}
-.hero.small h1{font-size:clamp(30px,6vw,48px)}
-.hero h1 rt{color:#e8c98f;font-size:.28em}
-.hero .sub{font-size:18px;opacity:.9;letter-spacing:.2em}
-.hero .meta{margin-top:24px;font-size:14px;opacity:.7;letter-spacing:.1em}
-.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px}
-.boats{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:260px;height:40px;opacity:.9}
-nav.toc{max-width:860px;margin:-28px auto 0;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 16px}
-nav.toc a,.btn{background:var(--card);border:1px solid var(--line);color:var(--sea);text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;box-shadow:0 4px 14px rgba(60,40,20,.08);cursor:pointer;font-family:inherit}
-nav.toc a.primary,.btn.primary{background:var(--ember);color:#fff;border-color:var(--ember)}
-main{max-width:860px;margin:0 auto;padding:36px 20px 80px}
-section{margin-top:60px}
-h2{font-weight:700;font-size:28px;color:var(--sea);margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
-h2 .num{font-family:"Shippori Mincho",serif;color:var(--gold);font-size:40px;font-weight:400}
-.h2sub{color:var(--ink-soft);font-size:14px;letter-spacing:.2em;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:14px}
-h3{color:var(--ember);font-size:20px;margin:34px 0 10px}
-p{margin:0 0 1em}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:10px 0 26px}
-.facts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.facts b{display:block;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);font-weight:400}
-.facts span{font-size:17px;color:var(--sea);font-weight:600}
-blockquote{margin:22px 0;padding:16px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,#f3e8d3,transparent);color:var(--ink-soft)}
-.jq{font-family:"Shippori Mincho",serif;color:var(--sea)}
-.note{font-size:14px;color:var(--ink-soft);background:var(--paper-2);border-radius:10px;padding:12px 16px;border:1px dashed var(--line)}
-.stanza{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 26px 6px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05)}
-.stanza .tag{font-size:12px;color:var(--gold);letter-spacing:.3em;padding:12px 0 2px}
-.lyric{display:grid;grid-template-columns:1.1fr 1fr;gap:4px 28px;padding:14px 0;border-bottom:1px dashed var(--line);align-items:center;text-decoration:none;color:inherit;position:relative}
-.lyric:last-child{border-bottom:none}
-.lyric:hover{background:linear-gradient(90deg,transparent,#f6ecdb,transparent)}
-.lyric:hover::after{content:"拆解 →";position:absolute;right:0;top:4px;font-size:11px;color:var(--ember)}
-.lyric .ja{font-family:"Shippori Mincho",serif;font-size:20px;line-height:2.3}
-.lyric .zh{font-size:17px;color:var(--sea-2);border-left:2px solid var(--line);padding-left:20px}
-@media (max-width:640px){.lyric{grid-template-columns:1fr}.lyric .zh{border-left:none;padding-left:0}.stanza{padding:8px 16px}}
-.cta{text-align:center;margin:44px 0 10px;padding:30px 20px;border-radius:16px;background:linear-gradient(135deg,#1f3a4d,#2f5670);color:#f3ead9}
-.cta p{opacity:.85;font-size:15px}
-.study{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 14px;margin:22px 0;box-shadow:0 6px 24px rgba(60,40,20,.05);scroll-margin-top:20px}
-.study.mini{padding:14px 24px 4px}
-.study .line{font-family:"Shippori Mincho",serif;font-size:23px;line-height:2.4;color:var(--sea)}
-.study .roma{font-family:Georgia,serif;font-style:italic;color:var(--ink-soft);font-size:15px;margin-top:-4px}
-.study .tr{margin:8px 0 14px;color:var(--ember)}
-.study .tr small{color:var(--ink-soft)}
-.refnote{font-size:14px;color:var(--ink-soft)}
-.st{border-bottom:1px solid var(--line);padding-bottom:6px;margin-top:46px}
-table{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 14px}
-th{background:var(--sea);color:#f3ead9;font-weight:600;text-align:left;padding:8px 10px;font-size:13px}
-td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-td.w{font-family:"Shippori Mincho",serif;font-size:18px;white-space:nowrap;color:var(--sea)}
-td.k{color:var(--ember);white-space:nowrap;font-size:14px}
-.pos{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap}
-.pos.p{background:#f4dfd5;color:var(--ember)}.pos.v{background:#dbe6ee;color:var(--sea)}
-@media (max-width:640px){td.w,td.k{white-space:normal}table{font-size:14px}}
-.gram{background:var(--paper-2);border-radius:12px;padding:12px 18px;margin:10px 0}
-.gram h4{margin:0 0 4px;color:var(--sea);font-size:16px}
-.gram h4::before{content:"◆ ";color:var(--gold)}
-.gram p{margin:0;font-size:15.5px}
-.ex{font-family:"Shippori Mincho",serif;color:var(--ink)}
-.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.cheat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px}
-.cheat b{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--ember);display:block}
-.back{position:fixed;right:18px;bottom:18px;z-index:9}
-footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 60px;border-top:1px solid var(--line);max-width:860px;margin:0 auto}
-.view{display:none}.view.on{display:block}
+/* 本曲专属样式；共用样式在 assets/site.css */
 </style>
 </head>
 <body>
@@ -97,8 +27,8 @@ footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 
 <g fill="#e9d6ad" opacity=".75"><path d="M178 32 h40 l-7 7 h-26z"/><path d="M197 10 v22 h-1 V10z"/><path d="M198 12 l15 18 h-15z" opacity=".85"/></g>
 </svg>
 <svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z" fill="#f7f1e6" opacity=".35"/>
-<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+<path d="M0 40 C 240 80 480 0 720 40 S 1200 80 1440 40 V90 H0z"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z"/>
 </svg>
 </header>
 <nav class="toc">
@@ -159,7 +89,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:40px 20px 
 <h1><ruby>二隻<rt>にせき</rt></ruby>の<ruby>舟<rt>ふね</rt></ruby></h1>
 <div class="sub">逐 词 逐 句</div>
 <svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z" fill="#f7f1e6"/>
+<path d="M0 60 C 240 30 480 90 720 60 S 1200 30 1440 60 V90 H0z"/>
 </svg>
 </header>
 <nav class="toc">

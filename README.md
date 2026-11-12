@@ -7,7 +7,7 @@
 ```
 index.html          首页导航
 songs.js            歌曲列表（新增歌曲时在这里加一项）
-assets/             图标、图片（放入 assets/miyuki.jpg 可替换首页插画）
+assets/             共用样式 site.css、图标、图片（miyuki.webp 是首页照片）
 songs/<slug>/       每首歌一个子页面
 ```
 
