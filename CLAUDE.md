@@ -38,6 +38,14 @@ songs/<slug>/index.html        每首歌一个解读页
 | 4 | 世情 | sejou |
 | 5 | 歌姫 | utahime |
 | 6 | ヘッドライト・テールライト | headlight-taillight |
+| 7 | ひとり | hitori |
+| 8 | 最愛 | saiai |
+| 9 | 幸せ | shiawase |
+| 10 | 糸 | ito |
+| 11 | 命の別名 | inochi-no-betsumei |
+| 12 | 地上の星 | chijou-no-hoshi |
+| 13 | 銀の龍の背に乗って | gin-no-ryuu-no-se-ni-notte |
+| 14 | 一期一会 | ichigo-ichie |
 
 ## 部署
 

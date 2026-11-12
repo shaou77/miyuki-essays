@@ -149,6 +149,8 @@ footer{text-align:center;color:#99968f;font-size:13px;line-height:2;padding:54px
 footer::before{content:"";display:block;width:1px;height:40px;margin:-54px auto 26px;background:linear-gradient(var(--ember-lit),transparent)}
 footer a{color:#d2ccbf}
 footer .by{margin-top:14px;font-size:13px;color:#d2ccbf;letter-spacing:.3em}
+footer .by a{display:inline-block;margin-left:1.2em;font-family:var(--latin);font-size:15px;letter-spacing:.06em;text-decoration:none;border-bottom:1px solid rgba(207,58,72,.7)}
+footer .by a:hover{color:#fff;border-bottom-color:var(--ember-lit)}
 
 /* ================= 首页 ================= */
 .home main{max-width:1000px}
@@ -178,7 +180,7 @@ footer .by{margin-top:14px;font-size:13px;color:#d2ccbf;letter-spacing:.3em}
 .artist{display:grid;grid-template-columns:270px 1fr;gap:44px;align-items:start}
 .artist:not(:has(.portrait)){grid-template-columns:1fr}
 .portrait{margin:0;background:#fff;padding:10px 10px 0;border:1px solid var(--line);box-shadow:0 18px 40px -18px rgba(20,20,30,.35)}
-.portrait img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.82) contrast(1.03)}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;filter:saturate(.82) contrast(1.03)}
 .portrait figcaption{font-family:var(--latin);font-size:13px;letter-spacing:.24em;color:var(--ink-soft);text-align:center;padding:9px 0 10px}
 .home .facts{grid-template-columns:repeat(4,1fr);margin:26px 0 0}
 @media (max-width:900px){.home .facts{grid-template-columns:repeat(2,1fr)}}
