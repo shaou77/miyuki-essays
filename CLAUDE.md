@@ -8,7 +8,8 @@
 ```
 index.html                     首页（卡片由 songs.js 生成）
 songs.js                       歌曲目录：新增歌曲在数组末尾加一项
-assets/                        图标；放 assets/miyuki.jpg 可替换首页插画
+assets/site.css                全站共用样式（首页＋所有歌曲页），改视觉只改这里
+assets/                        图标；assets/miyuki.webp 是首页「关于」的照片
 songs/<slug>/index.html        每首歌一个解读页
 ```
 
@@ -17,7 +18,7 @@ songs/<slug>/index.html        每首歌一个解读页
 制作工作流不在本仓库里，单独放在本机 `D:/miyuki-song-skill/`（SKILL.md、template.html、scripts/、已讲语法索引.md）。
 
 **一律按 `D:/miyuki-song-skill/SKILL.md` 的工作流来做**，从 `template.html` 复制开始，
-不改动共用的 CSS 和渲染脚本，这样每首歌的风格才能保持一致。
+不改动渲染脚本，共用样式只放在 `assets/site.css`（页面内 `<style>` 只写本曲专属的 hero 装饰），这样每首歌的风格才能保持一致。
 
 要点速记：
 - 歌词常是 UTF-16 的 .lrc：`iconv -f UTF-16 -t UTF-8`；里面自带的中文翻译不要用。
