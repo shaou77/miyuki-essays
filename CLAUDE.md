@@ -46,6 +46,15 @@ songs/<slug>/index.html        每首歌一个解读页
 | 12 | 地上の星 | chijou-no-hoshi |
 | 13 | 銀の龍の背に乗って | gin-no-ryuu-no-se-ni-notte |
 | 14 | 一期一会 | ichigo-ichie |
+| 15 | 永遠の嘘をついてくれ | eien-no-uso |
+| 16 | 孤独の肖像 1st. | kodoku-no-shouzou-1st |
+| 17 | 樹高千丈 落葉帰根 | juko-senjo |
+| 18 | 竹の歌 | take-no-uta |
+| 19 | 空と君のあいだに | sora-to-kimi-no-aida-ni |
+| 20 | 時代 | jidai |
+| 21 | 御機嫌如何 | gokigen-ikaga |
+| 22 | 見返り美人 | mikaeri-bijin |
+| 23 | ひとり上手 | hitori-jouzu |
 
 ## 部署
 
