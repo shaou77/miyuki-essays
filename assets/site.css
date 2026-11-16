@@ -155,16 +155,35 @@ footer .by a:hover{color:#fff;border-bottom-color:var(--ember-lit)}
 /* ================= 首页 ================= */
 .home main{max-width:1000px}
 .home header.hero{min-height:min(92vh,820px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 20px 140px}
-.snow,.snow::before{content:"";position:absolute;left:0;right:0;top:-600px;bottom:0;pointer-events:none;
+.snow,.snow::before,.snow::after{content:"";position:absolute;left:0;right:0;top:-600px;bottom:0;pointer-events:none;
   background-image:
-    radial-gradient(circle at 40px 70px,rgba(255,255,255,.9) 0 1.3px,transparent 2px),
-    radial-gradient(circle at 190px 240px,rgba(255,255,255,.7) 0 1px,transparent 1.7px),
-    radial-gradient(circle at 300px 420px,rgba(255,255,255,.85) 0 1.5px,transparent 2.2px),
-    radial-gradient(circle at 120px 530px,rgba(255,255,255,.6) 0 1px,transparent 1.7px);
-  background-size:360px 600px;animation:snow 44s linear infinite;opacity:.55}
+    radial-gradient(circle at 40px 70px,rgba(255,255,255,.95) 0 1.8px,transparent 3px),
+    radial-gradient(circle at 190px 240px,rgba(255,255,255,.8) 0 1.4px,transparent 2.6px),
+    radial-gradient(circle at 300px 420px,rgba(255,255,255,.9) 0 2.2px,transparent 3.6px),
+    radial-gradient(circle at 120px 530px,rgba(255,255,255,.7) 0 1.5px,transparent 2.8px),
+    radial-gradient(circle at 250px 110px,rgba(255,255,255,.75) 0 1.2px,transparent 2.4px);
+  background-size:360px 600px;animation:snow 40s linear infinite;opacity:.7}
 .hero .snow{position:absolute}
-.snow::before{top:0;background-size:250px 300px;animation-duration:70s;opacity:.5}
+.snow::before{top:0;background-size:250px 300px;animation-duration:64s;opacity:.55}
+/* 近处的大雪片：虚一点、慢一点，给画面一点纵深 */
+.snow::after{top:0;background-image:
+    radial-gradient(circle at 90px 120px,rgba(255,255,255,.5) 0 3px,transparent 7px),
+    radial-gradient(circle at 420px 330px,rgba(255,255,255,.42) 0 4px,transparent 9px),
+    radial-gradient(circle at 260px 520px,rgba(255,255,255,.36) 0 2.6px,transparent 6px);
+  background-size:560px 600px;animation-duration:26s;opacity:.6}
 @keyframes snow{to{transform:translateY(600px)}}
+/* 宽屏：左边一列列竖排的曲目，右边一轮月亮和一句话 */
+.home .hero .index,.home .hero .luna{display:none}
+@media (min-width:1180px){
+  .home .hero .index{display:block;position:absolute;left:max(48px,calc(50% - 620px));top:50%;transform:translateY(-58%);height:450px;max-width:330px;overflow:hidden;
+    writing-mode:vertical-rl;text-align:left;font-family:var(--mincho);font-size:14px;line-height:2.5;letter-spacing:.24em}
+  .hero .index b{display:inline-block;font-weight:400;color:var(--ember-lit);letter-spacing:.6em;margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid rgba(207,58,72,.6)}
+  .hero .index a{display:inline-block;margin-bottom:24px;color:var(--snow);opacity:.46;text-decoration:none;transition:opacity .25s,color .25s}
+  .hero .index a:hover,.hero .index a:focus-visible{opacity:1;color:#fff;outline:none}
+  .home .hero .luna{display:flex;flex-direction:column;align-items:center;gap:48px;position:absolute;right:max(72px,calc(50% - 560px));top:50%;transform:translateY(-60%)}
+  .hero .luna .disc{width:136px;height:136px;border-radius:50%;background:radial-gradient(circle at 36% 34%,#fff,#e9e6dc 56%,#b4b2aa);box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 130px 44px rgba(214,224,238,.15)}
+  .hero .luna p{writing-mode:vertical-rl;text-align:left;margin:0;font-family:"Noto Serif SC",var(--mincho);font-size:16px;line-height:2.6;letter-spacing:.5em;opacity:.78}
+}
 .stage{display:flex;flex-direction:row-reverse;align-items:stretch;justify-content:center;gap:clamp(18px,3.4vw,34px)}
 .stage .title{writing-mode:vertical-rl;font-family:var(--mincho);font-weight:600;font-size:clamp(50px,min(10vw,10.5vh),98px);line-height:1.5;letter-spacing:.16em;text-indent:0;margin:0}
 .stage .title rt{font-size:.2em;letter-spacing:.3em}
@@ -249,6 +268,6 @@ a.song:hover .no,a.song:focus-visible .no{color:var(--ember);opacity:1}
 .links a:hover::after{transform:translateX(4px);color:var(--ember-lit)}
 
 @media (prefers-reduced-motion:reduce){
-  .hero .tw,.snow,.snow::before{animation:none}
-  .song::after,.song,.links a,.btn{transition:none}
+  .hero .tw,.snow,.snow::before,.snow::after{animation:none}
+  .song::after,.song,.links a,.btn,.hero .index a{transition:none}
 }
