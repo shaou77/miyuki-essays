@@ -55,6 +55,9 @@ songs/<slug>/index.html        每首歌一个解读页
 | 21 | 御機嫌如何 | gokigen-ikaga |
 | 22 | 見返り美人 | mikaeri-bijin |
 | 23 | ひとり上手 | hitori-jouzu |
+| 24 | 狼になりたい | ookami-ni-naritai |
+| 25 | ルージュ | rouge |
+| 26 | 最後の女神 | saigo-no-megami |
 
 ## 部署
 
